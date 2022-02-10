@@ -1,6 +1,6 @@
 import React from 'react';
 
-import QuestionsAndAnswer from './QuestionsAndAnswer';
+import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 import Productdetail from './ProductDetail/Productdetail.jsx';
 import RARApp from './RatingsAndReview/RARApp.jsx';
 
