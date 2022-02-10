@@ -8,9 +8,9 @@ import RARApp from './RatingsAndReview/RARApp.jsx';
 const App = (props) => (
   <div>
     <h1>Team Cleric!!</h1>
-    <QuestionsAndAnswer />
-    <RARApp />
     <Productdetail />
+    <RARApp />
+    <QuestionsAndAnswer />
   </div>
 )
 
