@@ -1,6 +1,6 @@
 import React from 'react';
 
-const QuestionsAndAnswer = () => {
+const QuestionsAndAnswers = () => {
   return (
     <div>
       <h3>Questions & Answers</h3>
@@ -8,4 +8,4 @@ const QuestionsAndAnswer = () => {
   )
 }
 
-export default QuestionsAndAnswer;
+export default QuestionsAndAnswers;
