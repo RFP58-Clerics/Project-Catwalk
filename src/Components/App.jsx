@@ -8,7 +8,7 @@ const App = (props) => (
   <div>
     <h1>Team Cleric!!</h1>
     <RARApp />
-    <Productdetail />
+    <ProductDetail />
   </div>
 )
 
