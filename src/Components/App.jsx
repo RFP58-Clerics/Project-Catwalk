@@ -10,7 +10,7 @@ const App = (props) => (
     <h1>Team Cleric!!</h1>
     <QuestionsAndAnswer />
     <RARApp />
-    <Productdetails />
+    <Productdetail />
     <RelatedApp />
 
   </div>
