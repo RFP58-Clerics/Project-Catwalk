@@ -8,4 +8,4 @@ const QuestionsAndAnswers = () => {
   )
 }
 
-export default QuestionsAndAnswer;
+export default QuestionsAndAnswers;

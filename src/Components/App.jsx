@@ -1,16 +1,18 @@
 import React from 'react';
 
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
-import Productdetail from './ProductDetail/Productdetail.jsx';
+
+import ProductDetail from './ProductDetail/ProductDetail.jsx';
+
 import RARApp from './RatingsAndReview/RARApp.jsx';
 
 
 const App = (props) => (
   <div>
     <h1>Team Cleric!!</h1>
-    <Productdetail />
+    <QuestionsAndAnswers />
     <RARApp />
-    <QuestionsAndAnswer />
+    <ProductDetail />
   </div>
 )
 
