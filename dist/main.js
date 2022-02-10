@@ -106,7 +106,11 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+<<<<<<< HEAD
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './QuestionsAndAnswer'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n/* harmony import */ var _ProductDetail_Productdetail_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProductDetail/Productdetail.jsx */ \"./src/Components/ProductDetail/Productdetail.jsx\");\n/* harmony import */ var _RatingsAndReview_RARApp_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RatingsAndReview/RARApp.jsx */ \"./src/Components/RatingsAndReview/RARApp.jsx\");\n\n\n\n\n\nvar App = function App(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"Team Cleric!!\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetail_Productdetail_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RatingsAndReview_RARApp_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './QuestionsAndAnswer'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), null));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://my-webpack-project/./src/Components/App.jsx?");
+=======
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _QuestionsAndAnswers_QuestionsAndAnswers_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsAndAnswers/QuestionsAndAnswers.jsx */ \"./src/Components/QuestionsAndAnswers/QuestionsAndAnswers.jsx\");\n/* harmony import */ var _ProductDetail_Productdetail_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProductDetail/Productdetail.jsx */ \"./src/Components/ProductDetail/Productdetail.jsx\");\n/* harmony import */ var _RatingsAndReview_RARApp_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RatingsAndReview/RARApp.jsx */ \"./src/Components/RatingsAndReview/RARApp.jsx\");\n\n\n\n\n\nvar App = function App(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"Team Cleric!!\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetail_Productdetail_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RatingsAndReview_RARApp_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(QuestionsAndAnswer, null));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://my-webpack-project/./src/Components/App.jsx?");
+>>>>>>> aaa5f3147bf02ce25027eee403b0ed89869d63a3
 
 /***/ }),
 
@@ -120,6 +124,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
+/***/ "./src/Components/QuestionsAndAnswers/QuestionsAndAnswers.jsx":
+/*!********************************************************************!*\
+  !*** ./src/Components/QuestionsAndAnswers/QuestionsAndAnswers.jsx ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar QuestionsAndAnswers = function QuestionsAndAnswers() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h3\", null, \"Questions & Answers\"));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QuestionsAndAnswer);\n\n//# sourceURL=webpack://my-webpack-project/./src/Components/QuestionsAndAnswers/QuestionsAndAnswers.jsx?");
+
+/***/ }),
+
+>>>>>>> aaa5f3147bf02ce25027eee403b0ed89869d63a3
 /***/ "./src/Components/RatingsAndReview/RARApp.jsx":
 /*!****************************************************!*\
   !*** ./src/Components/RatingsAndReview/RARApp.jsx ***!
