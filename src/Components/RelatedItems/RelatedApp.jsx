@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RelatedApp = () {
+const RelatedApp = () => {
   return (
     <div>Anthony is the best</div>
   )
