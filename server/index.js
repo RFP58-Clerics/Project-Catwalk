@@ -8,15 +8,24 @@ app.use(express.json());
 app.use(express.static('dist'));
 
 app.get('/products', (req, res) => {
-  Controller.controller.get((err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      console.log('index result: ', result);
-      res.send(result);
-    }
-  });
+  Controller.getProducts()
+    .then(result => res.send(result.data))
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    });
 });
+
+app.get('/products/:productId/reviews', (req, res) => {
+  let productId = req.params.productId;
+  Controller.getReviews(productId)
+    .then(result => res.send(result.data.results))
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    })
+});
+
 
 // app.post('/products', Controller.controller.post);
 

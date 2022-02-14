@@ -42,10 +42,10 @@ class App extends React.Component {
     return(
       <div>
         <h1>Team Cleric!!</h1>
-        <ProductDetail />
-        <RelatedApp />
-        <RARApp />
-        <QuestionsAndAnswers />
+        <ProductDetail product={this.state.productData[0]}/>
+        <RelatedApp product={this.state.productData[0]}/>
+        <RARApp product={this.state.productData[0]}/>
+        <QuestionsAndAnswers product={this.state.productData[0]}/>
     </div>
     )
   }

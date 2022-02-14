@@ -1,1 +1,1 @@
-exports.controller = require('./Controller.js');
+module.exports = require('./Controller.js');
