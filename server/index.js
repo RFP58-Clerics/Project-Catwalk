@@ -9,25 +9,17 @@ app.use(express.static('dist'));
 
 app.get('/products', (req, res) => {
   Controller.getProducts()
-    .then(result => res.json(result.data))
+    .then(result => res.send(result.data))
     .catch(err => {
       console.log(err);
       res.sendStatus(500);
     });
-  // Controller.controller.get(route, id, (err, result) => {
-  //   if (err) {
-  //     res.send(err);
-  //   } else {
-  //     console.log('index result: ', result);
-  //     res.send(result);
-  //   }
-  // });
 });
 
 app.get('/products/:productId/reviews', (req, res) => {
   let productId = req.params.productId;
   Controller.getReviews(productId)
-    .then(result => res.json(result.data.results))
+    .then(result => res.send(result.data.results))
     .catch(err => {
       console.log(err);
       res.sendStatus(500);

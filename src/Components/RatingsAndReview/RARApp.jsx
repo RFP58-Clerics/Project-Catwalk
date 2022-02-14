@@ -47,7 +47,10 @@ class RARApp extends React.Component {
   render() {
     return (
       <div>
+        <div>
         <h3>Ratings and Reviews</h3>
+        {this.state.reviews.length} Reviews
+        </div>
         <Reviews reviews={this.state.reviews}/>
       </div>
     )
