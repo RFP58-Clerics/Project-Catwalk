@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData('qa/questions');
+    this.getData();
   }
 
   getData() {
@@ -44,7 +44,7 @@ class App extends React.Component {
         <h1>Team Cleric!!</h1>
         <ProductDetail />
         <RelatedApp />
-        <RARApp />
+        <RARApp product={this.state.productData[0]}/>
         <QuestionsAndAnswers />
     </div>
     )
