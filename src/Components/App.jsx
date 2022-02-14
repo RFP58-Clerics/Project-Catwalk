@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData('qa/questions');
+    this.getData();
   }
 
   getData(endpoint) {
