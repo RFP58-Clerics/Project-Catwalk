@@ -26,6 +26,23 @@ app.get('/products/:productId/reviews', (req, res) => {
     })
 });
 
+app.get('/related', (req, res) => {
+  Controller.getRelated(req.query.id)
+    .then(result => res.send(result.data))
+});
+
+app.get('/getOne', (req, res) => {
+  Controller.getOne(req.query.id)
+    .then((result) => {
+      res.send(result.data)})
+});
+
+app.get('/itemStyles', (req, res) => {
+  Controller.itemStyles(req.query.id)
+    .then(result => res.send(result.data))
+});
+
+
 
 // app.post('/products', Controller.controller.post);
 

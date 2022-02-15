@@ -17,9 +17,7 @@ class App extends React.Component {
     this.getData = this.getData.bind(this);
   }
 
-  componentDidMount() {
-    this.getData();
-  }
+
 
   getData() {
     // endpoint = endpoint ? endpoint : 'products';
@@ -38,8 +36,12 @@ class App extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.getData();
+  }
+
   render() {
-    return(
+    return this.state.productData.length === 0 ? null : (
       <div>
         <h1>Team Cleric!!</h1>
         <ProductDetail product={this.state.productData[0]}/>
