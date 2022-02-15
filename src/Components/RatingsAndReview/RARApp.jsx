@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Reviews from './Reviews.jsx';
+import StarRatingFetcher from './StarRatingFetcher.jsx';
 
 
 class RARApp extends React.Component {
@@ -49,9 +50,12 @@ class RARApp extends React.Component {
       <div>
         <div>
         <h3>Ratings and Reviews</h3>
+        <StarRatingFetcher productId={this.props.product.id}/>
         {this.state.reviews.length} Reviews
         </div>
         <Reviews reviews={this.state.reviews}/>
+        Comfort:
+        <StarRatingFetcher productId={this.props.product.id} type='Comfort'/>
       </div>
     )
   }

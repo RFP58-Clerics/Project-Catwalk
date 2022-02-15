@@ -25,7 +25,7 @@ class App extends React.Component {
   getData() {
     // endpoint = endpoint ? endpoint : 'products';
     // console.log(endpoint);
-    axios({
+    return axios({
       method: 'get',
       url: `/products`,
     })
@@ -34,6 +34,7 @@ class App extends React.Component {
       this.setState({
         productData: res.data
       });
+      return res.data;
     })
     .catch((error) => {
       console.error(error)
