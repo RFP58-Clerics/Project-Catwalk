@@ -24,7 +24,6 @@ module.exports = {
   getQuestions: (productId) => {
     return axios.get(`qa/questions/?product_id=${productId}`);
   }
-
 }
 
 // },
