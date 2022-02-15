@@ -5,16 +5,14 @@ import RARApp from './RatingsAndReview/RARApp.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 import axios from 'axios';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productData: []
-    }
+      productData: [],
+    };
     this.getData = this.getData.bind(this);
   }
-
 
   componentDidMount() {
     this.getData();
@@ -23,16 +21,17 @@ class App extends React.Component {
   getData() {
     axios({
       method: 'get',
-      url: `/products`,
+      url: '/products',
     })
-    .then((res) => {
-      this.setState({
-        productData: res.data
+      .then((res) => {
+        this.setState({
+          productData: res.data,
+        });
+        return res.data;
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    })
-    .catch((error) => {
-      console.error(error)
-    })
   }
 
   componentDidMount() {
@@ -50,8 +49,8 @@ class App extends React.Component {
         <RelatedApp product={this.state.productData[0]}/>
         <RARApp product={this.state.productData[0]}/>
         <QuestionsAndAnswers product={this.state.productData[0]}/>
-    </>
-    )
+      </>
+    );
   }
 }
 

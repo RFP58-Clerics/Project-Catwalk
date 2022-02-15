@@ -56,6 +56,17 @@ app.get('/qa/questions/:product_id', (req, res) => {
     })
 });
 
+app.get('/reviews/meta/:productId', (req, res) => {
+  let productId = req.params.productId;
+  console.log(productId);
+  Controller.getMetaData(productId)
+    .then(result => res.json(result.data))
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    })
+});
+
 
 // app.post('/products', Controller.controller.post);
 
