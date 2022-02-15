@@ -35,7 +35,6 @@ const RelatedApp = (props) => {
   //       </button>
   //   )
 
-<<<<<<< HEAD
   // };
 
   useEffect(() => {
@@ -48,11 +47,6 @@ const RelatedApp = (props) => {
 
 
 
-=======
-  // componentDidMount() {
-  //   getRelated();
-  // }
->>>>>>> ab5faf2894c35b86be8a1534f0242b99eade919f
 
   return (
     <div>

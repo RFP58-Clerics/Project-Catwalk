@@ -29,7 +29,6 @@ app.get('/products/:productId/reviews', (req, res) => {
     })
 });
 
-<<<<<<< HEAD
 app.get('/related', (req, res) => {
   Controller.getRelated(req.query.id)
     .then(result => res.send(result.data))
@@ -47,7 +46,6 @@ app.get('/itemStyles', (req, res) => {
 });
 
 
-=======
 app.get('/qa/questions/:product_id', (req, res) => {
   let product_id = req.params.product_id;
   Controller.getQuestions(product_id)
@@ -58,7 +56,6 @@ app.get('/qa/questions/:product_id', (req, res) => {
     })
 });
 
->>>>>>> ab5faf2894c35b86be8a1534f0242b99eade919f
 
 // app.post('/products', Controller.controller.post);
 
