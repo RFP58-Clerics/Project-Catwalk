@@ -20,6 +20,15 @@ module.exports = {
   getReviews: (productId) => {
     return axios.get(`reviews?product_id=${productId}`);
   },
+  getRelated: (id) => {
+    return axios.get(`products/${id}/related`);
+  },
+  getOne: (id) => {
+    return axios.get(`products/${id}`);
+  },
+  itemStyles: (id) => {
+    return axios.get(`products/${id}/styles`);
+  },
 
   getQuestions: (productId) => {
     return axios.get(`qa/questions/?product_id=${productId}`);
@@ -29,6 +38,7 @@ module.exports = {
     return axios.get(`reviews/meta?product_id=${productId}`)
   },
 }
+
 
 // },
 
