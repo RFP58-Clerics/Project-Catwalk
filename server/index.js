@@ -10,7 +10,6 @@ app.use(express.static('dist'));
 app.get('/products', (req, res) => {
   Controller.getProducts()
     .then(result => {
-      console.log(result.data),
       res.send(result.data)
     })
     .catch(err => {
