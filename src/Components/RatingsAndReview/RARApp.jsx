@@ -15,14 +15,14 @@ class RARApp extends React.Component {
 
   componentDidMount() {
     if (this.props.product) {
-      console.log(this.props.product);
+      // console.log(this.props.product);
       this.getReviews(this.props.product.id);
     }
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.product && this.props.product !== prevProps.product) {
-      console.log(this.props.product);
+      // console.log(this.props.product);
       this.getReviews(this.props.product.id);
     }
   }
