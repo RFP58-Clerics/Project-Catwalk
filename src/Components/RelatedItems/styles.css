@@ -1,0 +1,21 @@
+.related-box {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: left;
+  justify-content: baseline;
+}
+
+.carousel-button {
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  object-fit: cover;
+  height: 75%;
+  width: 75%;
+}

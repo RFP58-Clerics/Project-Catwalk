@@ -11,6 +11,16 @@ module.exports = {
   getProducts: () => axios.get('products'),
   getReviews: (productId) => axios.get(`reviews?product_id=${productId}`),
 
+  getRelated: (id) => {
+    return axios.get(`products/${id}/related`);
+  },
+  getOne: (id) => {
+    return axios.get(`products/${id}`);
+  },
+  itemStyles: (id) => {
+    return axios.get(`products/${id}/styles`);
+  },
+
   getQuestions: (productId) => axios.get(`qa/questions/?product_id=${productId}`),
 
   getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),
