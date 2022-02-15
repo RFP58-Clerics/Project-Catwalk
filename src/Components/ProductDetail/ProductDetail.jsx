@@ -1,16 +1,27 @@
 import React from 'react';
 
+class ProductDetail extends React.Component {
+  constructor(props) {
+    super(props);
 
-const ProductDetail = (props) => (
-  // console.log(props),
-  <>
-    <div className='logo'>This is the logo</div>
-    <div className='search'>This is the search bar</div>
-    <div className='image'>This is the product image</div>
-    <div className='product-name'>{props.product.name}</div>
-    <div className='product-description'>{props.product.description}</div>
-    <div className='product-price'>{props.product.default_price}</div>
-  </>
-)
+    this.state = {
+      style: [],
+    };
+
+
+  }
+
+  render() {
+    return (
+      <>
+        <div className="image">This is the product image, new component?</div>
+        <div className="product-category">{this.props.product.category}</div>
+        <div className="product-name">{this.props.product.name}</div>
+        <div className="product-price">{this.props.product.default_price} Price from style, not default. Might need a whole style component</div>
+        <div className="product-description">{this.props.product.description}</div>
+      </>
+    );
+  }
+}
 
 export default ProductDetail;
