@@ -21,11 +21,11 @@ const RelatedCards = (props) => {
         }
       })
       .then((results) => {
-        console.log(results.data)
+        // console.log(results.data)
         results.data.results.map((style) => {
           style['default?'] ? setStyles(style) : null;
         })
-        console.log(styles)
+        // console.log(styles)
       })
       // let item = results.data
       // return (
