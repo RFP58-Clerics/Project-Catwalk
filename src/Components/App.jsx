@@ -9,11 +9,9 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       productData: []
     }
-
     this.getData = this.getData.bind(this);
   }
 
@@ -23,14 +21,11 @@ class App extends React.Component {
   }
 
   getData() {
-    // endpoint = endpoint ? endpoint : 'products';
-    // console.log(endpoint);
     axios({
       method: 'get',
       url: `/products`,
     })
     .then((res) => {
-      console.log('This is the data:', res.data)
       this.setState({
         productData: res.data
       });

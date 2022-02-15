@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const ProductDetail = (props) => (
-  console.log(props),
+  // console.log(props),
   <>
     <div className='logo'>This is the logo</div>
     <div className='search'>This is the search bar</div>

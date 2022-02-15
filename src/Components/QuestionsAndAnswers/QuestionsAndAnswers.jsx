@@ -1,6 +1,8 @@
 import React from 'react';
-import Search from './Search.jsx';
 import axios from 'axios';
+import Search from './Search.jsx';
+import QuestionsList from './QuestionsList.jsx';
+import QuestionsListItem from './QuestionsListItem.jsx';
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
@@ -12,9 +14,9 @@ class QuestionsAndAnswers extends React.Component {
     this.getQuestions = this.getQuestions.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.getQuestions(this.props.product.id);
-  // }
+  componentDidMount() {
+    this.getQuestions(this.props.product.id);
+  }
 
   getQuestions(id) {
     axios.get(`/qa/questions/${id}`)
@@ -34,6 +36,8 @@ class QuestionsAndAnswers extends React.Component {
       <div>
         <h3>Questions & Answers</h3>
         <Search product={this.props.product} getQuestions={this.getQuestions}/>
+        <QuestionsList questions={this.state.q}/>
+        <QuestionsListItem />
       </div>
     )
   }
