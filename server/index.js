@@ -9,7 +9,10 @@ app.use(express.static('dist'));
 
 app.get('/products', (req, res) => {
   Controller.getProducts()
-    .then(result => res.send(result.data))
+    .then(result => {
+      console.log(result.data),
+      res.send(result.data)
+    })
     .catch(err => {
       console.log(err);
       res.sendStatus(500);

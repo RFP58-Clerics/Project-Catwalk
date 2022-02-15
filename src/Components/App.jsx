@@ -17,6 +17,7 @@ class App extends React.Component {
     this.getData = this.getData.bind(this);
   }
 
+
   componentDidMount() {
     this.getData();
   }
@@ -29,6 +30,7 @@ class App extends React.Component {
       url: `/products`,
     })
     .then((res) => {
+      console.log('This is the data:', res.data)
       this.setState({
         productData: res.data
       });
@@ -39,14 +41,17 @@ class App extends React.Component {
   }
 
   render() {
-    return(
-      <div>
-        <h1>Team Cleric!!</h1>
+    return this.state.productData.length === 0 ? null : (
+      <>
+        <div className='top-bar'>
+          <h1>Logo</h1>
+          <h1>Search Bar</h1>
+        </div>
         <ProductDetail product={this.state.productData[0]}/>
         <RelatedApp product={this.state.productData[0]}/>
         <RARApp product={this.state.productData[0]}/>
         <QuestionsAndAnswers product={this.state.productData[0]}/>
-    </div>
+    </>
     )
   }
 }
