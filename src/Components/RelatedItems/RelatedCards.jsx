@@ -7,7 +7,7 @@ const RelatedCards = (props) => {
   const [item, setItem] = useState({name: 'wrong'});
   const [styles, setStyles] = useState({'default?': false});
   useEffect(() => {
-    item.name !== 'wrong' ? null :
+    // item.name !== 'wrong' ? null :
     axios.get('/getOne', {
       params: {
         id: props.item
@@ -34,7 +34,7 @@ const RelatedCards = (props) => {
       //   </div>
       // )
     })
-  })
+  }, []);
   return (
    <div className='card'>
     {styles['default?']  &&

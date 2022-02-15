@@ -38,9 +38,11 @@ const RelatedApp = (props) => {
   // };
 
   useEffect(() => {
-    console.log(related.length)
-    related.length !== 0 ? null : getRelated()
-  })
+    // console.log(related.length)
+    // related.length !== 0 ? null : getRelated()
+    console.log('rendered')
+    getRelated();
+  }, []);
 
 
 
