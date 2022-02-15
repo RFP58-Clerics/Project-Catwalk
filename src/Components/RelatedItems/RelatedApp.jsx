@@ -20,7 +20,7 @@ const RelatedApp = (props) => {
   // componentDidMount() {
   //   getRelated();
   // }
-  
+
   return (
     <div>
       <RelatedList related={related}/>

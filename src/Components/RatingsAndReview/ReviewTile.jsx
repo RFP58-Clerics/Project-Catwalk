@@ -13,7 +13,12 @@ class ReviewTile extends React.Component {
     let review = this.props.review;
     return (
       <div>
-        {review.summary}
+        <h4>{review.summary}</h4>
+        {review.rating} stars <br/>
+        {review.date} <br/>
+        {review.body} <br/>
+        {JSON.stringify(review.photos[0])} <br/>
+        Helpful? {review.helpfulness}
       </div>
     )
   }
