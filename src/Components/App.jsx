@@ -39,7 +39,7 @@ class App extends React.Component {
   }
 
   render() {
-    return(
+    return this.state.productData.length === 0 ? null : (
       <div>
         <h1>Team Cleric!!</h1>
         <ProductDetail product={this.state.productData[0]}/>
