@@ -23,7 +23,11 @@ module.exports = {
 
   getQuestions: (productId) => {
     return axios.get(`qa/questions/?product_id=${productId}`);
-  }
+  },
+
+  getMetaData: (productId) => {
+    return axios.get(`reviews/meta?product_id=${productId}`)
+  },
 }
 
 // },
