@@ -19,17 +19,14 @@ class Reviews extends React.Component {
   }
 
   render() {
-    let reviews = this.props.reviews.slice(0, this.state.showCount);
+    const reviews = this.props.reviews.slice(0, this.state.showCount);
     return (
       <div>
-        {reviews.map((review, key) =>
-          <ReviewTile review={review} key={key} />
-        )}
-        { this.state.showCount < this.props.reviews.length &&
-          <button onClick={this.handleMoreButton}>More Reviews</button>
-        }
+        {reviews.map((review, key) => <ReviewTile review={review} key={key} />)}
+        { this.state.showCount < this.props.reviews.length
+        && <button onClick={this.handleMoreButton}>More Reviews</button>}
       </div>
-    )
+    );
   }
 }
 
