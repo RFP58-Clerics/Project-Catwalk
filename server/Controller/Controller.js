@@ -5,7 +5,7 @@ const axios = require('axios');
 // Set up axios defaults so we don't have to pass in the base url, token, etc. every time
 axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
 axios.defaults.headers.common['Authorization'] = TOKEN.TOKEN;
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+//axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 module.exports = {
   getProducts: () => {
@@ -20,6 +20,7 @@ module.exports = {
   getReviews: (productId) => {
     return axios.get(`reviews?product_id=${productId}`);
   },
+<<<<<<< HEAD
   getRelated: (id) => {
     return axios.get(`products/${id}/related`);
   },
@@ -28,6 +29,11 @@ module.exports = {
   },
   itemStyles: (id) => {
     return axios.get(`products/${id}/styles`);
+=======
+
+  getQuestions: (productId) => {
+    return axios.get(`qa/questions/?product_id=${productId}`);
+>>>>>>> ab5faf2894c35b86be8a1534f0242b99eade919f
   }
 }
 
