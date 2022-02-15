@@ -9,7 +9,8 @@ axios.defaults.headers.common.Authorization = TOKEN.TOKEN;
 
 module.exports = {
   getProducts: () => axios.get('products'),
-  getReviews: (productId) => axios.get(`reviews?product_id=${productId}`),
+  // how to get all the reviews from all the pages??
+  getReviews: (productId) => axios.get(`reviews?product_id=${productId}&page=1&count=200`),
 
   getRelated: (id) => {
     return axios.get(`products/${id}/related`);

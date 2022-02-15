@@ -3,14 +3,13 @@ import axios from 'axios';
 import Reviews from './Reviews.jsx';
 import StarRatingFetcher from './StarRatingFetcher.jsx';
 
-
 class RARApp extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      reviews: []
-    }
+      reviews: [],
+    };
     this.getReviews = this.getReviews.bind(this);
   }
 
@@ -33,31 +32,30 @@ class RARApp extends React.Component {
       method: 'get',
       url: `/products/${id}/reviews`,
     })
-    .then((res) => {
-      //console.log(res.data);
-      this.setState({
-        reviews: res.data
+      .then((res) => {
+        this.setState({
+          reviews: res.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    })
-    .catch((error) => {
-      console.log(error)
-    })
   }
-
 
   render() {
     return (
       <div>
         <div>
-        <h3>Ratings and Reviews</h3>
-        <StarRatingFetcher productId={this.props.product.id}/>
-        {this.state.reviews.length} Reviews
+          <h3>Ratings and Reviews</h3>
+          <StarRatingFetcher productId={this.props.product.id}/>
+          {this.state.reviews.length}
+          Reviews
         </div>
         <Reviews reviews={this.state.reviews}/>
         Comfort:
-        <StarRatingFetcher productId={this.props.product.id} type='Comfort'/>
+        <StarRatingFetcher productId={this.props.product.id} type="Comfort" />
       </div>
-    )
+    );
   }
 }
 
