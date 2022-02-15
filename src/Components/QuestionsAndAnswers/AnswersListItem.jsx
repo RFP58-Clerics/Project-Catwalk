@@ -1,10 +1,11 @@
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 
 const AnswersListItem = ({answer}) => {
-  console.log('answer: ', answer);
   return (
     <div>
-      {answer}
+      {answer.body}
+      <br></br>
     </div>
   )
 }

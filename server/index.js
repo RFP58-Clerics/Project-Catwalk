@@ -10,7 +10,6 @@ app.use(express.static('dist'));
 app.get('/products', (req, res) => {
   Controller.getProducts()
     .then(result => {
-      console.log(result.data),
       res.send(result.data)
     })
     .catch(err => {
@@ -51,14 +50,22 @@ app.get('/qa/questions/:product_id', (req, res) => {
   Controller.getQuestions(product_id)
     .then(result => res.send(result.data.results))
     .catch(err => {
-      // console.log(err);
+      res.sendStatus(500);
+    })
+});
+
+app.get('/qa/questions/:question_id/answers', (req, res) => {
+  let question_id = req.params.question_id;
+  Controller.getAnswers(question_id)
+    .then(result => res.send(result.data.results))
+    .catch(err => {
+      console.log('get answers: ', err);
       res.sendStatus(500);
     })
 });
 
 app.get('/reviews/meta/:productId', (req, res) => {
   let productId = req.params.productId;
-  console.log(productId);
   Controller.getMetaData(productId)
     .then(result => res.json(result.data))
     .catch(err => {
