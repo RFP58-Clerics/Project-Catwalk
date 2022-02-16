@@ -3,7 +3,7 @@ import axios from 'axios';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionsList.jsx';
 import QuestionsListItem from './QuestionsListItem.jsx';
-import AnswersList from './AnswersList.jsx';
+// import AnswersList from './AnswersList.jsx';
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
@@ -13,7 +13,6 @@ class QuestionsAndAnswers extends React.Component {
       a: [],
     };
     this.getQuestions = this.getQuestions.bind(this);
-    this.getAnswers = this.getAnswers.bind(this);
   }
 
   // componentDidMount() {
@@ -22,8 +21,8 @@ class QuestionsAndAnswers extends React.Component {
 
   componentDidMount() {
     axios.all([
-      axios.get('/qa/questions/40344'),
-      axios.get('/qa/questions/563336/answers')
+      axios.get('/qa/questions/40347'),
+      axios.get('/qa/questions/329021/answers')
       // axios.get('/qa/questions/product_id'),
       // axios.get('/qa/questions/question_id/answers')
     ])
@@ -47,25 +46,13 @@ class QuestionsAndAnswers extends React.Component {
       });
   }
 
-  getAnswers(questionId) {
-    axios.get(`/qa/questions/${questionId}/answer`)
-      .then((res) => {
-        this.setState({
-          a: res.data
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   render() {
+    console.log('qState: ', this.state.q);
     return (
       <div className="qa-box">
         <h3>Questions & Answers</h3>
         <Search className="search" product={this.props.product} getQuestions={this.getQuestions} />
-        <QuestionsList questions={this.state.q}/>
-        <AnswersList answers={this.state.a}/>
+        <QuestionsList questions={this.state.q} />
       </div>
     );
   }

@@ -1,9 +1,9 @@
-module.exports = {
-  getAll: (callback) => {
+// module.exports = {
+//   getAll: (callback) => {
 
-  },
+//   },
 
-  save: (callback) => {
+//   save: (callback) => {
 
-  }
-}
+//   }
+// }
