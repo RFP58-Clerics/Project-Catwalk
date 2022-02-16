@@ -3,7 +3,7 @@ import axios from 'axios';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionsList.jsx';
 import QuestionsListItem from './QuestionsListItem.jsx';
-// import AnswersList from './AnswersList.jsx';
+import QuestionModal from './QuestionModal.jsx';
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
@@ -47,12 +47,13 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
-    console.log('qState: ', this.state.q);
     return (
       <div className="qa-box">
         <h3>Questions & Answers</h3>
         <Search className="search" product={this.props.product} getQuestions={this.getQuestions} />
         <QuestionsList questions={this.state.q} />
+        <button className='openModalButton'>Submit Question</button>
+        <QuestionModal productId={this.props.product.id}/>
       </div>
     );
   }
