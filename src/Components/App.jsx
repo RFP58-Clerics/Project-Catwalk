@@ -42,7 +42,7 @@ class App extends React.Component {
           <h1>Search Bar</h1>
         </div>
         <ProductDetail product={this.state.productData[0]}/>
-        <RelatedApp product={this.state.productData[0]}/>
+        <RelatedApp product={{id: 40885}}/>
         <RARApp product={this.state.productData[0]}/>
         <QuestionsAndAnswers product={this.state.productData[0]}/>
       </>

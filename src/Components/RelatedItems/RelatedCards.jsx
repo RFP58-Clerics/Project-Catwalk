@@ -6,7 +6,7 @@ import axios from 'axios';
 const RelatedCards = (props) => {
   const [item, setItem] = useState({name: 'wrong'});
   const [styles, setStyles] = useState({'default?': false});
-  const [price, setPrice] = useState('Fwweee!!!')
+  const [price, setPrice] = useState('Fwweee')
   useEffect(() => {
     // item.name !== 'wrong' ? null :
     axios.get('/getOne', {
@@ -27,7 +27,6 @@ const RelatedCards = (props) => {
         results.data.results.map((style) => {
           style['default?'] ? setStyles(style) : null;
         })
-
       })
     })
   }, []);
@@ -36,15 +35,24 @@ const RelatedCards = (props) => {
   //       console.log(styles);
   // console.log(styles)
   // conditionally render sales price
+  // styles.sale_price ? setPrice('price') : null;
   return (
-   <div className='card'>
+   <div className='card' data-position={props.pos}>
     {styles['default?']  &&
     <img className='img' src={styles.photos[0].thumbnail_url} ></img>
     }
     <div className='card-text'>
-     <h4>{item.name}<br></br></h4>
-     <p>{item.category}</p>
-     <p>{}</p>
+      <ul>{item.name}</ul>
+      <li>{item.category}</li>
+      {styles.sale_price &&
+      <div>
+      <li className='sale'>{styles.sale_price}</li>
+      <li className='price'>{styles.original_price}</li>
+      </div>
+      }
+      {!styles.sale_price &&
+      <li className='normal'>{styles.original_price}</li>
+      }
      </div>
    </div>
   )
