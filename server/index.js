@@ -36,12 +36,13 @@ app.get('/related', (req, res) => {
 app.get('/getOne', (req, res) => {
   Controller.getOne(req.query.id)
     .then((result) => {
-      res.send(result.data)})
+      res.send(result.data);
+    });
 });
 
 app.get('/itemStyles', (req, res) => {
   Controller.itemStyles(req.query.id)
-    .then(result => res.send(result.data))
+    .then(result => res.send(result.data));
 });
 
 
