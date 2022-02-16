@@ -8,21 +8,37 @@ axios.defaults.headers.common.Authorization = TOKEN.TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 module.exports = {
-  getProducts: () => axios.get('products'),
+  getProducts: () => {
+    return axios.get("products");
+    // .then((result) => {
+    //   callback(result.data);
+    //   })
+    // .catch(err => {
+    //   callback(null, err);
+    // })
+  },
   // how to get all the reviews from all the pages??
   getReviews: (productId) => axios.get(`reviews?product_id=${productId}&page=1&count=200`),
 
   getRelated: (id) => {
     return axios.get(`products/${id}/related`);
   },
+
   getOne: (id) => {
     return axios.get(`products/${id}`);
   },
+
   itemStyles: (id) => {
     return axios.get(`products/${id}/styles`);
   },
 
-  getQuestions: (productId) => axios.get(`qa/questions/?product_id=${productId}`),
+  getQuestions: (productId) => {
+    return axios.get(`qa/questions/?product_id=${productId}`);
+  },
+
+  getAnswers: (questionId) => {
+    return axios.get(`qa/questions/${questionId}/answers`);
+  },
 
   getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),
 };

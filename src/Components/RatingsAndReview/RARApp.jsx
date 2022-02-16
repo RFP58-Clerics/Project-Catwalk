@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+// import { render, fireEvent } from '../test-utils';
 import Reviews from './Reviews.jsx';
 import StarRatingFetcher from './StarRatingFetcher.jsx';
 
@@ -54,6 +55,12 @@ class RARApp extends React.Component {
         <Reviews reviews={this.state.reviews}/>
         Comfort:
         <StarRatingFetcher productId={this.props.product.id} type="Comfort" />
+        Fit:
+        <StarRatingFetcher productId={this.props.product.id} type="Fit" />
+        Length:
+        <StarRatingFetcher productId={this.props.product.id} type="Length" />
+        Quality:
+        <StarRatingFetcher productId={this.props.product.id} type="Quality" />
       </div>
     );
   }

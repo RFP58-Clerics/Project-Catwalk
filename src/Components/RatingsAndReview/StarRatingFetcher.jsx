@@ -4,12 +4,13 @@ import StarRating from './StarRating.jsx';
 
 const calcAverageRating = (ratings) => {
   const r = [];
-  for (let k of Object.keys(ratings)) {
-    r[parseInt(k)] = parseInt(ratings[k]);
+  for (let i = 0, keys = Object.keys(ratings); i < keys.length; i += 1) {
+    const k = keys[i];
+    r[parseInt(k, 10)] = parseInt(ratings[k], 10);
   }
+
   let starSum = 0;
   let totalReviews = 0;
-
   for (let i = 1; i < 6; i += 1) {
     if (r[i]) {
       starSum += i * r[i];
@@ -32,7 +33,7 @@ const StarRatingFetcher = function StarRatingFetcher({productId, type}) {
       url: `reviews/meta/${productId}`,
     })
       .then((res) => {
-        console.log('this is the meta review data: ', res.data);
+        // console.log('this is the meta review data: ', res.data);
         if (!type) {
           setRating(calcAverageRating(res.data.ratings));
         } else {

@@ -34,10 +34,6 @@ class App extends React.Component {
       });
   }
 
-  componentDidMount() {
-    this.getData();
-  }
-
   render() {
     return this.state.productData.length === 0 ? null : (
       <>
