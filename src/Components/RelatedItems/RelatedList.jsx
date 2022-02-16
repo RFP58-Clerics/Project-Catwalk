@@ -10,7 +10,7 @@ const RelatedList = (props) => {
         <div className='carousel'>
           <div className='related-box'>
             {props.related.map((item, index) => {
-              return <RelatedCards item={item} key={index} />
+              return <RelatedCards item={item} key={index} pos={index + 1} />
             })}
           </div>
         </div>
