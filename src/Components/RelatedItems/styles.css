@@ -40,3 +40,14 @@
   border: 5px solid gray;
   object-fit: cover;
 }
+
+.starbox {
+  display: inline-grid;
+}
+
+.starbox div {
+  grid-column: 1;
+  grid-row: 1;
+  overflow: hidden;
+  font-size: 24px;
+}

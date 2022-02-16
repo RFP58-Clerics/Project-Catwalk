@@ -1,3 +1,17 @@
+<<<<<<< HEAD
 // {
 //   "extends": "airbnb"
 // }
+=======
+{
+  "extends": "airbnb",
+  "overrides": [
+    {
+      "files": ["*"],
+      "rules": {
+        "import/extensions": "off"
+      }
+    }
+  ]
+}
+>>>>>>> c4b4d0aea4f7b6f850127ddedffe8fe269a52815

@@ -16,7 +16,10 @@ const RelatedApp = (props) => {
         }
       })
         .then((results) => {
+<<<<<<< HEAD
           // console.log('then', results);
+=======
+>>>>>>> c4b4d0aea4f7b6f850127ddedffe8fe269a52815
           setRelated(results.data);
         })
 
