@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedList from './RelatedList.jsx';
@@ -7,22 +8,15 @@ const RelatedApp = (props) => {
   // let product = JSON.stringify(props.product.id);
   // console.log(props.product.id);
   const getRelated = () => {
-
-      // let id = props.id;
-
-      axios.get('/related', {
-        params: {
-          id: props.product.id
-        }
+    axios.get('/related', {
+      params: {
+        id: props.product.id
+      }
+    })
+      .then((results) => {
+        // console.log('then', results);
+        setRelated(results.data);
       })
-        .then((results) => {
-<<<<<<< HEAD
-          // console.log('then', results);
-=======
->>>>>>> c4b4d0aea4f7b6f850127ddedffe8fe269a52815
-          setRelated(results.data);
-        })
-
   };
   // const topCarousel = (cards) => {
   //   return (
