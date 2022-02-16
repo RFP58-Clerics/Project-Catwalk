@@ -38,7 +38,8 @@ class ProductDetail extends React.Component {
 
   render() {
     return this.state.style.length === 0 ? null : (
-      <>
+      <div>
+        <h3>Overview</h3>
         <div className="product-category">{this.state.currentProduct.category}</div>
         <div className="product-name">{this.state.currentProduct.name}</div>
         <div className="product-price">{this.state.style.results[0].original_price}</div>
@@ -52,7 +53,7 @@ class ProductDetail extends React.Component {
         </div>
         <div className="style-selector">This is where the other styles will go</div>
         <div className="share-buttons">These are where the share buttons will go</div>
-      </>
+      </div>
     );
   }
 }
