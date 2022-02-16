@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import ProductStyle from './ProductStyle.jsx';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -6,19 +8,50 @@ class ProductDetail extends React.Component {
 
     this.state = {
       style: [],
+      currentPhoto: null,
+      currentProduct: this.props.product,
     };
 
+    this.changePhoto = this.changePhoto.bind(this);
+    this.changeProduct = this.changeProduct.bind(this);
+  }
 
+  // get styles
+  componentDidMount() {
+    axios.get('/itemStyles', {
+      params: {
+        id: this.props.product.id,
+      },
+    }).then((results) => {
+      this.setState({ style: results.data });
+      this.setState({ currentPhoto: results.data.results[0].photos[0].url });
+    });
+  }
+
+  changePhoto(newPhoto) {
+    this.setState({ currentPhoto: newPhoto });
+  }
+
+  changeProduct(newProduct) {
+    this.setState({ currentProduct: newProduct });
   }
 
   render() {
-    return (
+    return this.state.style.length === 0 ? null : (
       <>
-        <div className="image">This is the product image, new component?</div>
-        <div className="product-category">{this.props.product.category}</div>
-        <div className="product-name">{this.props.product.name}</div>
-        <div className="product-price">{this.props.product.default_price} Price from style, not default. Might need a whole style component</div>
-        <div className="product-description">{this.props.product.description}</div>
+        <div className="product-category">{this.state.currentProduct.category}</div>
+        <div className="product-name">{this.state.currentProduct.name}</div>
+        <div className="product-price">{this.state.style.results[0].original_price}</div>
+        <div className="sale-price"></div>
+        <div className="product-description">{this.state.currentProduct.description}</div>
+        <img className="default-style" src={this.state.currentPhoto} alt="main style" />
+        <div className="style">
+          {this.state.style.results[0].photos.map((photo, index) => (
+            <ProductStyle photo={photo} key={index} changePhoto={this.changePhoto} />
+          ))}
+        </div>
+        <div className="style-selector">This is where the other styles will go</div>
+        <div className="share-buttons">These are where the share buttons will go</div>
       </>
     );
   }
