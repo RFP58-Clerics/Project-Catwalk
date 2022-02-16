@@ -2,13 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const StarRating = function StarRating({ rating }) {
-  // if null, placeholder of 0 for now... later will want to change so it looks like a
-  // product with a 'null' rating is actually just not rated yet, instead of a 0 rating
-  return <div>{rating || 0}</div>;
+  const width = (100 * rating) / 5;
+  return (
+    <div>
+      <div className="starbox">
+        <div style={{ width: `${width}%` }}>★★★★★</div>
+        <div>☆☆☆☆☆</div>
+      </div>
+      {rating !== null ? rating.toFixed(1) : '-.-'}
+    </div>
+  );
 };
 
 StarRating.propTypes = {
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.number,
 };
 
 export default StarRating;

@@ -4,8 +4,8 @@ const axios = require('axios');
 
 // Set up axios defaults so we don't have to pass in the base url, token, etc. every time
 axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
-axios.defaults.headers.common['Authorization'] = TOKEN.TOKEN;
-//axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.common.Authorization = TOKEN.TOKEN;
+// axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 module.exports = {
   getProducts: () => {
@@ -17,15 +17,17 @@ module.exports = {
     //   callback(null, err);
     // })
   },
-  getReviews: (productId) => {
-    return axios.get(`reviews?product_id=${productId}`);
-  },
+  // how to get all the reviews from all the pages??
+  getReviews: (productId) => axios.get(`reviews?product_id=${productId}&page=1&count=200`),
+
   getRelated: (id) => {
     return axios.get(`products/${id}/related`);
   },
+
   getOne: (id) => {
     return axios.get(`products/${id}`);
   },
+
   itemStyles: (id) => {
     return axios.get(`products/${id}/styles`);
   },
@@ -34,21 +36,9 @@ module.exports = {
     return axios.get(`qa/questions/?product_id=${productId}`);
   },
 
-  getMetaData: (productId) => {
-    return axios.get(`reviews/meta?product_id=${productId}`)
+  getAnswers: (questionId) => {
+    return axios.get(`qa/questions/${questionId}/answers`);
   },
-}
 
-
-// },
-
-  // post: (req, res) => {
-  //   var params = req.body.id;
-  //   Model.model.save(params, (err, result) => {
-  //     if (err) {
-  //       res.status(500).send(err);
-  //     } else {
-  //       res.status(201).send(result);
-  //     }
-  //   })
-  // }
+  getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),
+};

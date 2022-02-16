@@ -7,12 +7,12 @@ const AnswersList = ({answers}) => {
     Object.values(answers).forEach(answer => {
       answersBody.push(answer.body);
     })
-    console.log('answersBody: ', answersBody);
     return answersBody;
   }
+
   return (
     <div>
-      {answersBody.map((answer, i) => <AnswersListItem answer={answer} key={i}/>)}
+      {answers.map((answer, i) => <AnswersListItem answer={answer} key={i}/> )}
     </div>
   )
 }

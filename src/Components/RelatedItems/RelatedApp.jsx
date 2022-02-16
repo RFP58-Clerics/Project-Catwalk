@@ -9,14 +9,18 @@ const RelatedApp = (props) => {
   const getRelated = () => {
 
       // let id = props.id;
-      console.log(props.product.id);
+
       axios.get('/related', {
         params: {
           id: props.product.id
         }
       })
         .then((results) => {
+<<<<<<< HEAD
           // console.log('then', results);
+=======
+
+>>>>>>> 5b7c8782754f638ab4de40e01a882ceff2081c00
           setRelated(results.data);
         })
 

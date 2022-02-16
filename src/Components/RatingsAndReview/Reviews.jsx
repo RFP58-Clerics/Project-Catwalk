@@ -1,14 +1,13 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 
-
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       showCount: 2,
-    }
+    };
 
     this.handleMoreButton = this.handleMoreButton.bind(this);
   }
