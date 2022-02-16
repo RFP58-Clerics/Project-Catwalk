@@ -17,12 +17,12 @@ import '@testing-library/jest-dom';
 //   test, beforeAll, afterEach, afterAll,
 // } from '@testing-library/jest-dom';
 // the component to test
-import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
+import RARApp from './RARApp.jsx';
 
 // declare which API requests to mock
 const server = setupServer(
   // capture "GET /greeting" requests
-  rest.get('/qa/questions/*', (req, res, ctx) => res(
+  rest.get('/reviews/meta/*', (req, res, ctx) => res(
     ctx.status(200),
     ctx.json({ greeting: 'hello there' }),
   )),
@@ -51,9 +51,9 @@ test('displays widget title on page load', async () => {
   };
 
   // Arrange
-  render(<QuestionsAndAnswers product={product}/>);
+  render(<RARApp product={product}/>);
   // Act
-  fireEvent.click(screen.getByText('Questions & Answers'));
+  fireEvent.click(screen.getByText('Ratings and Reviews'));
 
   await waitFor(() => screen.getByRole('heading'));
   // Assert
