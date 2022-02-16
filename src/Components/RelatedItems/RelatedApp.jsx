@@ -9,12 +9,14 @@ const RelatedApp = (props) => {
   const getRelated = () => {
 
       // let id = props.id;
+
       axios.get('/related', {
         params: {
           id: props.product.id
         }
       })
         .then((results) => {
+
           setRelated(results.data);
         })
 
@@ -38,6 +40,7 @@ const RelatedApp = (props) => {
   useEffect(() => {
     // console.log(related.length)
     // related.length !== 0 ? null : getRelated()
+
     getRelated();
   }, []);
 

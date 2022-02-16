@@ -9,9 +9,10 @@ const AnswersList = ({answers}) => {
     })
     return answersBody;
   }
+
   return (
     <div>
-      {answersBody.map((answer, i) => <AnswersListItem answer={answer} key={i}/>)}
+      {answers.map((answer, i) => <AnswersListItem answer={answer} key={i}/> )}
     </div>
   )
 }
