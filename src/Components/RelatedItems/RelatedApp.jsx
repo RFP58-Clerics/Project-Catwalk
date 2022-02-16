@@ -16,7 +16,7 @@ const RelatedApp = (props) => {
         }
       })
         .then((results) => {
-          console.log('then', results);
+          // console.log('then', results);
           setRelated(results.data);
         })
 
@@ -40,7 +40,7 @@ const RelatedApp = (props) => {
   useEffect(() => {
     // console.log(related.length)
     // related.length !== 0 ? null : getRelated()
-    console.log('rendered')
+    // console.log('rendered')
     getRelated();
   }, []);
 
