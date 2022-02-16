@@ -4,7 +4,7 @@ import React from 'react';
 const AnswersListItem = ({answer}) => {
   return (
     <div>
-      {answer.body}
+      A: {answer}
       <br></br>
     </div>
   )

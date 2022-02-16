@@ -12,7 +12,7 @@ const AnswersList = ({answers}) => {
 
   return (
     <div>
-      {answers.map((answer, i) => <AnswersListItem answer={answer} key={i}/> )}
+      {answers ? Object.values(answers).map((answer, i) => <AnswersListItem answer={answer.body} key={i}/>) : null }
     </div>
   )
 }
