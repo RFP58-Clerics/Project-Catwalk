@@ -1,9 +1,9 @@
+import axios from 'axios';
 import React from 'react';
 import ProductDetail from './ProductDetail/ProductDetail.jsx';
 import RelatedApp from './RelatedItems/RelatedApp.jsx';
 import RARApp from './RatingsAndReview/RARApp.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
-import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
