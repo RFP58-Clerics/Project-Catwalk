@@ -33,7 +33,6 @@ const StarRatingFetcher = function StarRatingFetcher({productId, type}) {
       url: `reviews/meta/${productId}`,
     })
       .then((res) => {
-        // console.log('this is the meta review data: ', res.data);
         if (!type) {
           setRating(calcAverageRating(res.data.ratings));
         } else {

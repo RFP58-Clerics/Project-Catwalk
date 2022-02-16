@@ -30,7 +30,7 @@ class App extends React.Component {
         return res.data;
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
       });
   }
 
