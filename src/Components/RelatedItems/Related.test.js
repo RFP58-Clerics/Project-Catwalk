@@ -5,7 +5,7 @@ import {render, fireEvent, screen, waitFor} from '@testing-library/react'
 // import userEvent from '@testing-library/user-event'
 // import '@testing-library/jest-dom/extend-expect'
 import RelatedCards from './RelatedCards.jsx'
-import {expect} from 'jest'
+// import {expect} from 'jest'
 // import RelatedList from './RelatedList.jsx'
 import '@testing-library/jest-dom'
 
