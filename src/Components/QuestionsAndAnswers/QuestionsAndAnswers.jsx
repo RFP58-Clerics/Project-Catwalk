@@ -56,7 +56,7 @@ class QuestionsAndAnswers extends React.Component {
       <div className="qa-box">
         <h3>Questions & Answers</h3>
         <Search className="search" productInfo={this.props.product} getQuestions={this.getQuestions} />
-        <QuestionsList productInfo={this.props.product} questions={this.state.q} />
+        <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions}/>
         <button className='openModalButton'onClick={() => this.setState({openModal: true})}>Submit Question</button>
         {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal}/>}
       </div>
