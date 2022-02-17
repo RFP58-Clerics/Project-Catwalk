@@ -47,18 +47,6 @@
   height: 100%;
 }
 
-.starbox {
-  display: inline-grid;
-  background-color: green;
-}
-
-.starbox div {
-  grid-column: 1;
-  grid-row: 1;
-  overflow: hidden;
-  font-size: 24px;
-}
-
 .sale {
   color: red;
 }
@@ -86,17 +74,6 @@
   position: absolute;
 }
 
-.reviewCard {
-  display: flex;
-  flex-direction: row;
-  border: 10px solid gray;
-  width: 600px;
-  box-sizing: border-box;
-  flex-flow: wrap;
-  flex: auto;
-  justify-content: normal;
-}
-
 .searchResults {
   position: absolute;
   background-color: white;
@@ -109,69 +86,3 @@
 
 
 
-/* REVIEW PHOTO MODAL */
-
-.reviewThumbnail {
-  border: 1px solid #ddd; /* Gray border */
-  border-radius: 4px;  /* Rounded border */
-  padding: 5px; /* Some padding */
-  width: 100px; /* Set a small width */
-  flex-flow: row;
-}
-
-.reviewPhotoModalBackground {
-  width: 100vw;
-  height: 100vh;
-  background-color: grey;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 0;
-  top: 0;
-}
-
-.reviewPhotoModalContainer {
-  width: 500px;
-  height: 500px;
-  border-radius: 12px;
-  background-color: white;
-  box-shadow: black 0px 5px 15px;
-  display: flex;
-  flex-direction: column;
-  padding: 300px;
-}
-
-.reviewPhotoModalCloseBtn {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.reviewPhotoModalCloseBtn button {
-  background-color: transparent;
-  border: none;
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.reviewPhotoModalContainer .body {
-  flex: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.7rem;
-  text-align: center;
-}
-
-.expandedReviewImg {
-  border: 1px solid #ddd; /* Gray border */
-  border-radius: 4px;  /* Rounded border */
-  padding: 5px; /* Some padding */
-  width: 500px; /* Set a small width */
-  flex-flow: row;
-}
-
-.scrollReviews {
-  max-height: 1200px;
-  overflow: scroll;
-}

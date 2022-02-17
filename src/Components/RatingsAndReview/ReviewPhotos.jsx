@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
 import ReviewPhotoModal from './ReviewPhotoModal.jsx';
+import './reviewstyles.css';
 
 function ReviewPhotos({ photos }) {
   const [openPhotoModal, setOpenPhotoModal] = useState(false);

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
+import './reviewstyles.css';
 
 class Reviews extends React.Component {
   constructor(props) {

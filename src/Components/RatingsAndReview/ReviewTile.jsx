@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import dateFormat from 'dateformat';
 import ReviewPhotos from './ReviewPhotos.jsx';
+import './reviewstyles.css';
 
 const Button = styled.button`
   background: #2b2b2b;
@@ -30,7 +31,7 @@ class ReviewTile extends React.Component {
       method: 'put',
       url: `/reviews/${this.props.review.review_id}/helpful`,
     })
-      .then((res) => {
+      .then(() => {
         this.setState((oldState) => ({ helpfulness: oldState.helpfulness + 1 }));
       })
       .catch((error) => {
