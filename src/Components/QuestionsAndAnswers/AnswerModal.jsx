@@ -6,7 +6,8 @@ class AnswerModal extends React.Component {
     super(props);
     this.state = {
       body: '',
-      answerer_name: '',
+      name: '',
+      email: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,14 +23,16 @@ class AnswerModal extends React.Component {
     event.preventDefault();
     const obj = {
       body: this.state.body,
-      answerer_name: this.state.answerer_name,
+      name: this.state.name,
+      email: this.state.email,
     };
     axios.post(`/qa/questions/${this.props.questionInfo.question_id}/answers`, obj)
       .then((res) => {
         console.log(res);
         this.setState({
           body: '',
-          answerer_name: '',
+          name: '',
+          email: '',
         });
       })
       .catch((err) => {
@@ -62,7 +65,7 @@ class AnswerModal extends React.Component {
                 type="text"
                 autoComplete="off"
                 placeholder="Example: jack543!"
-                value={this.state.answerer_name}
+                value={this.state.name}
                 onChange={this.handleChange}
               />
               <br></br>
