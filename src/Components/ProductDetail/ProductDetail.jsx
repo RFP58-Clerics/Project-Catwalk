@@ -26,7 +26,6 @@ class ProductDetail extends React.Component {
         id: this.props.product.id,
       },
     }).then((results) => {
-      console.log(results.data);
       this.setState({ currentStyle: results.data.results[0] });
       this.setState({ styles: results.data });
       this.setState({ currentPhoto: results.data.results[0].photos[0].url });
