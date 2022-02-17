@@ -18,7 +18,7 @@ class QuestionsList extends React.Component {
     const questions = this.props.questions.slice(0, this.state.showCount);
     return (
       <div className="question">
-        {this.props.questions.map((question, i) => <QuestionsListItem productInfo={this.props.productInfo} questionInfo={question} key={i} />)}
+        {this.props.questions.map((question, i) => <QuestionsListItem productInfo={this.props.productInfo} questionInfo={question} key={i} getQuestions={this.props.getQuestions}/>)}
         {this.state.showCount < this.props.questions.length && <button onClick={this.handleMoreButton}>More Questions</button>}
       </div>
     )

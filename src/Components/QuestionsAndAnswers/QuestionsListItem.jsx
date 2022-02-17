@@ -41,7 +41,7 @@ class QuestionsListItem extends React.Component {
       <div>
         <br></br>
         Q: {this.props.questionInfo.question_body}
-        <Helpful />
+        <Helpful productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} getQuestions={this.props.getQuestions}/>
         <button className="openModalButton" onClick={() => {this.setState({openModal: true})}}>Submit Answer</button>
         {this.state.openModal && <AnswerModal productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} closeModal={this.closeModal}/>}
         <AnswersList answers={this.state.a || null}/>
