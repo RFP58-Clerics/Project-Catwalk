@@ -20,7 +20,7 @@ class ProductStyles extends React.Component {
 
   render() {
     return (
-        <img className='style-list' src={this.state.thumbnail} onClick={this.handleClick} />
+        <img className='style-thumbnail' src={this.state.thumbnail} onClick={this.handleClick} />
     );
   }
 }
