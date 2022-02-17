@@ -18,7 +18,13 @@ module.exports = {
     // })
   },
   // how to get all the reviews from all the pages??
-  getReviews: (productId) => axios.get(`reviews?product_id=${productId}&page=1&count=200`),
+  getReviews: (productId, query) => axios.get(`reviews?product_id=${productId}`, {
+    params: {
+      page: 1,
+      count: 200,
+      ...query,
+    },
+  }),
 
   getRelated: (id) => {
     return axios.get(`products/${id}/related`);
@@ -41,4 +47,8 @@ module.exports = {
   },
 
   getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),
+
+  putReviewHelpful: (reviewId) => axios.put(`reviews/${reviewId}/helpful`),
+
+  putReviewReported: (reviewId) => axios.put(`reviews/${reviewId}/reported`),
 };

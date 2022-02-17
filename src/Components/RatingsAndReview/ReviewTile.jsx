@@ -1,5 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
+import dateFormat from 'dateformat';
 
 const Button = styled.button`
   background: #2b2b2b;
@@ -7,6 +9,8 @@ const Button = styled.button`
   font-size: 12px;
   padding: 12px;
   cursor: pointer;
+  width: fit-content;
+  height: fit-content;
 `;
 
 class ReviewTile extends React.Component {
@@ -14,29 +18,73 @@ class ReviewTile extends React.Component {
     super(props);
 
     this.state = {
-
+      helpfulness: this.props.review.helpfulness,
     };
+    this.updateHelpfulness = this.updateHelpfulness.bind(this);
+    this.updateReported = this.updateReported.bind(this);
+  }
+
+  updateHelpfulness() {
+    axios({
+      method: 'put',
+      url: `/reviews/${this.props.review.review_id}/helpful`,
+    })
+      .then((res) => {
+        this.setState((oldState) => ({ helpfulness: oldState.helpfulness + 1 }));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  updateReported() {
+    axios({
+      method: 'put',
+      url: `/reviews/${this.props.review.review_id}/reported`,
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
-    let review = this.props.review;
+    const {
+      summary, rating, date, body, photos,
+      helpfulness, reviewer_name, recommend, response
+    } = this.props.review;
+    let reviewRating = [];
+    for (let i = 0; i < rating; i += 1) {
+      reviewRating.push('★');
+    }
+
+    let outputDate = dateFormat(new Date(date), 'mmmm d, yyyy');
+
     return (
-      <div>
-        <h4>{review.summary}</h4>
-        {review.rating}
+      <div className="reviewCard">
+        <h4>{summary}</h4>
+        {reviewRating}
+        {rating}
         stars
         <br />
-        {review.date}
+        {outputDate}
         <br />
-        {review.body}
+        {reviewer_name ? `✔(verifieduser)${reviewer_name}` : null}
         <br />
-        {JSON.stringify(review.photos[0])}
+        {body}
         <br />
-        Helpful?
-        <Button>Yes</Button>
-        {review.helpfulness}
+        {response ? `Response from seller: ${response}` : null}
+        {recommend ? 'recommended ✔' : null}
+        <br />
+        {JSON.stringify(photos[0])}
+        <br />
+        Was this review helpful?
+        <Button onClick={this.updateHelpfulness}>Yes</Button>
+        {this.state.helpfulness}
         <Button>No</Button>
-        <Button>Report</Button>
+        <Button onClick={this.updateReported}>Report</Button>
       </div>
     );
   }

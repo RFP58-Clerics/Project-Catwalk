@@ -25,17 +25,6 @@
   width: 100%;
 }
 
-.starbox {
-  display: inline-grid;
-}
-
-.starbox div {
-  grid-column: 1;
-  grid-row: 1;
-  overflow: hidden;
-  font-size: 24px;
-}
-
 .card-text {
   border: 5px solid gray;
   object-fit: cover;
@@ -58,4 +47,15 @@
 
 .price {
   text-decoration: line-through;
+}
+
+.reviewCard {
+    display: flex;
+    flex-direction: row;
+    border: 10px solid gray;
+    width: 600px;
+    box-sizing: border-box;
+    flex-flow: wrap;
+    flex: auto;
+    justify-content: normal;
 }
