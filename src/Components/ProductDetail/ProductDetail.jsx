@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ProductStyles from './ProductStyles.jsx';
 import MoreStyles from './MoreStyles.jsx';
+import StarRatingFetcher from '../RatingsAndReview/StarRatingFetcher.jsx';
 import './styles.css';
 
 class ProductDetail extends React.Component {
@@ -55,16 +56,24 @@ class ProductDetail extends React.Component {
             <ProductStyles photo={photo} key={index} changePhoto={this.changePhoto} />
           ))}
         </div>
+        <StarRatingFetcher productId={this.props.product.id} />
         <div className="product-category">{this.props.product.category}</div>
         <div className="product-name">{this.props.product.name}</div>
         <div className="product-price">{this.state.currentStyle.original_price}</div>
-        <div className="sale-price"></div>
         <div className="product-description">{this.props.product.description}</div>
         <div className="style-selector">
           {this.state.styles.results.map((style, index) => (
             <MoreStyles style={style} key={index} changeStyle={this.changeStyle} />
           ))}
         </div>
+        <select>
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+        </select>
         <button className="add-cart">Add to cart</button>
         <img className="share-buttons" src='https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png'></img>
         <img className="share-buttons" src='https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png'></img>
