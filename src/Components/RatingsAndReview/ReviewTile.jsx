@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import dateFormat from 'dateformat';
+import ReviewPhotos from './ReviewPhotos.jsx';
+import './reviewstyles.css';
 
 const Button = styled.button`
   background: #2b2b2b;
@@ -29,7 +31,7 @@ class ReviewTile extends React.Component {
       method: 'put',
       url: `/reviews/${this.props.review.review_id}/helpful`,
     })
-      .then((res) => {
+      .then(() => {
         this.setState((oldState) => ({ helpfulness: oldState.helpfulness + 1 }));
       })
       .catch((error) => {
@@ -73,12 +75,12 @@ class ReviewTile extends React.Component {
         <br />
         {reviewer_name ? `✔(verifieduser)${reviewer_name}` : null}
         <br />
-        {body}
+        {body.length < 250 ? body : 'body too big'}
         <br />
         {response ? `Response from seller: ${response}` : null}
         {recommend ? 'recommended ✔' : null}
         <br />
-        {JSON.stringify(photos[0])}
+        <ReviewPhotos photos={photos} />
         <br />
         Was this review helpful?
         <Button onClick={this.updateHelpfulness}>Yes</Button>

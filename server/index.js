@@ -8,11 +8,11 @@ app.use(express.json());
 app.use(express.static('dist'));
 
 app.get('/products', (req, res) => {
-  Controller.getProducts()
-    .then(result => {
+  Controller.getProducts(req.query)
+    .then((result) => {
       res.send(result.data);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.sendStatus(500);
     });
@@ -62,7 +62,7 @@ app.get('/qa/questions/:product_id', (req, res) => {
 app.post('/qa/questions', (req, res) => {
   Controller.postQuestion(req.body)
     .then((result) => {
-      res.sendStatus(201);
+      res.sendStatus(202);
     })
     .catch(err => {
       console.log(err);
@@ -88,7 +88,20 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
   let question_id = req.params.question_id;
   Controller.postAnswer(question_id, req.body)
     .then((result) => {
-      res.sendStatus(201);
+      res.sendStatus(202);
+    })
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+// Update question helpfulness
+app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  let question_id = req.params.question_id;
+  Controller.updateQuestionHelpfulness(question_id)
+    .then((result) => {
+      res.sendStatus(204);
     })
     .catch(err => {
       console.log(err);
