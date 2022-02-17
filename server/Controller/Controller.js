@@ -35,8 +35,16 @@ module.exports = {
     return axios.get(`qa/questions/?product_id=${productId}`);
   },
 
+  postQuestion: (body) => {
+    return axios.post('qa/questions', body);
+  },
+
   getAnswers: (questionId) => {
     return axios.get(`qa/questions/${questionId}/answers`);
+  },
+
+  postAnswer: (questionId, body) => {
+    return axios.post(`qa/questions/${questionId}/answers`, body);
   },
 
   getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),
@@ -45,7 +53,4 @@ module.exports = {
 
   putReviewReported: (reviewId) => axios.put(`reviews/${reviewId}/reported`),
 
-  postQuestion: (body) => {
-    return axios.post('qa/questions', body);
-  },
 };

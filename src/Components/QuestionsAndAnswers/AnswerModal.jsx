@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class QuestionModal extends React.Component {
+class AnswerModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,9 +25,8 @@ class QuestionModal extends React.Component {
       body: this.state.body,
       name: this.state.name,
       email: this.state.email,
-      product_id: this.props.productInfo.id,
     };
-    axios.post('/qa/questions', obj)
+    axios.post(`/qa/questions/${this.props.questionInfo.question_id}/answers`, obj)
       .then((res) => {
         console.log(res);
         this.setState({
@@ -47,8 +46,8 @@ class QuestionModal extends React.Component {
         <div className="modal-container">
           <button onClick={() => { this.props.closeModal() }}> X </button>
           <div className='title'>
-            <h1> Ask Your Question </h1>
-            <h4> About the {this.props.productInfo.name}</h4>
+            <h1> Submit Your Answer </h1>
+            <h3> {this.props.productInfo.name} : {this.props.questionInfo.question_body}</h3>
           </div>
           <div className="body">
             <form onSubmit={this.handleSubmit}>
@@ -56,38 +55,37 @@ class QuestionModal extends React.Component {
                 name="body"
                 type="text"
                 autoComplete="off"
-                placeholder="Question..."
+                placeholder="Answer..."
                 value={this.state.body}
                 onChange={this.handleChange}
               />
-              <br></br>
               <br></br>
               <input
                 name="name"
                 type="text"
                 autoComplete="off"
-                placeholder="Example: jackson11!"
+                placeholder="Example: jack543!"
                 value={this.state.name}
                 onChange={this.handleChange}
               />
               <br></br>
               For privacy reasons, do not use your full name or email address
               <br></br>
-              <br></br>
               <input
                 name="email"
                 type="text"
                 autoComplete="off"
-                placeholder="Email: example@gmail.com"
+                placeholder="Example: jack@email.com"
                 value={this.state.email}
                 onChange={this.handleChange}
               />
+              <br></br>
+              For authentication reasons, you will not be emailed” will appear
+              <br></br>
               <input
                 type="submit"
                 value="Submit"
               />
-              <br></br>
-              For authentication reasons, you will not be emailed
             </form>
           </div>
         </div>
@@ -96,4 +94,4 @@ class QuestionModal extends React.Component {
   }
 }
 
-export default QuestionModal;
+export default AnswerModal;

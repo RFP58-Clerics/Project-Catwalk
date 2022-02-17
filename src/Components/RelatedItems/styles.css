@@ -170,3 +170,8 @@
   width: 500px; /* Set a small width */
   flex-flow: row;
 }
+
+.scrollReviews {
+  max-height: 1200px;
+  overflow: scroll;
+}

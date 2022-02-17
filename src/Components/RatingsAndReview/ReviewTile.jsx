@@ -74,12 +74,11 @@ class ReviewTile extends React.Component {
         <br />
         {reviewer_name ? `✔(verifieduser)${reviewer_name}` : null}
         <br />
-        {body}
+        {body.length < 250 ? body : 'body too big'}
         <br />
         {response ? `Response from seller: ${response}` : null}
         {recommend ? 'recommended ✔' : null}
         <br />
-        {/* {JSON.stringify(photos[0])} */}
         <ReviewPhotos photos={photos} />
         <br />
         Was this review helpful?
