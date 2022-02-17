@@ -26,12 +26,15 @@
     "@babel/cli": "^7.17.0",
     "axios": "^0.25.0",
     "babel-polyfill": "^6.26.0",
+    "dateformat": "^5.0.2",
     "express": "^4.17.2",
+    "moment": "^2.29.1",
     "msw": "^0.36.8",
     "nodemon": "^2.0.15",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-moment": "^1.1.1",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
