@@ -10,8 +10,6 @@ class MoreStyles extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.changeStyle(this.props.style);
-    console.log(e.target);
-    console.log(e.target.id);
   }
 
   render() {
