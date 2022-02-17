@@ -3,6 +3,7 @@ import axios from 'axios';
 // import { render, fireEvent } from '../test-utils';
 import Reviews from './Reviews.jsx';
 import StarRatingFetcher from './StarRatingFetcher.jsx';
+import './reviewstyles.css';
 
 class RARApp extends React.Component {
   constructor(props) {

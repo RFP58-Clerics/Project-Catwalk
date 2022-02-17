@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import StarRating from './StarRating.jsx';
+import './reviewstyles.css';
 
 const calcAverageRating = (ratings) => {
   const r = [];

@@ -1,6 +1,6 @@
+const axios = require('axios');
 const Model = require('../Model');
 const TOKEN = require('../../config.js');
-const axios = require('axios');
 
 // Set up axios defaults so we don't have to pass in the base url, token, etc. every time
 axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
@@ -8,15 +8,8 @@ axios.defaults.headers.common.Authorization = TOKEN.TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 module.exports = {
-  getProducts: () => {
-    return axios.get("products");
-    // .then((result) => {
-    //   callback(result.data);
-    //   })
-    // .catch(err => {
-    //   callback(null, err);
-    // })
-  },
+  getProducts: (query) => axios.get('products', { params: query }),
+
   // how to get all the reviews from all the pages??
   getReviews: (productId, query) => axios.get(`reviews?product_id=${productId}`, {
     params: {
