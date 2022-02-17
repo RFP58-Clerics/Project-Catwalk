@@ -11,8 +11,10 @@ class QuestionsAndAnswers extends React.Component {
     this.state = {
       q: [],
       a: [],
+      openModal: false
     };
     this.getQuestions = this.getQuestions.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   // componentDidMount() {
@@ -46,14 +48,18 @@ class QuestionsAndAnswers extends React.Component {
       });
   }
 
+  closeModal() {
+    this.setState({openModal: false})
+  }
+
   render() {
     return (
       <div className="qa-box">
         <h3>Questions & Answers</h3>
         <Search className="search" product={this.props.product} getQuestions={this.getQuestions} />
         <QuestionsList questions={this.state.q} />
-        <button className='openModalButton'>Submit Question</button>
-        <QuestionModal productId={this.props.product.id}/>
+        <button className='openModalButton'onClick={() => this.setState({openModal: true})}>Submit Question</button>
+        {this.state.openModal && <QuestionModal productId={this.props.product.id} closeModal={this.closeModal}/>}
       </div>
     );
   }

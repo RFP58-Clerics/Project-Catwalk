@@ -1,5 +1,4 @@
 import React from 'react';
-const moment= require('moment');
 import axios from 'axios';
 
 class QuestionModal extends React.Component {
@@ -22,8 +21,6 @@ class QuestionModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('question got submitted');
-    console.log('productId: ', this.props.productId);
     let obj = {
       body: this.state.body,
       name: this.state.name,
@@ -33,6 +30,11 @@ class QuestionModal extends React.Component {
     axios.post(`/qa/questions`, obj)
       .then(res => {
         console.log(res);
+        this.setState({
+          body: '',
+          name: '',
+          email: '',
+        })
       })
         .catch(err => {
           console.log(err);
@@ -44,20 +46,12 @@ class QuestionModal extends React.Component {
     return (
       <div className='modal-background'>
         <div className='modal-container'>
-          <button> X </button>
+          <button onClick={() => {this.props.closeModal()}}> X </button>
           <div className='title'>
             <h1> Submit Your Question </h1>
           </div>
           <div className='body'>
             <form onSubmit={this.handleSubmit}>
-            <input
-                name='name'
-                type='text'
-                autoComplete="off"
-                placeholder='Your name'
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
               <input
                 name='body'
                 type='text'
@@ -66,11 +60,19 @@ class QuestionModal extends React.Component {
                 value={this.state.body}
                 onChange={this.handleChange}
               />
-              <input
-                name='email'
+            <input
+                name='name'
                 type='text'
                 autoComplete="off"
-                placeholder='Your email'
+                placeholder='Name'
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
+              <input
+                name= 'email'
+                type='text'
+                autoComplete="off"
+                placeholder='Email: example@gmail.com'
                 value={this.state.email}
                 onChange={this.handleChange}
               />
