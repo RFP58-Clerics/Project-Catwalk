@@ -41,4 +41,8 @@ module.exports = {
   },
 
   getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),
+
+  postQuestion: (body) => {
+    return axios.post('qa/questions', body);
+  }
 };
