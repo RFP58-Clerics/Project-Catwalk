@@ -10,8 +10,10 @@ class RARApp extends React.Component {
 
     this.state = {
       reviews: [],
+      sort: 'relevant',
     };
     this.getReviews = this.getReviews.bind(this);
+    this.changeSort = this.changeSort.bind(this);
   }
 
   componentDidMount() {
@@ -21,8 +23,8 @@ class RARApp extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.product && this.props.product !== prevProps.product) {
+  componentDidUpdate(prevProps, prevState) {
+    if ((this.props.product && this.props.product !== prevProps.product) || this.state.sort !== prevState.sort) {
       // console.log(this.props.product);
       this.getReviews(this.props.product.id);
     }
@@ -31,7 +33,7 @@ class RARApp extends React.Component {
   getReviews(id) {
     axios({
       method: 'get',
-      url: `/products/${id}/reviews`,
+      url: `/products/${id}/reviews?sort=${this.state.sort}`,
     })
       .then((res) => {
         this.setState({
@@ -43,6 +45,13 @@ class RARApp extends React.Component {
       });
   }
 
+  changeSort(event) {
+    event.preventDefault();
+    this.setState({
+      sort: event.target.value,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -51,6 +60,13 @@ class RARApp extends React.Component {
           <StarRatingFetcher productId={this.props.product.id}/>
           {this.state.reviews.length}
           Reviews
+          <br />
+          <label>Sort on:</label>
+          <select value={this.state.sort} onChange={this.changeSort} name="sort" id="sort">
+            <option value="relevant">Relevant</option>
+            <option value="helpful">Helpful</option>
+            <option value="newest">Newest</option>
+          </select>
         </div>
         <Reviews reviews={this.state.reviews}/>
         Comfort:
