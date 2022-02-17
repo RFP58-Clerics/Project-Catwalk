@@ -37,11 +37,8 @@ class ProductDetail extends React.Component {
 
   changeStyle(newStyle) {
     for (let i = 0; i < this.state.styles.results.length; i++) {
-      console.log('searching for ', newStyle);
       if (newStyle.style_id === this.state.styles.results[i].style_id) {
         this.setState({ currentStyle: this.state.styles.results[i] });
-        console.log('found! Updating to ', this.state.styles.results[i].style_id);
-        console.log('CurrentStyle is now: ', this.state.currentStyle);
         break;
       }
     }
