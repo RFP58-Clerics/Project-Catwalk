@@ -84,10 +84,15 @@ app.put('/reviews/:reviewId/helpful', (req, res) => {
   Controller.putReviewHelpful(reviewId)
     .then((result) => res.json(result.data))
     .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 app.post('/qa/questions', (req, res) => {
   Controller.postQuestion(req.body)
     .then((result) => {
-      res.sendStatus(201)
+      res.sendStatus(201);
     })
     .catch(err => {
       console.log(err);
@@ -110,4 +115,3 @@ app.put('/reviews/:reviewId/reported', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
-
