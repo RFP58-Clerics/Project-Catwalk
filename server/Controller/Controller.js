@@ -51,4 +51,8 @@ module.exports = {
   putReviewHelpful: (reviewId) => axios.put(`reviews/${reviewId}/helpful`),
 
   putReviewReported: (reviewId) => axios.put(`reviews/${reviewId}/reported`),
+
+  postQuestion: (body) => {
+    return axios.post('qa/questions', body);
+  }
 };

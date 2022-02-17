@@ -48,8 +48,11 @@ app.get('/itemStyles', (req, res) => {
 app.get('/qa/questions/:product_id', (req, res) => {
   let product_id = req.params.product_id;
   Controller.getQuestions(product_id)
-    .then(result => res.send(result.data.results))
+    .then(result => {
+      res.send(result.data.results)
+    })
     .catch(err => {
+      console.log(err);
       res.sendStatus(500);
     })
 });
@@ -57,9 +60,11 @@ app.get('/qa/questions/:product_id', (req, res) => {
 app.get('/qa/questions/:question_id/answers', (req, res) => {
   let question_id = req.params.question_id;
   Controller.getAnswers(question_id)
-    .then(result => res.send(result.data.results))
+    .then(result => {
+      res.send(result.data.results)
+    })
     .catch(err => {
-      console.log('get answers: ', err);
+      console.log(err);
       res.sendStatus(500);
     });
 });
@@ -76,10 +81,15 @@ app.get('/reviews/meta/:productId', (req, res) => {
 
 app.put('/reviews/:reviewId/helpful', (req, res) => {
   const { reviewId } = req.params;
-  console.log(reviewId);
   Controller.putReviewHelpful(reviewId)
     .then((result) => res.json(result.data))
     .catch((err) => {
+app.post('/qa/questions', (req, res) => {
+  Controller.postQuestion(req.body)
+    .then((result) => {
+      res.sendStatus(201)
+    })
+    .catch(err => {
       console.log(err);
       res.sendStatus(500);
     });
@@ -87,7 +97,6 @@ app.put('/reviews/:reviewId/helpful', (req, res) => {
 
 app.put('/reviews/:reviewId/reported', (req, res) => {
   const { reviewId } = req.params;
-  console.log(reviewId);
   Controller.putReviewReported(reviewId)
     .then((result) => res.json(result.data))
     .catch((err) => {
@@ -101,3 +110,4 @@ app.put('/reviews/:reviewId/reported', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+

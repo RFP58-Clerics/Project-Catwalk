@@ -1,6 +1,5 @@
 import React from 'react';
 import QuestionsListItem from './QuestionsListItem.jsx';
-// import Helpful from './Helpful.jsx';
 
 class QuestionsList extends React.Component {
   constructor(props) {
@@ -16,7 +15,6 @@ class QuestionsList extends React.Component {
   }
 
   render() {
-    console.log('questions: ', this.props.questions);
     const questions = this.props.questions.slice(0, this.state.showCount);
     return (
       <div className="question">
