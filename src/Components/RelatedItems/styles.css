@@ -1,22 +1,38 @@
+.carousel {
+  overflow: hidden;
+  width: 90%;
+  position: relative;
+  left: 50px;
+}
+
 .related-box {
-  display: inline-flex;
-  box-sizing: border-box;
-  align-items: left;
-  justify-content: baseline;
-  border: 5px solid black;
+  white-space: nowrap;
+  transition: transform 0.3s;
+  position: relative;
 }
 
 .carousel-button {
   cursor: pointer;
+  position: absolute;
+  top: 50%;
 }
 
 .card {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  height: 400px;
+  position: relative;
+}
+
+.cardItem {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border: 5px solid gray;
   width: 200px;
-  height: 400px;
-  box-sizing: border-box;
+  height: 100%;
+  box-sizing: content-box;
 }
 
 .img {
@@ -27,7 +43,8 @@
 
 .card-text {
   border: 5px solid gray;
-  object-fit: cover;
+  object-fit: contain;
+  height: 100%;
 }
 
 .starbox {
@@ -47,6 +64,25 @@
 
 .price {
   text-decoration: line-through;
+}
+
+.carousel-button-left {
+  left: 0px;
+}
+
+.carousel-button-right {
+ right: 0px;
+}
+
+.outer-container {
+  position: relative;
+  width: 50%;
+}
+
+.card-button {
+  top: 5px;
+  right: 25px;
+  position: absolute;
 }
 
 .reviewCard {
