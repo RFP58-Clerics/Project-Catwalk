@@ -19,7 +19,7 @@
 
 .card {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   height: 400px;
   position: relative;
@@ -28,11 +28,11 @@
 .cardItem {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 5px solid gray;
   width: 200px;
   height: 100%;
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 .img {
@@ -54,7 +54,8 @@
 
 .card-text {
   border: 5px solid gray;
-  object-fit: cover;
+  object-fit: contain;
+  height: 100%;
 }
 
 .starbox {
@@ -87,4 +88,10 @@
 .outer-container {
   position: relative;
   width: 50%;
+}
+
+.card-button {
+  top: 5px;
+  right: 25px;
+  position: absolute;
 }

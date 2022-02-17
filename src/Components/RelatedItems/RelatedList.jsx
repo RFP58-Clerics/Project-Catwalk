@@ -25,7 +25,7 @@ const RelatedList = (props) => {
             })}
           </div>
         </div>
-        {index !== props.related.length - 1 &&
+        {index !== props.related.length - 2 &&
           <button className='carousel-button carousel-button-right' onClick={() => {updateIndex(index + 1)}}>
           </button>
           }
