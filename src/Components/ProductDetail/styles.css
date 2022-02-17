@@ -1,0 +1,14 @@
+.style-photo {
+  display: inline-flex;
+  justify-content: right;
+  height: 200px;
+  position: relative;
+}
+
+.overview {
+  border: 5px solid gray;
+}
+
+.default-style {
+  width: 400px;
+};
