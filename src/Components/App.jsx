@@ -88,7 +88,7 @@ class App extends React.Component {
         </div>
         { showSearch && <SearchResults products={searchResults} setProduct={this.setProduct} /> }
         <ProductDetail product={product} />
-        <RelatedApp product={{id: 40885}} />
+        <RelatedApp product={product} />
         <RARApp product={product} />
         <QuestionsAndAnswers product={product} />
       </>

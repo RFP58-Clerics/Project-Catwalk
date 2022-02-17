@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import dateFormat from 'dateformat';
+import ReviewPhotos from './ReviewPhotos.jsx';
 
 const Button = styled.button`
   background: #2b2b2b;
@@ -78,7 +79,8 @@ class ReviewTile extends React.Component {
         {response ? `Response from seller: ${response}` : null}
         {recommend ? 'recommended ✔' : null}
         <br />
-        {JSON.stringify(photos[0])}
+        {/* {JSON.stringify(photos[0])} */}
+        <ReviewPhotos photos={photos} />
         <br />
         Was this review helpful?
         <Button onClick={this.updateHelpfulness}>Yes</Button>

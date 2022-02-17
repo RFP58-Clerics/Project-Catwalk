@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SearchResults = function SearchResults({ products, setProduct }) {
   return (
@@ -17,6 +18,11 @@ const SearchResults = function SearchResults({ products, setProduct }) {
       ))}
     </div>
   );
+};
+
+SearchResults.propTypes = {
+  products: PropTypes.arrayOf,
+  setProduct: PropTypes.function,
 };
 
 export default SearchResults;

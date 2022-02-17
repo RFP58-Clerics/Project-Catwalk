@@ -49,6 +49,7 @@
 
 .starbox {
   display: inline-grid;
+  background-color: green;
 }
 
 .starbox div {
@@ -103,4 +104,69 @@
   margin: 1em;
   max-height: 300px;
   overflow: scroll;
+  cursor: pointer;
+}
+
+
+
+/* REVIEW PHOTO MODAL */
+
+.reviewThumbnail {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 100px; /* Set a small width */
+  flex-flow: row;
+}
+
+.reviewPhotoModalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: grey;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+}
+
+.reviewPhotoModalContainer {
+  width: 500px;
+  height: 500px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: black 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 300px;
+}
+
+.reviewPhotoModalCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reviewPhotoModalCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.reviewPhotoModalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.expandedReviewImg {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 500px; /* Set a small width */
+  flex-flow: row;
 }
