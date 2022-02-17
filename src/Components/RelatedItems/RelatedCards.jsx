@@ -40,7 +40,7 @@ const RelatedCards = (props) => {
 
   return (
    <div className='card' data-position={props.pos} style={{width: '50%'}}>
-     <button className='card-button related-button'></button>
+     <button className='card-button related-button' value='★'></button>
      <div className='card-item'>
     {styles['default?']  &&
     <img className='img' src={styles.photos[0].thumbnail_url} ></img>
