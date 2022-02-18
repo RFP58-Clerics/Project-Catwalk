@@ -22,24 +22,12 @@ const CompareModal = ({ open, onClose, currItem, relatedItem }) => {
   const [curr, setCurr] = useState(null);
 
 
-  useEffect(() => {
-    axios.get('/getOne', {
-      params: {
-        id: currItem.id
-      }
-    })
-    .then((results) => {
-      setCurr(results.data);
-    })
-  }, []);
+
 
   useEffect(() => {
-    if (curr) {
-      setCompareList(Object.values(featuresList(curr, relatedItem)));
-    } else {
-      null;
-    }
-  }, [curr]);
+    setCompareList(Object.values(featuresList(currItem, relatedItem)));
+
+  }, []);
   return open && (
     <div>
       <button onClick={onClose}>Close</button>
@@ -54,3 +42,12 @@ const CompareModal = ({ open, onClose, currItem, relatedItem }) => {
 }
 
 export default CompareModal;
+
+
+// useEffect(() => {
+//   if (curr) {
+//     setCompareList(Object.values(featuresList(currItem, relatedItem)));
+//   } else {
+//     null;
+//   }
+// }, [curr]);

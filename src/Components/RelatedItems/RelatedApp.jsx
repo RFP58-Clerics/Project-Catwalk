@@ -47,16 +47,35 @@ const RelatedApp = ({ product }) => {
     // console.log(related.length)
     // related.length !== 0 ? null : getRelated()
     // console.log('rendered')
-    getRelated();
+    getRelated()
+      axios.get('/getOne', {
+        params: {
+          id: product.id
+        }
+      })
+      .then((results) => {
+        setCurr(results.data);
+      })
   }, []);
 
+  // useEffect(() => {
+  //   axios.get('/getOne', {
+  //     params: {
+  //       id: product.id
+  //     }
+  //   })
+  //   .then((results) => {
+  //     setCurr(results.data);
+  //   })
+  // }, []);
 
 
 
 
-  return (
+
+  return curr && (
     <div>
-      <RelatedList related={related} currItem={product}/>
+      <RelatedList related={related} currItem={curr}/>
     </div>
   )
 }

@@ -2,15 +2,27 @@ import React, { useEffect, useState } from 'react';
 
 const CompareGrid = ({ compareObj }) => {
   const [ready, setReady] = useState(false);
+  const [curr, setCurr] = useState(compareObj.curr);
+  const [related, setRelated] = useState(compareObj.related);
 
   useEffect(() => {
-    console.log(compareObj)
-  })
-  return ready && (
-    <div>
-      <div className='compare-curr' >{currItemValue}</div>
-      <div className='compare-feature' >{feature}</div>
-      <div className='compare-related' >{relatedValue}</div>
+    if (curr === true) {
+      setCurr('✔')
+    } else if (!curr) {
+      setCurr(' ')
+    }
+
+    if (related === true) {
+      setRelated('✔')
+    } else if (!related) {
+      setRelated(' ')
+    }
+  }, [])
+  return (
+    <div className='compare-row'>
+      <div className='compare-curr' >{curr}</div>
+      <div className='compare-feature' >{compareObj.feature}</div>
+      <div className='compare-related' >{related}</div>
     </div>
   )
 }
