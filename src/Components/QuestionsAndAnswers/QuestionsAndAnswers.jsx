@@ -18,21 +18,9 @@ class QuestionsAndAnswers extends React.Component {
   componentDidMount() {
     if (this.props.product) {
       this.getQuestions(40347);
+      // this.getQuestions(this.props.product.id);
     }
   }
-
-  // componentDidMount() {
-  //   axios.all([
-  //     axios.get('/qa/questions/40347'),
-  //     // axios.get('/qa/questions/product_id'),
-  //     // axios.get('/qa/questions/question_id/answers')
-  //   ])
-  //     .then(axios.spread((q, a) => {
-  //       this.setState({
-  //         q: q.data,
-  //       });
-  //     }));
-  // }
 
   getQuestions(id) {
     axios.get(`/qa/questions/${id}`)
@@ -51,6 +39,7 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
+    console.log('product: ', this.props.product);
     return (
       <div className="qa-box">
         <h3>Questions & Answers</h3>
