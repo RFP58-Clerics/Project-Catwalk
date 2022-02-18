@@ -1,0 +1,68 @@
+
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(6px);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+}
+
+
+.modalCloseBtn {
+  display: flex;
+  justify-content: flex-start;
+  width: 25px
+}
+
+.modalCloseBtn button {
+  background-color: white;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.modal-container {
+  width: 700px;
+  height: 450px;
+  border-radius: 12px;
+  background-color: rgb(232, 232, 232);
+  box-shadow: black 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+
+ .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  text-align: center;
+}
+
+.questionBody {
+  border-style: dotted;
+  justify-content: space-between;
+  width: 700px
+}
+
+.question {
+  border: red;
+  border-style: groove
+}
+
+.helpful-button {
+  border: blue;
+  border-style: ridge;
+  width: 180px;
+  justify-content: flex-end;
+}

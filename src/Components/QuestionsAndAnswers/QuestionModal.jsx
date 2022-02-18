@@ -42,10 +42,11 @@ class QuestionModal extends React.Component {
   }
 
   render() {
+    // console.log('pID: ', this.props.productInfo.id)
     return (
       <div className="modal-background">
         <div className="modal-container">
-          <button onClick={() => { this.props.closeModal() }}> X </button>
+          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> X </button>
           <div className='title'>
             <h1> Ask Your Question </h1>
             <h4> About the {this.props.productInfo.name}</h4>

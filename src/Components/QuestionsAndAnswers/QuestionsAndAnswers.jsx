@@ -9,30 +9,22 @@ class QuestionsAndAnswers extends React.Component {
     super(props);
     this.state = {
       q: [],
-      a: [],
       openModal: false,
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.getQuestions(this.props.product.id);
-  // }
-
   componentDidMount() {
-    axios.all([
-      axios.get('/qa/questions/40347'),
-      axios.get('/qa/questions/329021/answers'),
-      // axios.get('/qa/questions/product_id'),
-      // axios.get('/qa/questions/question_id/answers')
-    ])
-      .then(axios.spread((q, a) => {
-        this.setState({
-          q: q.data,
-          a: a.data,
-        });
-      }));
+    if (this.props.product) {
+      this.getQuestions(this.props.product.id);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.product && this.props.product.id !== prevProps.product.id) {
+      this.getQuestions(this.props.product.id);
+    }
   }
 
   getQuestions(id) {
@@ -56,6 +48,7 @@ class QuestionsAndAnswers extends React.Component {
       <div className="qa-box">
         <h3>Questions & Answers</h3>
         <Search className="search" productInfo={this.props.product} getQuestions={this.getQuestions} />
+        <br></br>
         <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions}/>
         <button className='openModalButton'onClick={() => this.setState({openModal: true})}>Submit Question</button>
         {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal}/>}
