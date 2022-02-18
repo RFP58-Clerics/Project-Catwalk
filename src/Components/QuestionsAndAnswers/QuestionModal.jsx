@@ -20,7 +20,7 @@ class QuestionModal extends React.Component {
   }
 
   handleSubmit(event) {
-    // event.preventDefault();
+    event.preventDefault();
     const obj = {
       body: this.state.body,
       name: this.state.name,

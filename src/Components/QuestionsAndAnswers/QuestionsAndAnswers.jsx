@@ -17,14 +17,21 @@ class QuestionsAndAnswers extends React.Component {
 
   componentDidMount() {
     if (this.props.product) {
-      this.getQuestions('40347');
-      // this.getQuestions(this.props.product.id);
+
+      this.getQuestions(this.props.product.id);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.product && this.props.product.id !== prevProps.product.id) {
+      this.getQuestions(this.props.product.id);
     }
   }
 
   getQuestions(id) {
     axios.get(`/qa/questions/${id}`)
       .then((res) => {
+        console.log('res data: ', res)
         this.setState({
           q: res.data,
         });
