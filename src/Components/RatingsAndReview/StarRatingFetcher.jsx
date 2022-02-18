@@ -43,7 +43,7 @@ const StarRatingFetcher = function StarRatingFetcher({productId, type}) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [productId, type]);
 
   return (<StarRating rating={rating} />);
 };
