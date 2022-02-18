@@ -17,7 +17,6 @@ class QuestionsAndAnswers extends React.Component {
 
   componentDidMount() {
     if (this.props.product) {
-
       this.getQuestions(this.props.product.id);
     }
   }
@@ -31,7 +30,6 @@ class QuestionsAndAnswers extends React.Component {
   getQuestions(id) {
     axios.get(`/qa/questions/${id}`)
       .then((res) => {
-        console.log('res data: ', res)
         this.setState({
           q: res.data,
         });

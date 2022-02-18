@@ -50,13 +50,12 @@ app.get('/qa/questions/:product_id', (req, res) => {
   let product_id = req.params.product_id;
   Controller.getQuestions(product_id)
     .then(result => {
-      console.log('server result: ', result)
-      res.send(result.data.results)
+      res.send(result.data.results);
     })
     .catch(err => {
       console.log(err);
       res.sendStatus(500);
-    })
+    });
 });
 
 // Save new questions per product

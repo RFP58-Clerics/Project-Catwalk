@@ -1,0 +1,14 @@
+.logoPicture {
+  display: inline-flex;
+  justify-content: right;
+  height: 100px;
+  position: relative;
+}
+
+
+h1 {
+  color: black;
+  font: bold 24px/45px Helvetica, Sans-Serif;
+  letter-spacing: -1px;
+  padding: 10px;
+}
