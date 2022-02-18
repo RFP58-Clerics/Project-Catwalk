@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React from 'react';
-import ProductDetail from './ProductDetail/ProductDetail.jsx';
+import Overview from './Overview/Overview.jsx';
 import RelatedApp from './RelatedItems/RelatedApp.jsx';
 import RARApp from './RatingsAndReview/RARApp.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 import SearchResults from './SearchResults.jsx';
+import './styles.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -80,14 +81,15 @@ class App extends React.Component {
     return product && (
       <>
         <div className="top-bar">
-          <h1>Logo</h1>
+          <h1>Clerical</h1>
+          <img className="logoPicture" src="https://www.dndbeyond.com/avatars/thumbnails/6/371/420/618/636272706155064423.png"></img>
           <form onSubmit={this.handleSubmit}>
             <input type="text" placeholder="Search for a product..." value={searchTerm} onChange={this.searchProducts} onFocus={this.showSearch} onBlur={() => setTimeout(this.hideSearch, 400)} />
             <input type="submit" value="Search" />
           </form>
         </div>
         { showSearch && <SearchResults products={searchResults} setProduct={this.setProduct} /> }
-        <ProductDetail product={product} />
+        <Overview product={product} />
         <RelatedApp product={product} />
         <RARApp product={product} />
         <QuestionsAndAnswers product={product} />
