@@ -3,10 +3,9 @@ import axios from 'axios';
 import ProductDetails from './ProductDetails.jsx';
 import ProductStyles from './ProductStyles.jsx';
 import MoreStyles from './MoreStyles.jsx';
-import StarRatingFetcher from '../RatingsAndReview/StarRatingFetcher.jsx';
 import './styles.css';
 
-class ProductDetail extends React.Component {
+class Overview extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,7 +21,7 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() {
-    this.getStyles(this.props.product.id)
+    this.getStyles(this.props.product.id);
 
     axios({
       method: 'get',
@@ -65,25 +64,39 @@ class ProductDetail extends React.Component {
     return this.state.styles.length === 0 ? null : (
       <div className="overview">
         <h3>Overview</h3>
-        <img className="default-style" src={this.state.currentPhoto} alt="main style" />
+        <img className="defaultStyle" src={this.state.currentPhoto} alt="main style" />
         <br></br>
-        <div className="style-photo">
+        <div className="stylePhotos">
           {this.state.currentStyle.photos.map((photo, index) => (
             <>
-              <ProductStyles photo={photo} key={index} changePhoto={this.changePhoto} />
+              <ProductStyles
+                photo={photo}
+                key={index}
+                changePhoto={this.changePhoto}
+              />
               <br />
               <br />
             </>
           ))}
         </div>
-        <div className="product-total-reviews">Read all {this.state.reviews.length} reviews</div>
-        <StarRatingFetcher productId={this.props.product.id} />
-        <div className="productDetails"><ProductDetails product={this.props.product}/></div>
-        <div className="style-selector">
+        <div className="productDetails">
+          <ProductDetails
+            product={this.props.product}
+            productPrice={this.state.currentStyle.original_price}
+            salePrice={this.state.currentStyle.sale_price}
+            reviews={this.state.reviews}
+          />
+        </div>
+        <div className="styleSelector">
           {this.state.styles.results.map((style, index) => (
-            <MoreStyles style={style} key={index} changeStyle={this.changeStyle} />
+            <MoreStyles
+              style={style}
+              key={index}
+              changeStyle={this.changeStyle}
+            />
           ))}
         </div>
+        <br />
         <select>
           <option defaultValue="Select Size">Select Size</option>
           <option value="XS">XS</option>
@@ -93,13 +106,14 @@ class ProductDetail extends React.Component {
           <option value="XL">XL</option>
           <option value="XXL">XXL</option>
         </select>
-        <button className="add-cart">Add to cart</button>
-        <img className="share-buttons" src='https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png'></img>
-        <img className="share-buttons" src='https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png'></img>
-        <img className="share-buttons" src='https://cdn-icons-png.flaticon.com/32/174/174863.png'></img>
+        <button className="addCart">Add to cart</button>
+        <br />
+        <img className="shareButtons" src='https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png' />
+        <img className="shareButtons" src='https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png' />
+        <img className="shareButtons" src='https://cdn-icons-png.flaticon.com/32/174/174863.png' />
       </div>
     );
   }
 }
 
-export default ProductDetail;
+export default Overview;

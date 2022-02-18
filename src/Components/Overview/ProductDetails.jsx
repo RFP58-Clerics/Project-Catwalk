@@ -1,13 +1,15 @@
 import React from 'react';
+import StarRatingFetcher from '../RatingsAndReview/StarRatingFetcher.jsx';
 
 const ProductDetails = (props) => (
   <>
-    <div className="product-category">{props.product.category}</div>
-    <div className="product-name">{props.product.name}</div>
-    <div className="product-price">$money</div>
-    <div className="product-description">{props.product.description}</div>
+    <StarRatingFetcher productId={props.product.id} />
+    <div className="productTotalReviews">Read all {props.reviews.length} reviews</div>
+    <div className="productCategory">{props.product.category}</div>
+    <div className="productName">{props.product.name}</div>
+    <div className="productPrice">${props.productPrice}</div>
+    <div className="productDescription">{props.product.description}</div>
   </>
 )
-
 
 export default ProductDetails;
