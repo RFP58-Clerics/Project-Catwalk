@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ProductDetails from './ProductDetails.jsx';
 import ProductStyles from './ProductStyles.jsx';
 import MoreStyles from './MoreStyles.jsx';
 import StarRatingFetcher from '../RatingsAndReview/StarRatingFetcher.jsx';
@@ -13,18 +14,33 @@ class ProductDetail extends React.Component {
       styles: [],
       currentPhoto: null,
       currentStyle: {},
+      reviews: [],
     };
 
     this.changePhoto = this.changePhoto.bind(this);
     this.changeStyle = this.changeStyle.bind(this);
   }
 
-  // get styles
   componentDidMount() {
+    this.getStyles(this.props.product.id)
+
+    axios({
+      method: 'get',
+      url: `/products/${this.props.product.id}/reviews`,
+    })
+      .then((res) => {
+        this.setState({
+          reviews: res.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  getStyles(id) {
     axios.get('/itemStyles', {
-      params: {
-        id: this.props.product.id,
-      },
+      params: { id },
     }).then((results) => {
       this.setState({ currentStyle: results.data.results[0] });
       this.setState({ styles: results.data });
@@ -37,9 +53,15 @@ class ProductDetail extends React.Component {
   }
 
   changeStyle(newStyle) {
+    console.log('new style is', newStyle);
     for (let i = 0; i < this.state.styles.results.length; i++) {
+      console.log('inside loop');
       if (newStyle.style_id === this.state.styles.results[i].style_id) {
+        console.log('found!');
+        console.log('old currentStyle:', this.state.currentStyle);
+        console.log('updating to', this.state.styles.results[i]);
         this.setState({ currentStyle: this.state.styles.results[i] });
+        console.log('currentStyle set to', this.state.currentStyle);
         break;
       }
     }
@@ -50,22 +72,26 @@ class ProductDetail extends React.Component {
       <div className="overview">
         <h3>Overview</h3>
         <img className="default-style" src={this.state.currentPhoto} alt="main style" />
+        <br></br>
         <div className="style-photo">
           {this.state.currentStyle.photos.map((photo, index) => (
-            <ProductStyles photo={photo} key={index} changePhoto={this.changePhoto} />
+            <>
+              <ProductStyles photo={photo} key={index} changePhoto={this.changePhoto} />
+              <br />
+              <br />
+            </>
           ))}
         </div>
+        <div className="product-total-reviews">Read all {this.state.reviews.length} reviews</div>
         <StarRatingFetcher productId={this.props.product.id} />
-        <div className="product-category">{this.props.product.category}</div>
-        <div className="product-name">{this.props.product.name}</div>
-        <div className="product-price">{this.state.currentStyle.original_price}</div>
-        <div className="product-description">{this.props.product.description}</div>
+        <div className="productDetails"><ProductDetails product={this.props.product}/></div>
         <div className="style-selector">
           {this.state.styles.results.map((style, index) => (
             <MoreStyles style={style} key={index} changeStyle={this.changeStyle} />
           ))}
         </div>
         <select>
+          <option defaultValue="Select Size">Select Size</option>
           <option value="XS">XS</option>
           <option value="S">S</option>
           <option value="M">M</option>

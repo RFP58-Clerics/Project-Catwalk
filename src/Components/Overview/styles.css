@@ -1,0 +1,30 @@
+.product-name {
+  font: italic small-caps bold 30px/30px sans-serif;
+}
+
+.product-price {
+  font: italic small-caps bold 20px/30px sans-serif;
+}
+
+.style-selector {
+  border: 5px solid gray;
+  display: inline-flex;
+  justify-content: right;
+  height: 200px;
+  position: relative;
+}
+
+.style-photo {
+  display: inline-flex;
+  justify-content: right;
+  height: 200px;
+  position: relative;
+}
+
+.overview {
+  border: 5px solid gray;
+}
+
+.default-style {
+  width: 400px;
+};
