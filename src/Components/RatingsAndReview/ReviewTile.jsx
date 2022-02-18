@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import dateFormat from 'dateformat';
+// import dateFormat from 'dateformat';
 import ReviewPhotos from './ReviewPhotos.jsx';
 import './reviewstyles.css';
 
@@ -21,9 +21,11 @@ class ReviewTile extends React.Component {
 
     this.state = {
       helpfulness: this.props.review.helpfulness,
+      expanded: false,
     };
     this.updateHelpfulness = this.updateHelpfulness.bind(this);
     this.updateReported = this.updateReported.bind(this);
+    this.updateExpanded = this.updateExpanded.bind(this);
   }
 
   updateHelpfulness() {
@@ -52,6 +54,12 @@ class ReviewTile extends React.Component {
       });
   }
 
+  updateExpanded() {
+    this.setState({
+      expanded: true,
+    });
+  }
+
   render() {
     const {
       summary, rating, date, body, photos,
@@ -62,20 +70,35 @@ class ReviewTile extends React.Component {
       reviewRating.push('★');
     }
 
-    let outputDate = dateFormat(new Date(date), 'mmmm d, yyyy');
+    // let outputDate = dateFormat(new Date(date), 'mmmm d, yyyy');
+
+    let shortBody;
+
+    if (body.length > 250) {
+      shortBody = body.substring(0, 250);
+    }
 
     return (
       <div className="reviewCard">
         <h4>{summary}</h4>
-        {reviewRating}
-        {rating}
+        <div>
+          {reviewRating}
+          {rating}
+        </div>
         stars
         <br />
-        {outputDate}
+        {/* {outputDate} */}
+        {new Date(date).toDateString()}
         <br />
         {reviewer_name ? `✔(verifieduser)${reviewer_name}` : null}
         <br />
-        {body.length < 250 ? body : 'body too big'}
+        {!this.state.expanded && shortBody && (
+          <p>
+            {shortBody}
+            <button className="moreBtn" type="button" onClick={this.updateExpanded}>(more)</button>
+          </p>
+        )}
+        {(this.state.expanded || !shortBody) && body}
         <br />
         {response ? `Response from seller: ${response}` : null}
         {recommend ? 'recommended ✔' : null}
