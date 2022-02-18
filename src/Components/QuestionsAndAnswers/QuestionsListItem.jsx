@@ -37,17 +37,19 @@ class QuestionsListItem extends React.Component {
 
   render() {
   return (
-    Object.values(this.state.a).length === 0 ? null : (
       <div>
-        <br></br>
-        Q: {this.props.questionInfo.question_body}
-        <Helpful />
-        <button className="openModalButton" onClick={() => {this.setState({openModal: true})}}>Submit Answer</button>
+        <div className="questionBody">
+          <span className="question">
+            Q: {this.props.questionInfo.question_body}
+          </span>
+          <Helpful productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} getQuestions={this.props.getQuestions}/>
+        </div>
+          <button className="openModalButton" onClick={() => {this.setState({openModal: true})}}>Submit Answer</button>
         {this.state.openModal && <AnswerModal productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} closeModal={this.closeModal}/>}
-        <AnswersList answers={this.state.a || null}/>
+        {Object.values(this.state.a).length === 0 ? null : (
+        <AnswersList answers={this.state.a || null}/> )}
         <br></br>
       </div>
-    )
   )}
 }
 

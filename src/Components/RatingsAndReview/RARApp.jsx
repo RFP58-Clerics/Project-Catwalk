@@ -25,7 +25,7 @@ class RARApp extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if ((this.props.product && this.props.product !== prevProps.product) || this.state.sort !== prevState.sort) {
+    if ((this.props.product && this.props.product.id !== prevProps.product.id) || this.state.sort !== prevState.sort) {
       // console.log(this.props.product);
       this.getReviews(this.props.product.id);
     }

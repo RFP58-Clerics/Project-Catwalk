@@ -32,7 +32,7 @@ module.exports = {
   },
 
   getQuestions: (productId) => {
-    return axios.get(`qa/questions/?product_id=${productId}`);
+    return axios.get(`qa/questions/?product_id=${productId}&count=1000`);
   },
 
   postQuestion: (body) => {
@@ -45,6 +45,10 @@ module.exports = {
 
   postAnswer: (questionId, body) => {
     return axios.post(`qa/questions/${questionId}/answers`, body);
+  },
+
+  updateQuestionHelpfulness: (questionId) => {
+    return axios.put(`qa/questions/${questionId}/helpful`);
   },
 
   getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),

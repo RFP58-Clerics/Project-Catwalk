@@ -21,8 +21,8 @@ const SearchResults = function SearchResults({ products, setProduct }) {
 };
 
 SearchResults.propTypes = {
-  products: PropTypes.arrayOf,
-  setProduct: PropTypes.function,
+  products: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setProduct: PropTypes.func.isRequired,
 };
 
 export default SearchResults;
