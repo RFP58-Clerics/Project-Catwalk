@@ -9,31 +9,30 @@ class QuestionsAndAnswers extends React.Component {
     super(props);
     this.state = {
       q: [],
-      a: [],
       openModal: false,
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.getQuestions(this.props.product.id);
-  // }
-
   componentDidMount() {
-    axios.all([
-      axios.get('/qa/questions/40347'),
-      axios.get('/qa/questions/329021/answers'),
-      // axios.get('/qa/questions/product_id'),
-      // axios.get('/qa/questions/question_id/answers')
-    ])
-      .then(axios.spread((q, a) => {
-        this.setState({
-          q: q.data,
-          a: a.data,
-        });
-      }));
+    if (this.props.product) {
+      this.getQuestions(40347);
+    }
   }
+
+  // componentDidMount() {
+  //   axios.all([
+  //     axios.get('/qa/questions/40347'),
+  //     // axios.get('/qa/questions/product_id'),
+  //     // axios.get('/qa/questions/question_id/answers')
+  //   ])
+  //     .then(axios.spread((q, a) => {
+  //       this.setState({
+  //         q: q.data,
+  //       });
+  //     }));
+  // }
 
   getQuestions(id) {
     axios.get(`/qa/questions/${id}`)

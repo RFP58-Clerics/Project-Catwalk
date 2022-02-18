@@ -1,11 +1,11 @@
-{
-  "extends": "airbnb",
-  "overrides": [
-    {
-      "files": ["*"],
-      "rules": {
-        "import/extensions": "off"
-      }
-    }
-  ]
-}
+// {
+//   "extends": "airbnb",
+//   "overrides": [
+//     {
+//       "files": ["*"],
+//       "rules": {
+//         "import/extensions": "off"
+//       }
+//     }
+//   ]
+// }
