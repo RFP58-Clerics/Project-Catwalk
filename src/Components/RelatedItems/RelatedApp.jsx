@@ -3,20 +3,29 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedList from './RelatedList.jsx';
 
-const RelatedApp = (props) => {
+const RelatedApp = ({ product }) => {
   const [related, setRelated] = useState([]);
+  const [curr, setCurr] = useState(null);
   // let product = JSON.stringify(props.product.id);
   // console.log(props.product.id);
   const getRelated = () => {
     axios.get('/related', {
       params: {
-        id: props.product.id
+        id: product.id
       }
     })
       .then((results) => {
         // console.log('then', results);
         setRelated(results.data);
       })
+    // axios.get('/getOne', {
+    //   params: {
+    //     id: currItem.id
+    //   }
+    // })
+    // .then((results) => {
+    //   setCurr(results.data);
+    // })
   };
   // const topCarousel = (cards) => {
   //   return (
@@ -38,16 +47,35 @@ const RelatedApp = (props) => {
     // console.log(related.length)
     // related.length !== 0 ? null : getRelated()
     // console.log('rendered')
-    getRelated();
+    getRelated()
+      axios.get('/getOne', {
+        params: {
+          id: product.id
+        }
+      })
+      .then((results) => {
+        setCurr(results.data);
+      })
   }, []);
 
+  // useEffect(() => {
+  //   axios.get('/getOne', {
+  //     params: {
+  //       id: product.id
+  //     }
+  //   })
+  //   .then((results) => {
+  //     setCurr(results.data);
+  //   })
+  // }, []);
 
 
 
 
-  return (
+
+  return curr && (
     <div>
-      <RelatedList related={related}/>
+      <RelatedList related={related} currItem={curr}/>
     </div>
   )
 }

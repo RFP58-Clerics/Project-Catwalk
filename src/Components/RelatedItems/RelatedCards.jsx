@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import './styles.css';
+import CompareModal from './CompareModal.jsx';
+import './styles.css';
 
 
-const RelatedCards = (props) => {
+const RelatedCards = ({ relatedItem, pos, currItem }) => {
   const [item, setItem] = useState({name: 'wrong'});
   const [styles, setStyles] = useState({'default?': false});
   const [price, setPrice] = useState('Fwweee');
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     // item.name !== 'wrong' ? null :
     axios.get('/getOne', {
       params: {
-        id: props.item
+        id: relatedItem
       }
     })
     .then((results) => {
       setItem(results.data);
       axios.get('/itemStyles', {
         params: {
-          id: props.item
+          id: relatedItem
         }
       })
       .then((results) => {
@@ -38,9 +40,10 @@ const RelatedCards = (props) => {
   // conditionally render sales price
   // styles.sale_price ? setPrice('price') : null;
 
-  return (
-   <div className='card' data-position={props.pos} style={{width: '50%'}}>
-     <button className='card-button related-button'></button>
+  return !item.id ? null : (
+   <div className='card' data-position={pos} style={{width: '50%'}}>
+     <button className='card-button related-button' value='★' onClick={() => setIsOpen(true)}></button>
+     <CompareModal open={isOpen} currItem={currItem} relatedItem={item} onClose={() => setIsOpen(false)}>Compare!</CompareModal>
      <div className='card-item'>
     {styles['default?']  &&
     <img className='img' src={styles.photos[0].thumbnail_url} ></img>
