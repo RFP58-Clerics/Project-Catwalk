@@ -129,11 +129,19 @@ app.put('/reviews/:reviewId/helpful', (req, res) => {
     });
 });
 
-
 app.put('/reviews/:reviewId/reported', (req, res) => {
   const { reviewId } = req.params;
   Controller.putReviewReported(reviewId)
     .then((result) => res.json(result.data))
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+app.post('/reviews', (req, res) => {
+  Controller.postReview()
+    .then((result) => res.sendStatus(201))
     .catch((err) => {
       console.log(err);
       res.sendStatus(500);
