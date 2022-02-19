@@ -1,28 +1,15 @@
 import React from 'react';
 
-class ProductStyles extends React.Component {
-  constructor(props) {
-    super(props);
+const ProductStyles = (props) => {
 
-    this.state = {
-      thumbnail: this.props.photo.thumbnail_url,
-      url: this.props.photo.url,
-
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(event) {
+ function handleClick(event) {
     event.preventDefault();
-    this.props.changePhoto(this.state.url);
+    props.changePhoto(props.photo.url);
   }
 
-  render() {
     return (
-        <img className='styleThumbnail' src={this.state.thumbnail} onClick={this.handleClick} />
+        <img className='styleThumbnail' src={props.photo.thumbnail_url} onClick={handleClick} />
     );
-  }
 }
 
 export default ProductStyles;

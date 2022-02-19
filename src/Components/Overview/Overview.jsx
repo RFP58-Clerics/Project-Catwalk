@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import _ from 'underscore';
 import ProductDetails from './ProductDetails.jsx';
 import ProductStyles from './ProductStyles.jsx';
 import MoreStyles from './MoreStyles.jsx';
+import AddToCart from './AddToCart.jsx';
 import './styles.css';
 
 class Overview extends React.Component {
@@ -14,18 +16,42 @@ class Overview extends React.Component {
       currentPhoto: null,
       currentStyle: {},
       reviews: [],
+      skus: [],
     };
 
     this.changePhoto = this.changePhoto.bind(this);
     this.changeStyle = this.changeStyle.bind(this);
+    this.getStyles = this.getStyles.bind(this);
+    this.getReviews = this.getReviews.bind(this);
   }
 
   componentDidMount() {
     this.getStyles(this.props.product.id);
+    this.getReviews(this.props.product.id);
+  }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.product && this.props.product.id !== prevProps.product.id) {
+      this.getStyles(this.props.product.id);
+      this.getReviews(this.props.product.id);
+    }
+  }
+
+  getStyles(id) {
+    axios.get('/itemStyles', {
+      params: { id },
+    }).then((results) => {
+      this.setState({ currentStyle: results.data.results[0] });
+      this.setState({ styles: results.data });
+      this.setState({ currentPhoto: results.data.results[0].photos[0].url });
+      this.setState({ skus: _.map(this.state.currentStyle.skus) });
+    });
+  }
+
+  getReviews(id) {
     axios({
       method: 'get',
-      url: `/products/${this.props.product.id}/reviews`,
+      url: `/products/${id}/reviews`,
     })
       .then((res) => {
         this.setState({
@@ -37,16 +63,6 @@ class Overview extends React.Component {
       });
   }
 
-  getStyles(id) {
-    axios.get('/itemStyles', {
-      params: { id },
-    }).then((results) => {
-      this.setState({ currentStyle: results.data.results[0] });
-      this.setState({ styles: results.data });
-      this.setState({ currentPhoto: results.data.results[0].photos[0].url });
-    });
-  }
-
   changePhoto(newPhoto) {
     this.setState({ currentPhoto: newPhoto });
   }
@@ -54,7 +70,11 @@ class Overview extends React.Component {
   changeStyle(newStyle) {
     for (let i = 0; i < this.state.styles.results.length; i++) {
       if (newStyle.style_id === this.state.styles.results[i].style_id) {
-        this.setState({ currentStyle: this.state.styles.results[i] });
+        this.setState({
+          currentStyle: this.state.styles.results[i],
+          currentPhoto: this.state.styles.results[i].photos[0].url,
+          skus: _.map(this.state.styles.results[i].skus),
+        });
         break;
       }
     }
@@ -98,13 +118,19 @@ class Overview extends React.Component {
         </div>
         <br />
         <select>
-          <option defaultValue="Select Size">Select Size</option>
-          <option value="XS">XS</option>
+          {this.state.skus.map((sku, index) => (
+            <AddToCart
+              sku={sku}
+              key={index}
+            />
+          ))}
+          {/* <option defaultValue="Select Size">Select Size</option>
+          <option value={this.state.currentStyle.}>XS</option>
           <option value="S">S</option>
           <option value="M">M</option>
           <option value="L">L</option>
           <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
+          <option value="XXL">XXL</option> */}
         </select>
         <button className="addCart">Add to cart</button>
         <br />
