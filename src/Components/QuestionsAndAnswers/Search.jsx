@@ -21,7 +21,7 @@ class Search extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="searchQuestion" onSubmit={this.handleSubmit}>
         <input type='text' placeholder='Have a question? Search for answers.' value={this.state.input} onChange={this.handleChange}/>
         <input type='submit' value='Search'/>
       </form>

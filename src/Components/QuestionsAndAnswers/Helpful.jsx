@@ -11,6 +11,11 @@ class Helpful extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.questionInfo && this.props.questionInfo.question_id !== prevProps.questionInfo.question_id) {
+      this.setState({helpfulness: this.props.questionInfo.question_helpfulness});
+    }
+  }
 
   handleClick(questionId) {
     axios.put(`/qa/questions/${questionId}/helpful`)
@@ -21,8 +26,8 @@ class Helpful extends React.Component {
     })
   }
 
-
   render() {
+    console.log('helpfulness: ', this.props.questionInfo)
     return (
       <div className="helpful-button">
         Helpful?

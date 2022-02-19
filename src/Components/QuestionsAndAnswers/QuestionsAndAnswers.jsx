@@ -50,6 +50,7 @@ class QuestionsAndAnswers extends React.Component {
         <Search className="search" productInfo={this.props.product} getQuestions={this.getQuestions} />
         <br></br>
         <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions}/>
+        <br></br>
         <button className='openModalButton'onClick={() => this.setState({openModal: true})}>Submit Question</button>
         {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal}/>}
       </div>

@@ -3,10 +3,10 @@ import React from 'react';
 
 const AnswersListItem = ({answer}) => {
   return (
-    <div>
-      A: {answer}
+    <span>
+      Answer: {answer}
       <br></br>
-    </div>
+    </span>
   )
 }
 
