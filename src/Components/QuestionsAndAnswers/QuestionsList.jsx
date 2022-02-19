@@ -6,13 +6,13 @@ class QuestionsList extends React.Component {
     super(props);
     this.state = {
       showCount: 2,
-    }
+    };
     this.handleMoreButton = this.handleMoreButton.bind(this);
   }
 
-  handleMoreButton(event) {
+  handleMoreButton() {
     this.setState((oldState) => ({
-      showCount: oldState.showCount + 2
+      showCount: oldState.showCount + 2,
     }));
   }
 
