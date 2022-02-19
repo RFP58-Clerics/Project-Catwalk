@@ -110,3 +110,18 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.rarAppTopLevel {
+  font: Garamond;
+}
+
+.ratingBreakdown .highlight {
+  background-color: yellow;
+}
+
+.starPicker .star input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
