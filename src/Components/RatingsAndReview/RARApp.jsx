@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-// import { render, fireEvent } from '../test-utils';
 import Reviews from './Reviews.jsx';
 import StarRatingFetcher from './StarRatingFetcher.jsx';
+import NewReviewForm from './NewReviewForm.jsx';
+import RatingBreakdown from './RatingBreakdown.jsx';
 import './reviewstyles.css';
 
 class RARApp extends React.Component {
@@ -12,9 +13,11 @@ class RARApp extends React.Component {
     this.state = {
       reviews: [],
       sort: 'relevant',
+      filter: [],
     };
     this.getReviews = this.getReviews.bind(this);
     this.changeSort = this.changeSort.bind(this);
+    this.setReviewFilter = this.setReviewFilter.bind(this);
   }
 
   componentDidMount() {
@@ -53,15 +56,35 @@ class RARApp extends React.Component {
     });
   }
 
+  setReviewFilter(stars) {
+    const toggleIncludes = (arr, value) => {
+      if (arr.includes(value)) {
+        return arr.filter((v) => v !== value);
+      }
+      return [...arr, value];
+    };
+
+    this.setState((state) => ({ filter: toggleIncludes(state.filter, stars) }));
+  }
+
   render() {
+    let { reviews } = this.state;
+    const { filter } = this.state;
+
+    if (filter.length) {
+      reviews = reviews.filter((review) => filter.includes(review.rating));
+    }
+
     return (
-      <div>
+      <div className="rarAppTopLevel">
         <div>
           <h3>Ratings and Reviews</h3>
           <StarRatingFetcher productId={this.props.product.id}/>
           {this.state.reviews.length}
           Reviews
           <br />
+          <RatingBreakdown filterReviews={this.setReviewFilter} filter={filter} productId={this.props.product.id} />
+          <NewReviewForm getReviews={this.getReviews} productId={this.props.product.id} />
           <label>Sort on:</label>
           <select value={this.state.sort} onChange={this.changeSort} name="sort" id="sort">
             <option value="relevant">Relevant</option>
@@ -69,7 +92,7 @@ class RARApp extends React.Component {
             <option value="newest">Newest</option>
           </select>
         </div>
-        <Reviews reviews={this.state.reviews}/>
+        <Reviews reviews={reviews} />
         Comfort:
         <StarRatingFetcher productId={this.props.product.id} type="Comfort" />
         Fit:

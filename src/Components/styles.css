@@ -8,7 +8,7 @@
 
 h1 {
   color: black;
-  font: bold 24px/45px Helvetica, Sans-Serif;
+  font: bold 24px/45px Garamond;
   letter-spacing: -1px;
   padding: 10px;
 }
@@ -16,4 +16,8 @@ h1 {
 .compare-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.top-bar {
+  font: Garamond;
 }
