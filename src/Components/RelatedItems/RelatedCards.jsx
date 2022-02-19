@@ -25,8 +25,8 @@ const RelatedCards = ({ relatedItem, pos, currItem }) => {
         }
       })
       .then((results) => {
-        // console.log(results.data)
-        setStyles(results.data.results[1]);
+        console.log(results.data)
+        setStyles(results.data.results[0]);
         results.data.results.map((style) => {
           style['default?'] ? setStyles(style) : null;
         })

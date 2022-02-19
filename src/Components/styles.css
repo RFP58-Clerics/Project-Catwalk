@@ -12,3 +12,8 @@ h1 {
   letter-spacing: -1px;
   padding: 10px;
 }
+
+.compare-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}

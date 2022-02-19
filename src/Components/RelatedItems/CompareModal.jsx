@@ -31,12 +31,16 @@ const CompareModal = ({ open, onClose, currItem, relatedItem }) => {
   return open && (
     <div>
       <button onClick={onClose}>Close</button>
-      <div>Compare</div>
-      {
-      compareList.map((feature, i) => {
-        return <CompareGrid compareObj={feature} key={i} />
-      })
-      }
+      <div className='compare-container'>
+        <div>{currItem.name}</div>
+        <div>Feature</div>
+        <div>{relatedItem.name}</div>
+        {
+        compareList.map((feature, i) => {
+          return <CompareGrid compareObj={feature} key={i} />
+        })
+        }
+      </div>
     </div>
   )
 }

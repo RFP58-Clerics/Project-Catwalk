@@ -56,7 +56,7 @@ const RelatedApp = ({ product }) => {
       .then((results) => {
         setCurr(results.data);
       })
-  }, []);
+  }, [product]);
 
   // useEffect(() => {
   //   axios.get('/getOne', {
