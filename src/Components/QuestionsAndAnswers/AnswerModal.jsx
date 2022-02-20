@@ -62,7 +62,7 @@ class AnswerModal extends React.Component {
               <br></br>
               <input
                 name="name"
-                type="text"
+                type="email"
                 autoComplete="off"
                 placeholder="Example: jack543!"
                 value={this.state.name}

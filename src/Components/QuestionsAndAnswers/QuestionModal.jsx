@@ -77,7 +77,7 @@ class QuestionModal extends React.Component {
               <br></br>
               <input
                 name="email"
-                type="text"
+                type="email"
                 autoComplete="off"
                 placeholder="Email: example@gmail.com"
                 value={this.state.email}
