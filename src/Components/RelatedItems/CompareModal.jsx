@@ -32,7 +32,7 @@ const CompareModal = ({ open, onClose, currItem, relatedItem }) => {
   return open && ReactDom.createPortal(
 
     <div>
-      <button onClick={onClose}>Close</button>
+      <button className='button compare-close' onClick={onClose}>Close</button>
       <div className='compare-container'>
         <div className='compare-title'>{currItem.name}</div>
         <div className='compare-title'>Feature</div>

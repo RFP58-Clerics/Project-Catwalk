@@ -25,7 +25,6 @@ const RelatedCards = ({ relatedItem, pos, currItem }) => {
         }
       })
       .then((results) => {
-        console.log(results.data)
         setStyles(results.data.results[0]);
         results.data.results.map((style) => {
           style['default?'] ? setStyles(style) : null;
@@ -72,72 +71,3 @@ export default RelatedCards;
 
 
 
-//style={{width: props.width}}
-// .carousel {
-//   overflow: hidden;
-// }
-
-// .related-box {
-//   display: inline-flex;
-//   justify-content: baseline;
-//   box-sizing: border-box;
-//   align-items: left;
-//   border: 5px solid black;
-//   white-space: nowrap;
-//   transition: transform 0.3s;
-// }
-
-// .carousel-button {
-//   cursor: pointer;
-// }
-
-// .card {
-//   display: inline-flex;
-//   flex-direction: column;
-//   justify-content: space-around;
-//   border: 5px solid gray;
-//   width: 200px;
-//   height: 400px;
-//   box-sizing: border-box;
-// }
-
-// .img {
-//   object-fit: cover;
-//   height: 100%;
-//   width: 100%;
-// }
-
-// .starbox {
-//   display: inline-grid;
-// }
-
-// .starbox div {
-//   grid-column: 1;
-//   grid-row: 1;
-//   overflow: hidden;
-//   font-size: 24px;
-// }
-
-// .card-text {
-//   border: 5px solid gray;
-//   object-fit: cover;
-// }
-
-// .starbox {
-//   display: inline-grid;
-// }
-
-// .starbox div {
-//   grid-column: 1;
-//   grid-row: 1;
-//   overflow: hidden;
-//   font-size: 24px;
-// }
-
-// .sale {
-//   color: red;
-// }
-
-// .price {
-//   text-decoration: line-through;
-// }

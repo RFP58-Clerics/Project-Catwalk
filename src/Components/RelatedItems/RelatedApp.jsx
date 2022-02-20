@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedList from './RelatedList.jsx';
+import OutfitList from './OutfitList.jsx';
 
 const RelatedApp = ({ product }) => {
   const [related, setRelated] = useState([]);
@@ -77,6 +78,7 @@ const RelatedApp = ({ product }) => {
     <>
     <div>
       <RelatedList related={related} currItem={curr}/>
+      <OutfitList product={curr}/>
     </div>
     </>
   )
