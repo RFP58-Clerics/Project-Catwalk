@@ -74,9 +74,11 @@ const RelatedApp = ({ product }) => {
 
 
   return curr && (
+    <>
     <div>
       <RelatedList related={related} currItem={curr}/>
     </div>
+    </>
   )
 }
 

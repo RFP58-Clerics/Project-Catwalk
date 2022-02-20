@@ -6,7 +6,7 @@ import './styles.css';
 
 const RelatedCards = ({ relatedItem, pos, currItem }) => {
   const [item, setItem] = useState({name: 'wrong'});
-  const [styles, setStyles] = useState({'default?': false});
+  const [styles, setStyles] = useState({name: false});
   const [price, setPrice] = useState('Fwweee');
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,28 +41,30 @@ const RelatedCards = ({ relatedItem, pos, currItem }) => {
   // styles.sale_price ? setPrice('price') : null;
 
   return !item.id ? null : (
-   <div className='card' data-position={pos} style={{width: '50%'}}>
-     <button className='card-button related-button' value='★' onClick={() => setIsOpen(true)}></button>
-     <CompareModal open={isOpen} currItem={currItem} relatedItem={item} onClose={() => setIsOpen(false)}>Compare!</CompareModal>
-     <div className='card-item'>
-    {styles['default?']  &&
-    <img className='img' src={styles.photos[0].thumbnail_url} ></img>
-    }
-    <div className='card-text'>
-      <ul>{item.name}</ul>
-      <li>{item.category}</li>
-      {styles.sale_price &&
-      <div>
-      <li className='sale'>{styles.sale_price}</li>
-      <li className='price'>{styles.original_price}</li>
-      </div>
+    <>
+    <div className='card' data-position={pos} style={{width: '50%'}}>
+      <button className='card-button related-button' value='★' onClick={() => setIsOpen(true)}></button>
+      <CompareModal open={isOpen} currItem={currItem} relatedItem={item} pos={pos} onClose={() => setIsOpen(false)}>Compare!</CompareModal>
+      <div className='card-grid'>
+      {styles.name  &&
+      <img className='img' src={styles.photos[0].thumbnail_url} ></img>
       }
-      {!styles.sale_price &&
-      <li className='normal'>{styles.original_price}</li>
-      }
+      <div className='card-text'>
+        <ul>{item.name}</ul>
+        <li>{item.category}</li>
+        {styles.sale_price &&
+        <div>
+        <li className='sale'>{styles.sale_price}</li>
+        <li className='price'>{styles.original_price}</li>
+        </div>
+        }
+        {!styles.sale_price &&
+        <li className='normal'>{styles.original_price}</li>
+        }
+        </div>
       </div>
-     </div>
-   </div>
+    </div>
+    </>
   )
 }
 

@@ -1,50 +1,7 @@
-.carousel {
-  overflow: hidden;
-  width: 90%;
-  position: relative;
-  left: 50px;
-}
-
-.related-box {
-  white-space: nowrap;
-  transition: transform 0.3s;
-  position: relative;
-}
-
 .carousel-button {
   cursor: pointer;
   position: absolute;
   top: 50%;
-}
-
-.card {
-  display: inline-flex;
-  align-items: flex-end;
-  justify-content: space-evenly;
-  height: 400px;
-  position: relative;
-}
-
-.cardItem {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 5px solid gray;
-  width: 200px;
-  height: 100%;
-  box-sizing: content-box;
-}
-
-.img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
-
-.card-text {
-  border: 5px solid gray;
-  object-fit: contain;
-  height: 100%;
 }
 
 .sale {
@@ -82,6 +39,153 @@
   max-height: 300px;
   overflow: scroll;
   cursor: pointer;
+}
+
+.compare-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+  background: white;
+  z-index: 100;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  object-fit: cover;
+  height: 100px;
+  width: 50%;
+  overflow: scroll;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+}
+
+.compare-title-row {
+  display: inline-flex;
+  position: sticky;
+}
+
+.compare-title {
+  background-color: white;
+  border-bottom: 1px solid black;
+  border-top: 1rem solid white;
+  position: sticky;
+  top: 0px;
+  font-weight: bold;
+}
+
+.compare-row {
+  border: 1px black;
+  overflow: scroll;
+}
+
+.compare-value {
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+.compare-feature {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+/* .carousel {
+  overflow: hidden;
+  width: 90%;
+  position: relative;
+  left: 50px;
+}
+
+.related-box {
+  white-space: nowrap;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.card {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  height: 400px;
+  position: relative;
+  background: white;
+  padding: 1rem;
+  border: 1px solid #777;
+  border-radius: .25rem;
+}
+
+.cardItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 5px solid gray;
+  width: 200px;
+  height: 100%;
+  box-sizing: content-box;
+}
+
+.img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.card-text {
+  border: 5px solid gray;
+  object-fit: contain;
+  height: 100%;
+} */
+
+.card {
+  position: relative;
+  background: white;
+  padding: 1rem;
+  /* *border: 1px solid #777; */
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  z-index: 5;
+  margin: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.5rem;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  max-height: 200px;
+  aspect-ratio: 16 / 9;
+  /* aspect-ratio: 9 / 9; */
+  object-fit: cover;
+  object-position: center;
+  border-radius: .25rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.related-box {
+  white-space: nowrap;
+  transition: transform 0.3s;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.carousel {
+  overflow: hidden;
+  width: 90%;
+  position: relative;
+  left: 50px;
+}
+
+.card-text {
+  -o-object-fit: contain;
+  object-fit: contain;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  list-style: none;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 
