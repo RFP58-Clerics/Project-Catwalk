@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Helpful from './Helpful.jsx';
+import QuestionHelpful from './QuestionHelpful.jsx';
 import AnswerModal from './AnswerModal.jsx';
 import AnswersList from './AnswersList.jsx';
 
@@ -44,12 +44,12 @@ class QuestionsListItem extends React.Component {
   render() {
   return (
       <div>
-        <div className="questionBody">
-          <Helpful productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} getQuestions={this.props.getQuestions}/>
-          <span className="question">
+        <div className="question">
+          <QuestionHelpful productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} getQuestions={this.props.getQuestions}/>
+          <span className="questionBody">
             Question: {this.props.questionInfo.question_body}
            {Object.values(this.state.a).length === 0 ? null : (<AnswersList answers={this.state.a || null}/> )}
-           </span>
+          </span>
         </div>
           <button className="openModalButton" onClick={() => {this.setState({openModal: true})}}>Submit Answer</button>
           <br></br>
