@@ -4,7 +4,6 @@ import moment from 'moment';
 import AnswerHelpful from './AnswerHelpful.jsx';
 
 const AnswersListItem = ({answer}) => {
-  console.log("date: ", answer.date )
   return (
     <div className="answer">
       <span className="answerBody">
