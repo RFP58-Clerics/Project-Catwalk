@@ -47,7 +47,7 @@ class QuestionsListItem extends React.Component {
         <div className="question">
           <QuestionHelpful productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} getQuestions={this.props.getQuestions}/>
           <span className="questionBody">
-            Question: {this.props.questionInfo.question_body}
+            Q: {this.props.questionInfo.question_body}
            {Object.values(this.state.a).length === 0 ? null : (<AnswersList answers={this.state.a || null}/> )}
           </span>
         </div>

@@ -5,7 +5,7 @@ class AnswersList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCount: 4,
+      showCount: 2,
     };
     this.handleMoreButton = this.handleMoreButton.bind(this);
   }

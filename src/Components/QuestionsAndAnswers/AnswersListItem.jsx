@@ -7,7 +7,7 @@ const AnswersListItem = ({answer}) => {
   return (
     <div className="answer">
       <span className="answerBody">
-        Answer: {answer.body}
+        A: {answer.body}
       </span>
       <br></br>
       <span className="answerMisc">

@@ -51,18 +51,22 @@ class AnswerModal extends React.Component {
           </div>
           <div className="body">
             <form onSubmit={this.handleSubmit}>
-              <input
+              <textarea
                 name="body"
                 type="text"
+                maxlength="1000"
+                required
                 autoComplete="off"
                 placeholder="Answer..."
                 value={this.state.body}
-                onChange={this.handleChange}
-              />
+                onChange={this.handleChange}>
+              </textarea>
               <br></br>
               <input
                 name="name"
                 type="email"
+                maxlength="60"
+                required
                 autoComplete="off"
                 placeholder="Example: jack543!"
                 value={this.state.name}
@@ -74,6 +78,8 @@ class AnswerModal extends React.Component {
               <input
                 name="email"
                 type="text"
+                maxlength="60"
+                required
                 autoComplete="off"
                 placeholder="Example: jack@email.com"
                 value={this.state.email}

@@ -29,7 +29,6 @@ class AnswerHelpful extends React.Component {
   }
 
   render() {
-    console.log("answers: ", this.props.answerInfo)
     return (
       <div className="helpful-button">
         Helpful?
