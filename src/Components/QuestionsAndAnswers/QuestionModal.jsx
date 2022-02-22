@@ -53,42 +53,56 @@ class QuestionModal extends React.Component {
           </div>
           <div className="body">
             <form onSubmit={this.handleSubmit}>
-              <input
+              <label>* Your Question</label>
+              <br />
+              <textarea
                 name="body"
-                type="text"
+                type="textarea"
+                maxLength="1000"
+                required
                 autoComplete="off"
                 placeholder="Question..."
                 value={this.state.body}
                 onChange={this.handleChange}
               />
-              <br></br>
-              <br></br>
+              <br />
+              <br />
+              <label>* What is your nickname</label>
+              <br />
               <input
                 name="name"
                 type="text"
+                maxLength="60"
+                required
                 autoComplete="off"
                 placeholder="Example: jackson11!"
                 value={this.state.name}
                 onChange={this.handleChange}
               />
-              <br></br>
+              <br />
               For privacy reasons, do not use your full name or email address
-              <br></br>
-              <br></br>
+              <br />
+              <br />
+              <label>* Your email</label>
+              <br />
               <input
                 name="email"
-                type="text"
+                type="email"
+                maxLength="60"
+                required
                 autoComplete="off"
                 placeholder="Email: example@gmail.com"
                 value={this.state.email}
                 onChange={this.handleChange}
               />
+              <br />
+              For authentication reasons, you will not be emailed
+              <br />
+              <br />
               <input
                 type="submit"
                 value="Submit"
               />
-              <br></br>
-              For authentication reasons, you will not be emailed
             </form>
           </div>
         </div>

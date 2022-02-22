@@ -21,6 +21,7 @@ class AnswerModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log('questionID passed in: ', this.props.questionInfo.question_id);
     const obj = {
       body: this.state.body,
       name: this.state.name,
@@ -51,37 +52,52 @@ class AnswerModal extends React.Component {
           </div>
           <div className="body">
             <form onSubmit={this.handleSubmit}>
-              <input
+              <label>* Your Answer</label>
+              <br />
+              <textarea
                 name="body"
                 type="text"
+                maxLength="1000"
+                required
                 autoComplete="off"
                 placeholder="Answer..."
                 value={this.state.body}
                 onChange={this.handleChange}
               />
-              <br></br>
+              <br />
+              <br />
+              <label>* What is your nickname</label>
+              <br />
               <input
                 name="name"
                 type="text"
+                maxLength="60"
+                required
                 autoComplete="off"
                 placeholder="Example: jack543!"
                 value={this.state.name}
                 onChange={this.handleChange}
               />
-              <br></br>
+              <br />
               For privacy reasons, do not use your full name or email address
-              <br></br>
+              <br />
+              <br />
+              <label>* Your email</label>
+              <br />
               <input
                 name="email"
-                type="text"
+                type="email"
+                maxLength="60"
+                required
                 autoComplete="off"
                 placeholder="Example: jack@email.com"
                 value={this.state.email}
                 onChange={this.handleChange}
               />
-              <br></br>
+              <br />
               For authentication reasons, you will not be emailed” will appear
-              <br></br>
+              <br />
+              <br />
               <input
                 type="submit"
                 value="Submit"
