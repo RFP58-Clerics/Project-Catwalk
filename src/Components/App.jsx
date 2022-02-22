@@ -22,6 +22,7 @@ class App extends React.Component {
     this.showSearch = this.showSearch.bind(this);
     this.hideSearch = this.hideSearch.bind(this);
     this.setProduct = this.setProduct.bind(this);
+    this.handleInteraction = this.handleInteraction.bind(this);
   }
 
   componentDidMount() {
@@ -68,6 +69,10 @@ class App extends React.Component {
     this.setState({ showSearch: false });
   }
 
+  handleInteraction(event, widget) {
+    console.log(widget);
+  }
+
   render() {
     const {
       searchTerm, productData, product, showSearch,
@@ -82,17 +87,17 @@ class App extends React.Component {
       <>
         <div className="top-bar">
           <h1>Clerical</h1>
-          <img className="logoPicture" src="https://www.dndbeyond.com/avatars/thumbnails/6/371/420/618/636272706155064423.png"></img>
+          <img className="logoPicture" alt="logo" src="https://www.dndbeyond.com/avatars/thumbnails/6/371/420/618/636272706155064423.png" />
           <form onSubmit={this.handleSubmit}>
             <input type="text" placeholder="Search for a product..." value={searchTerm} onChange={this.searchProducts} onFocus={this.showSearch} onBlur={() => setTimeout(this.hideSearch, 400)} />
             <input type="submit" value="Search" />
           </form>
         </div>
         { showSearch && <SearchResults products={searchResults} setProduct={this.setProduct} /> }
-        <Overview product={product} />
-        <RelatedApp product={product} />
-        <RARApp product={product} />
-        <QuestionsAndAnswers product={product} />
+        <Overview product={product} onClick={(event) => this.handleInteraction(event, 'Overview')} />
+        <RelatedApp product={product} onClick={(event) => this.handleInteraction(event, 'Related')} />
+        <RARApp product={product} onClick={(event) => this.handleInteraction(event, 'RatingsAndReviews')} />
+        <QuestionsAndAnswers product={product} onClick={(event) => this.handleInteraction(event, 'QuestionsAndAnswers')} />
       </>
     );
   }

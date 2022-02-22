@@ -1,39 +1,111 @@
-.productName {
-  font: italic small-caps bold 30px/30px sans-serif;
-}
-
-.productPrice {
-  font: italic small-caps bold 20px/30px sans-serif;
-}
-
-.styleSelector {
-  border: 5px solid gray;
-  display: inline-flex;
-  justify-content: right;
-  height: 150px;
-  position: relative;
-}
-
-.moreStyles {
-  padding: 5px;
-}
-
-.styleThumbnail {
-  padding: 5px;
-}
-
-.stylePhotos {
-  border: 5px solid gray;
-  display: inline-flex;
-  justify-content: right;
-  height: 200px;
-  position: relative;
-}
-
 .overview {
   border: 5px solid gray;
+  background: gray;
+  position: relative;
 }
 
-.defaultStyle {
-  width: 400px;
-};
+.currentPhoto {
+  position: relative;
+  top: 100px;
+  left: 600px;
+  height: 750px;
+  width: 500px;
+}
+
+.productThumbnails {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+#productPhotos {
+  position: relative;
+  left: 20px;
+  bottom: 700px;
+  padding: 5px;
+  width: 80px;
+}
+
+.shareButtons {
+  position: relative;
+  cursor: pointer;
+  background: gray;
+}
+
+.cartButton{
+  position: relative;
+  cursor: pointer;
+  bottom: 150px;
+  left: 1115px;
+}
+
+.productDetailsContainer{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+#productDescription {
+  position: relative;
+  top: 50px;
+  left: 300px;
+  font: italic small-caps bold 20px sans-serif;
+}
+
+#productStarRating {
+  position: relative;
+  bottom: 652px;
+  left: 1110px;
+}
+
+#productReviews {
+  position: relative;
+  bottom: 645px;
+  left: 1110px;
+  font: italic small-caps bold 15px sans-serif;
+}
+
+#productReviews:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#productName {
+  position: relative;
+  font: italic small-caps bold 30px/30px sans-serif;
+  left: 1110px;
+  bottom: 50px;
+}
+
+#productPrice {
+  position: relative;
+  font: italic small-caps bold 20px/30px sans-serif;
+  left: 1110px;
+  bottom: 50px;
+}
+
+#productCategory {
+  position: relative;
+  font: italic small-caps bold 20px sans-serif;
+  left: 1110px;
+  bottom: 50px;
+}
+
+.stylesContainer {
+  position: relative;
+  bottom: 50px;
+  left: 700px;
+  display: flex;
+  flex-direction: row;
+}
+
+#moreStyles {
+  padding: 5px;
+  height: 50px;
+}
+
+.sizeSelector {
+  position: relative;
+  left: 1110px;
+  bottom: 150px;
+}

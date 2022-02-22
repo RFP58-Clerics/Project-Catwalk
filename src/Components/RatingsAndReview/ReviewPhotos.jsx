@@ -8,12 +8,25 @@ function ReviewPhotos({ photos }) {
 
   return (
     <div>
-      {photos.map((photo) => (
-        <div key={photo.id}>
-          <img className="reviewThumbnail" alt="" src={photo.url} onClick={() => { setOpenPhotoModal(photo); }} />
-        </div>
-      ))}
-      {openPhotoModal && <ReviewPhotoModal photo={openPhotoModal} closePhotoModal={setOpenPhotoModal} />}
+      {photos.map((photo) => {
+        let photoUrl = photo;
+        if (typeof photo === 'object') {
+          photoUrl = photo.url;
+        }
+        return (
+          <div style={{display: 'inline-block'}} key={photoUrl}>
+            <img
+              className="reviewThumbnail"
+              alt=""
+              src={photoUrl}
+              onClick={() => { setOpenPhotoModal({ url: photoUrl }); }}
+            />
+          </div>
+        );
+      })}
+      {openPhotoModal && (
+        <ReviewPhotoModal photo={openPhotoModal} closePhotoModal={setOpenPhotoModal} />
+      )}
     </div>
   );
 }
