@@ -5,7 +5,6 @@ const OutfitCards = ({ item }) => {
   const [product, setProduct] = useState(JSON.parse(item));
   const [styles, setStyles] = useState({name: false});
   useEffect(() => {
-    console.log(product)
     axios.get('/itemStyles', {
       params: {
         id: product.id
