@@ -14,6 +14,7 @@ const RelatedList = ({ related, currItem }) => {
   }
   return (
     <div className='outer-container'>
+      <div id='compare-portal'></div>
       {index !== 0 &&
         <button className='carousel-button carousel-button-left' value='<' onClick={() => {updateIndex(index - 1)}}></button>
         }

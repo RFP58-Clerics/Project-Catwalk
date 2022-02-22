@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CompareGrid from './CompareGrid.jsx';
+import ReactDom from 'react-dom';
 
 const featuresList = (item1, item2) => {
   let obj = {};
@@ -28,16 +29,22 @@ const CompareModal = ({ open, onClose, currItem, relatedItem }) => {
     setCompareList(Object.values(featuresList(currItem, relatedItem)));
 
   }, []);
-  return open && (
+  return open && ReactDom.createPortal(
+
     <div>
-      <button onClick={onClose}>Close</button>
-      <div>Compare</div>
-      {
-      compareList.map((feature, i) => {
-        return <CompareGrid compareObj={feature} key={i} />
-      })
-      }
-    </div>
+      <button className='button compare-close' onClick={onClose}>Close</button>
+      <div className='compare-container'>
+        <div className='compare-title'>{currItem.name}</div>
+        <div className='compare-title'>Feature</div>
+        <div className='compare-title'>{relatedItem.name}</div>
+        {
+        compareList.map((feature, i) => {
+          return <CompareGrid compareObj={feature} key={i} />
+        })
+        }
+      </div>
+    </div>,
+    document.getElementById('compare-portal')
   )
 }
 

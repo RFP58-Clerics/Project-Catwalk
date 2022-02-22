@@ -13,6 +13,11 @@ h1 {
   padding: 10px;
 }
 
+.compare-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .top-bar {
   font: Garamond;
 }
