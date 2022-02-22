@@ -28,6 +28,9 @@ class QuestionModal extends React.Component {
       product_id: this.props.productInfo.id,
     };
     axios.post('/qa/questions', obj)
+      .then(() => {
+        this.props.getQuestions(this.props.productInfo.id);
+      })
       .then((res) => {
         console.log(res);
         this.setState({
@@ -42,7 +45,6 @@ class QuestionModal extends React.Component {
   }
 
   render() {
-    // console.log('pID: ', this.props.productInfo.id)
     return (
       <div className="modal-background">
         <div className="modal-container">

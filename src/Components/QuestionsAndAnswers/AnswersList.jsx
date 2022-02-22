@@ -17,10 +17,10 @@ class AnswersList extends React.Component {
   }
 
   render() {
-    console.log('answers: ', this.props.answers)
+    console.log('answers: ', this.props.answers);
     const answers = this.props.answers.slice(0, this.state.showCount);
     return (
-      <div>
+      <div className="scrollAnswers">
         {answers ? Object.values(answers).map((answer, i) => <AnswersListItem answer={answer} key={i}/>) : null }
         {this.state.showCount < this.props.answers.length && <button onClick={this.handleMoreButton}>More Answers</button>}
       </div>
