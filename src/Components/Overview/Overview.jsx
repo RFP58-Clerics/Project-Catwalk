@@ -5,6 +5,7 @@ import ProductDetails from './ProductDetails.jsx';
 import ProductPhotos from './ProductPhotos.jsx';
 import MoreStyles from './MoreStyles.jsx';
 import AddToCart from './AddToCart.jsx';
+import QuantitySelect from './QuantitySelect.jsx';
 import './styles.css';
 
 class Overview extends React.Component {
@@ -124,10 +125,10 @@ class Overview extends React.Component {
             />
           ))}
         </select>
-        <br></br>
-        <button className="overview" id="shareButton"><img src='https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png' /></button>
-        <button className="overview" id="shareButton"><img src='https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png'/></button>
-        <button className="overview" id="shareButton"><img src='https://cdn-icons-png.flaticon.com/32/174/174863.png' /></button>
+        <button className="cartButton">Add to cart</button>
+        <img className="shareButtons" src='https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png' />
+        <img className="shareButtons" src='https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png'/>
+        <img className="shareButtons" src='https://cdn-icons-png.flaticon.com/32/174/174863.png' />
       </div>
     );
   }

@@ -3,8 +3,8 @@ import StarRatingFetcher from '../RatingsAndReview/StarRatingFetcher.jsx';
 
 const ProductDetails = (props) => {
 
-  function handleClick(event) {
-    event.preventDefault();
+  function handleClick(e) {
+    e.preventDefault();
     document.getElementById("scroll").scrollIntoView({behavior: "smooth"});
   }
 

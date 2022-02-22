@@ -26,12 +26,17 @@
   width: 80px;
 }
 
-#shareButton {
+.shareButtons {
+  position: relative;
   cursor: pointer;
+  background: gray;
 }
 
-#cartButton{
+.cartButton{
+  position: relative;
   cursor: pointer;
+  bottom: 150px;
+  left: 1115px;
 }
 
 .productDetailsContainer{
@@ -58,6 +63,11 @@
   bottom: 645px;
   left: 1110px;
   font: italic small-caps bold 15px sans-serif;
+}
+
+#productReviews:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 #productName {
