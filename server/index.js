@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 const Controller = require('./Controller');
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('dist'));
 
@@ -153,8 +153,8 @@ app.put('/reviews/:reviewId/reported', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  Controller.postReview()
-    .then((result) => res.sendStatus(201))
+  Controller.postReview(req.body)
+    .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log(err);
       res.sendStatus(500);

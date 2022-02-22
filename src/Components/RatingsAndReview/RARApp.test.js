@@ -52,11 +52,15 @@ test('displays 2 reviews on page load', async () => {
   };
 
   // Arrange
-  render(<RARApp product={product}/>);
+  render(<RARApp product={product} />);
   // Act
-  //fireEvent.click(screen.getByText('Ratings and Reviews'));
+  fireEvent.click(screen.getByText('Leave a Review'));
+  await waitFor(() => screen.getByRole('heading'));
 
-  // await waitFor(() => screen.getByRole('heading'));
+  // await waitFor(() => screen.getByRole('button', { name: /more reviews/i }));
   // Assert
-  expect(screen.getByRole('heading')).toHaveTextContent('Ratings and Reviews');
+  // expect(screen.getByRole('heading')).toHaveTextContent('Ratings and Reviews');
+
+  expect(screen.getByRole('heading').toHaveTextContent('Write your Review'));
+  // expect(screen.getByRole('button')).toBeDisabled()
 });
