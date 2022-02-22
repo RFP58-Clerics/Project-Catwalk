@@ -44,7 +44,7 @@ class QuestionsListItem extends React.Component {
   render() {
   return (
       <div>
-        <div className="question">
+        <div className="qa-set">
           <QuestionHelpful productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} getQuestions={this.props.getQuestions}/>
           <span className="questionBody">
             Q: {this.props.questionInfo.question_body}

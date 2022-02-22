@@ -16,7 +16,7 @@ class Search extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.getQuestions(this.props.productInfo.id);
+    this.props.handleSearch(this.props.productInfo.id, this.state.input);
   }
 
   render() {
