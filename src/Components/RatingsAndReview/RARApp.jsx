@@ -76,7 +76,7 @@ class RARApp extends React.Component {
     }
 
     return (
-      <div className="rarAppTopLevel">
+      <div className="rarAppTopLevel" id="scroll">
         <div>
           <h3>Ratings and Reviews</h3>
           <StarRatingFetcher productId={this.props.product.id}/>

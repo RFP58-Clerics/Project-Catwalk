@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import _ from 'underscore';
 import ProductDetails from './ProductDetails.jsx';
-import ProductStyles from './ProductStyles.jsx';
+import ProductPhotos from './ProductPhotos.jsx';
 import MoreStyles from './MoreStyles.jsx';
 import AddToCart from './AddToCart.jsx';
 import './styles.css';
@@ -83,13 +83,12 @@ class Overview extends React.Component {
   render() {
     return this.state.styles.length === 0 ? null : (
       <div className="overview">
-        <h3>Overview</h3>
-        <img className="defaultStyle" src={this.state.currentPhoto} alt="main style" />
+        <img className="currentPhoto" src={this.state.currentPhoto} alt="main style" />
         <br></br>
-        <div className="stylePhotos">
+        <div className="productThumbnails">
           {this.state.currentStyle.photos.map((photo, index) => (
             <>
-              <ProductStyles
+              <ProductPhotos
                 photo={photo}
                 key={index}
                 changePhoto={this.changePhoto}
@@ -99,7 +98,7 @@ class Overview extends React.Component {
             </>
           ))}
         </div>
-        <div className="productDetails">
+        <div className="productDetailsContainer">
           <ProductDetails
             product={this.props.product}
             productPrice={this.state.currentStyle.original_price}
@@ -107,7 +106,7 @@ class Overview extends React.Component {
             reviews={this.state.reviews}
           />
         </div>
-        <div className="styleSelector">
+        <div className="stylesContainer">
           {this.state.styles.results.map((style, index) => (
             <MoreStyles
               style={style}
@@ -116,27 +115,19 @@ class Overview extends React.Component {
             />
           ))}
         </div>
-        <br />
-        <select>
+        <br></br>
+        <select className="sizeSelector">
           {this.state.skus.map((sku, index) => (
             <AddToCart
               sku={sku}
               key={index}
             />
           ))}
-          {/* <option defaultValue="Select Size">Select Size</option>
-          <option value={this.state.currentStyle.}>XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option> */}
         </select>
-        <button className="addCart">Add to cart</button>
-        <br />
-        <img className="shareButtons" src='https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png' />
-        <img className="shareButtons" src='https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png' />
-        <img className="shareButtons" src='https://cdn-icons-png.flaticon.com/32/174/174863.png' />
+        <br></br>
+        <button className="overview" id="shareButton"><img src='https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png' /></button>
+        <button className="overview" id="shareButton"><img src='https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png'/></button>
+        <button className="overview" id="shareButton"><img src='https://cdn-icons-png.flaticon.com/32/174/174863.png' /></button>
       </div>
     );
   }
