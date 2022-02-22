@@ -19,11 +19,11 @@ const CompareGrid = ({ compareObj }) => {
     }
   }, [])
   return (
-    <div className='compare-row'>
-      <div className='compare-curr' >{curr}</div>
-      <div className='compare-feature' >{compareObj.feature}</div>
-      <div className='compare-related' >{related}</div>
-    </div>
+    <>
+      <div className='compare-value compare-curr' >{curr}</div>
+      <div className='compare-value compare-feature' >{compareObj.feature}</div>
+      <div className='compare-value compare-related' >{related}</div>
+    </>
   )
 }
 

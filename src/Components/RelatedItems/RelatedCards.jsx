@@ -6,7 +6,7 @@ import './styles.css';
 
 const RelatedCards = ({ relatedItem, pos, currItem }) => {
   const [item, setItem] = useState({name: 'wrong'});
-  const [styles, setStyles] = useState({'default?': false});
+  const [styles, setStyles] = useState({name: false});
   const [price, setPrice] = useState('Fwweee');
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,8 +25,7 @@ const RelatedCards = ({ relatedItem, pos, currItem }) => {
         }
       })
       .then((results) => {
-        // console.log(results.data)
-        setStyles(results.data.results[1]);
+        setStyles(results.data.results[0]);
         results.data.results.map((style) => {
           style['default?'] ? setStyles(style) : null;
         })
@@ -41,28 +40,30 @@ const RelatedCards = ({ relatedItem, pos, currItem }) => {
   // styles.sale_price ? setPrice('price') : null;
 
   return !item.id ? null : (
-   <div className='card' data-position={pos} style={{width: '50%'}}>
-     <button className='card-button related-button' value='★' onClick={() => setIsOpen(true)}></button>
-     <CompareModal open={isOpen} currItem={currItem} relatedItem={item} onClose={() => setIsOpen(false)}>Compare!</CompareModal>
-     <div className='card-item'>
-    {styles['default?']  &&
-    <img className='img' src={styles.photos[0].thumbnail_url} ></img>
-    }
-    <div className='card-text'>
-      <ul>{item.name}</ul>
-      <li>{item.category}</li>
-      {styles.sale_price &&
-      <div>
-      <li className='sale'>{styles.sale_price}</li>
-      <li className='price'>{styles.original_price}</li>
-      </div>
+    <>
+    <div className='card' data-position={pos} style={{width: '50%'}}>
+      <button className='card-button related-button' value='★' onClick={() => setIsOpen(true)}></button>
+      <CompareModal open={isOpen} currItem={currItem} relatedItem={item} pos={pos} onClose={() => setIsOpen(false)}>Compare!</CompareModal>
+      <div className='card-grid'>
+      {styles.name  &&
+      <img className='img' src={styles.photos[0].thumbnail_url} ></img>
       }
-      {!styles.sale_price &&
-      <li className='normal'>{styles.original_price}</li>
-      }
+      <div className='card-text'>
+        <ul>{item.name}</ul>
+        <li>{item.category}</li>
+        {styles.sale_price &&
+        <div>
+        <li className='sale'>{styles.sale_price}</li>
+        <li className='price'>{styles.original_price}</li>
+        </div>
+        }
+        {!styles.sale_price &&
+        <li className='normal'>{styles.original_price}</li>
+        }
+        </div>
       </div>
-     </div>
-   </div>
+    </div>
+    </>
   )
 }
 
@@ -70,72 +71,3 @@ export default RelatedCards;
 
 
 
-//style={{width: props.width}}
-// .carousel {
-//   overflow: hidden;
-// }
-
-// .related-box {
-//   display: inline-flex;
-//   justify-content: baseline;
-//   box-sizing: border-box;
-//   align-items: left;
-//   border: 5px solid black;
-//   white-space: nowrap;
-//   transition: transform 0.3s;
-// }
-
-// .carousel-button {
-//   cursor: pointer;
-// }
-
-// .card {
-//   display: inline-flex;
-//   flex-direction: column;
-//   justify-content: space-around;
-//   border: 5px solid gray;
-//   width: 200px;
-//   height: 400px;
-//   box-sizing: border-box;
-// }
-
-// .img {
-//   object-fit: cover;
-//   height: 100%;
-//   width: 100%;
-// }
-
-// .starbox {
-//   display: inline-grid;
-// }
-
-// .starbox div {
-//   grid-column: 1;
-//   grid-row: 1;
-//   overflow: hidden;
-//   font-size: 24px;
-// }
-
-// .card-text {
-//   border: 5px solid gray;
-//   object-fit: cover;
-// }
-
-// .starbox {
-//   display: inline-grid;
-// }
-
-// .starbox div {
-//   grid-column: 1;
-//   grid-row: 1;
-//   overflow: hidden;
-//   font-size: 24px;
-// }
-
-// .sale {
-//   color: red;
-// }
-
-// .price {
-//   text-decoration: line-through;
-// }
