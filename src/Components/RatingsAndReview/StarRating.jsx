@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import './reviewstyles.css';
 
 const StarRating = function StarRating({ rating }) {
-  const width = (100 * rating) / 5;
+  let width = (100 * rating) / 5;
+  width = (Math.round(width * 4) / 4).toFixed(2);
+  // const num = 5.12345;
+  // num = parseFloat((Math.round(num * 4) / 4).toFixed(2));
   return (
     <div>
       <div className="starbox">

@@ -29,7 +29,9 @@ class RatingBreakdown extends React.Component {
       .then((res) => {
         this.setState({
           starCounts: res.data.ratings,
-          recommended: (parseInt(res.data.recommended.true) / (parseInt(res.data.recommended.true) + parseInt(res.data.recommended.false)))
+          recommended:
+          (parseInt(res.data.recommended.true, 10) / (parseInt(res.data.recommended.true, 10)
+          + parseInt(res.data.recommended.false, 10))),
         });
       })
       .catch((error) => {
@@ -51,14 +53,17 @@ class RatingBreakdown extends React.Component {
       <div className="ratingBreakdown">
         {
           [1, 2, 3, 4, 5].map((i) => (
-            <div className={filter.includes(i) ? "highlight" : ""} onClick={() => filterReviews(i)}>
+            <div
+              key={i}
+              className={filter.includes(i) ? "highlight" : ""}
+              onClick={() => filterReviews(i)}
+            >
               {i} Star{i > 1 && 's'}&nbsp;
               <progress
                 key={i}
                 max={100}
                 value={(100 * parseInt(starCounts[String(i)], 10)) / totalReviews}
               />
-              {/* &nbsp;({starCounts[String(i)]} reviews) */}
             </div>
           ))
         }

@@ -18,6 +18,7 @@
   align-items: center;
   left: 0;
   top: 0;
+  backdrop-filter: blur(6px);
 }
 
 .reviewPhotoModalContainer {
@@ -77,14 +78,9 @@
 }
 
 .reviewCard {
-  /* display: flex;
-  flex-direction: row; */
   border: 1px solid gray;
   border-bottom: none;
-  /* width: 600px; */
   box-sizing: border-box;
-  /* flex-flow: wrap;
-  flex: auto; */
   padding: 1em;
   justify-content: normal;
 }
@@ -124,4 +120,64 @@
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+
+/* NEW REVIEW MODAL */
+
+.newReviewModalBackground {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+}
+
+.newReviewModalContainer {
+  width: 700px;
+  border-radius: 12px;
+  background-color: rgb(232, 232, 232);
+  box-shadow: black 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.newReviewModalContainer h4 {
+  margin-bottom: 2px;
+}
+
+.newReviewModalContainer h5 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr 2fr 3fr);
+  gap: 10px;
+}
+
+.rightAlign {
+  text-align: right;
+}
+
+.newReviewModalContainer label.required span:first-child::after {
+  content: "*";
+}
+
+.fourCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.newReviewModalContainer .right {
+  float: right;
 }
