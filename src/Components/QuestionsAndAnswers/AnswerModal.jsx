@@ -28,6 +28,9 @@ class AnswerModal extends React.Component {
       email: this.state.email,
     };
     axios.post(`/qa/questions/${this.props.questionInfo.question_id}/answers`, obj)
+      .then(() => {
+        this.props.getAnswers(this.props.questionInfo.question_id);
+      })
       .then((res) => {
         console.log(res);
         this.setState({
@@ -45,7 +48,7 @@ class AnswerModal extends React.Component {
     return (
       <div className="modal-background">
         <div className="modal-container">
-          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> X </button>
+          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> Close </button>
           <div className='title'>
             <h1> Submit Your Answer </h1>
             <h3> {this.props.productInfo.name} : {this.props.questionInfo.question_body}</h3>

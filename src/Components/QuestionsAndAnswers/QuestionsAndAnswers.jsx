@@ -67,7 +67,7 @@ class QuestionsAndAnswers extends React.Component {
         <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions} />
         <br />
         <button className='openModalButton' onClick={() => this.setState({ openModal: true })}>Submit Question</button>
-        {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal} />}
+        {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal} getQuestions={this.getQuestions} />}
       </div>
     );
   }
