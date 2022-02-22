@@ -125,7 +125,7 @@ class RARApp extends React.Component {
     ));
 
     return (
-      <div className="rarAppTopLevel" onClick={onClick}>
+      <div className="rarAppTopLevel" onClick={onClick} id="scroll">
         <div>
           <h3>Ratings and Reviews</h3>
           <StarRating rating={starRating} />

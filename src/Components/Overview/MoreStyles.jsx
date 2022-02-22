@@ -7,7 +7,7 @@ const MoreStyles = (props) => {
     props.changeStyle(props.style);
   }
     return(
-      <img className={'moreStyles'} src={props.style.photos[0].thumbnail_url} onClick={handleClick}></img>
+      <img id="moreStyles" src={props.style.photos[0].thumbnail_url} onClick={handleClick}></img>
     );
 }
 
