@@ -17,6 +17,7 @@ class AnswersList extends React.Component {
   }
 
   render() {
+    console.log('answers: ', this.props.answers)
     const answers = this.props.answers.slice(0, this.state.showCount);
     return (
       <div>

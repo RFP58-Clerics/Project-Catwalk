@@ -4,14 +4,14 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: ''
-    }
+      input: '',
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({input: event.target.value});
+    this.setState({ input: event.target.value });
   }
 
   handleSubmit(event) {
@@ -22,10 +22,10 @@ class Search extends React.Component {
   render() {
     return (
       <form className="searchQuestion" onSubmit={this.handleSubmit}>
-        <input type='text' placeholder='Have a question? Search for answers.' value={this.state.input} onChange={this.handleChange}/>
-        <input type='submit' value='Search'/>
+        <input type="text" placeholder="Have a question? Search for answers." value={this.state.input} onChange={this.handleChange} />
+        <input type="submit" value="Search" />
       </form>
-    )
+    );
   }
 }
 

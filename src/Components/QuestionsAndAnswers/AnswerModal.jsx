@@ -21,6 +21,7 @@ class AnswerModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log('questionID passed in: ', this.props.questionInfo.question_id);
     const obj = {
       body: this.state.body,
       name: this.state.name,
@@ -51,8 +52,8 @@ class AnswerModal extends React.Component {
           </div>
           <div className="body">
             <form onSubmit={this.handleSubmit}>
-            <label>* Your Answer</label>
-              <br></br>
+              <label>* Your Answer</label>
+              <br />
               <textarea
                 name="body"
                 type="text"
@@ -61,15 +62,15 @@ class AnswerModal extends React.Component {
                 autoComplete="off"
                 placeholder="Answer..."
                 value={this.state.body}
-                onChange={this.handleChange}>
-              </textarea>
-              <br></br>
-              <br></br>
+                onChange={this.handleChange}
+              />
+              <br />
+              <br />
               <label>* What is your nickname</label>
-              <br></br>
+              <br />
               <input
                 name="name"
-                type="email"
+                type="text"
                 maxLength="60"
                 required
                 autoComplete="off"
@@ -77,15 +78,15 @@ class AnswerModal extends React.Component {
                 value={this.state.name}
                 onChange={this.handleChange}
               />
-              <br></br>
+              <br />
               For privacy reasons, do not use your full name or email address
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               <label>* Your email</label>
-              <br></br>
+              <br />
               <input
                 name="email"
-                type="text"
+                type="email"
                 maxLength="60"
                 required
                 autoComplete="off"
@@ -93,10 +94,10 @@ class AnswerModal extends React.Component {
                 value={this.state.email}
                 onChange={this.handleChange}
               />
-              <br></br>
+              <br />
               For authentication reasons, you will not be emailed” will appear
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               <input
                 type="submit"
                 value="Submit"

@@ -1,5 +1,5 @@
 const axios = require('axios');
-const Model = require('../Model');
+// const Model = require('../Model');
 const TOKEN = require('../../config.js');
 
 // Set up axios defaults so we don't have to pass in the base url, token, etc. every time
@@ -19,41 +19,23 @@ module.exports = {
     },
   }),
 
-  getRelated: (id) => {
-    return axios.get(`products/${id}/related`);
-  },
+  getRelated: (id) => axios.get(`products/${id}/related`),
 
-  getOne: (id) => {
-    return axios.get(`products/${id}`);
-  },
+  getOne: (id) => axios.get(`products/${id}`),
 
-  itemStyles: (id) => {
-    return axios.get(`products/${id}/styles`);
-  },
+  itemStyles: (id) => axios.get(`products/${id}/styles`),
 
-  getQuestions: (productId) => {
-    return axios.get(`qa/questions/?product_id=${productId}&count=1000`);
-  },
+  getQuestions: (productId) => axios.get(`qa/questions/?product_id=${productId}&count=1000`),
 
-  postQuestion: (body) => {
-    return axios.post('qa/questions', body);
-  },
+  postQuestion: (body) => axios.post('qa/questions', body),
 
-  getAnswers: (questionId) => {
-    return axios.get(`qa/questions/${questionId}/answers`);
-  },
+  getAnswers: (questionId) => axios.get(`qa/questions/${questionId}/answers`),
 
-  postAnswer: (questionId, body) => {
-    return axios.post(`qa/questions/${questionId}/answers`, body);
-  },
+  postAnswer: (questionId, body) => axios.post(`qa/questions/${questionId}/answers`, body),
 
-  updateQuestionHelpfulness: (questionId) => {
-    return axios.put(`qa/questions/${questionId}/helpful`);
-  },
+  updateQuestionHelpfulness: (questionId) => axios.put(`qa/questions/${questionId}/helpful`),
 
-  updateAnswerHelpfulness: (answerId) => {
-    return axios.put(`qa/answers/${answerId}/helpful`);
-  },
+  updateAnswerHelpfulness: (answerId) => axios.put(`qa/answers/${answerId}/helpful`),
 
   getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),
 

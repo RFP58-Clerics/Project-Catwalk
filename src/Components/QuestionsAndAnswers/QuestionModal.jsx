@@ -54,7 +54,7 @@ class QuestionModal extends React.Component {
           <div className="body">
             <form onSubmit={this.handleSubmit}>
               <label>* Your Question</label>
-              <br></br>
+              <br />
               <textarea
                 name="body"
                 type="textarea"
@@ -63,12 +63,12 @@ class QuestionModal extends React.Component {
                 autoComplete="off"
                 placeholder="Question..."
                 value={this.state.body}
-                onChange={this.handleChange}>
-              </textarea>
-              <br></br>
-              <br></br>
+                onChange={this.handleChange}
+              />
+              <br />
+              <br />
               <label>* What is your nickname</label>
-              <br></br>
+              <br />
               <input
                 name="name"
                 type="text"
@@ -79,12 +79,12 @@ class QuestionModal extends React.Component {
                 value={this.state.name}
                 onChange={this.handleChange}
               />
-              <br></br>
+              <br />
               For privacy reasons, do not use your full name or email address
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               <label>* Your email</label>
-              <br></br>
+              <br />
               <input
                 name="email"
                 type="email"
@@ -95,10 +95,10 @@ class QuestionModal extends React.Component {
                 value={this.state.email}
                 onChange={this.handleChange}
               />
-              <br></br>
+              <br />
               For authentication reasons, you will not be emailed
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               <input
                 type="submit"
                 value="Submit"
