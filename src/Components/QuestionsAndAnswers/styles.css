@@ -49,20 +49,33 @@
   text-align: center;
 }
 
-.questionBody {
+.qa-set {
+  columns: 2;
+  display: flex;
+  position: relative;
   border-style: dotted;
-  justify-content: space-between;
-  width: 700px
+  justify-content: flex-start;
+  max-width: 800px;
 }
 
-.question {
+.questionBody {
   border: red;
-  border-style: groove
+  border-style: groove;
+  width: 500px;
 }
 
 .helpful-button {
+  display: flex;
   border: blue;
   border-style: ridge;
-  width: 180px;
-  justify-content: flex-end;
+  width: 140px;
+  justify-content: flex-start;
+  margin: 0 20px 20px 0
+}
+
+.answerMisc {
+  display: flex;
+  border: violet;
+  border-style: ridge;
+  justify-content: flex-start;
 }

@@ -12,6 +12,7 @@ class QuestionsAndAnswers extends React.Component {
       openModal: false,
     };
     this.getQuestions = this.getQuestions.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -39,6 +40,19 @@ class QuestionsAndAnswers extends React.Component {
       });
   }
 
+  handleSearch(id, input) {
+    axios.get(`/qa/questions/${id}`)
+      .then((res) => {
+        let searched = [];
+        res.data.forEach(question => {
+          if (question.question_body.includes(input)) {
+            searched.push(question);
+          }
+        })
+        this.setState({q: searched})
+      })
+  }
+
   closeModal() {
     this.setState({ openModal: false });
   }
@@ -47,9 +61,10 @@ class QuestionsAndAnswers extends React.Component {
     return (
       <div className="qa-box">
         <h3>Questions & Answers</h3>
-        <Search className="search" productInfo={this.props.product} getQuestions={this.getQuestions} />
+        <Search className="search" productInfo={this.props.product} handleSearch={this.handleSearch} />
         <br></br>
         <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions}/>
+        <br></br>
         <button className='openModalButton'onClick={() => this.setState({openModal: true})}>Submit Question</button>
         {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal}/>}
       </div>

@@ -51,6 +51,10 @@ module.exports = {
     return axios.put(`qa/questions/${questionId}/helpful`);
   },
 
+  updateAnswerHelpfulness: (answerId) => {
+    return axios.put(`qa/answers/${answerId}/helpful`);
+  },
+
   getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),
 
   putReviewHelpful: (reviewId) => axios.put(`reviews/${reviewId}/helpful`),
