@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import axios from 'axios';
 import QuestionHelpful from './QuestionHelpful.jsx';
@@ -10,7 +11,7 @@ class QuestionsListItem extends React.Component {
     this.state = {
       a: {},
       openModal: false,
-    }
+    };
     this.getAnswers = this.getAnswers.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -29,7 +30,7 @@ class QuestionsListItem extends React.Component {
     axios.get(`/qa/questions/${questionId}/answers`)
       .then((res) => {
         this.setState({
-          a: res.data
+          a: res.data,
         });
       })
       .catch((err) => {
@@ -37,26 +38,31 @@ class QuestionsListItem extends React.Component {
       });
   }
 
-  closeModal(){
-    this.setState({ openModal: false});
+  closeModal() {
+    this.setState({ openModal: false });
   }
 
   render() {
-  return (
+    console.log('productID: ', this.props.productInfo.name);
+    console.log('questionID: ', this.props.questionInfo.question_id);
+    console.log('questionBody: ', this.props.questionInfo.question_body);
+
+    return (
       <div>
         <div className="qa-set">
-          <QuestionHelpful productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} getQuestions={this.props.getQuestions}/>
+          <QuestionHelpful productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} getQuestions={this.props.getQuestions} />
           <span className="questionBody">
             Q: {this.props.questionInfo.question_body}
-           {Object.values(this.state.a).length === 0 ? null : (<AnswersList answers={this.state.a || null}/> )}
+            {Object.values(this.state.a).length === 0 ? null : (<AnswersList answers={this.state.a || null} />)}
           </span>
         </div>
-          <button className="openModalButton" onClick={() => {this.setState({openModal: true})}}>Submit Answer</button>
-          <br></br>
-        {this.state.openModal && <AnswerModal productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} closeModal={this.closeModal}/>}
-        <br></br>
+        <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button>
+        <br />
+        {this.state.openModal && <AnswerModal productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} closeModal={this.closeModal} />}
+        <br />
       </div>
-  )}
+    );
+  }
 }
 
 export default QuestionsListItem;

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import QuestionsListItem from './QuestionsListItem.jsx';
 
@@ -20,7 +21,7 @@ class QuestionsList extends React.Component {
     const questions = this.props.questions.slice(0, this.state.showCount);
     return (
       <div className="questionContent">
-        {questions.map((question, i) => <QuestionsListItem productInfo={this.props.productInfo} questionInfo={question} key={i} getQuestions={this.props.getQuestions}/>)}
+        {questions.map((question, i) => <QuestionsListItem productInfo={this.props.productInfo} questionInfo={question} key={i} getQuestions={this.props.getQuestions} />)}
         {this.state.showCount < this.props.questions.length && <button onClick={this.handleMoreButton}>More Questions</button>}
       </div>
     );
