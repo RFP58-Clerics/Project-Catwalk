@@ -108,8 +108,8 @@ class ReviewTile extends React.Component {
         Was this review helpful?
         <Button onClick={this.updateHelpfulness}>Yes</Button>
         {this.state.helpfulness}
-        <Button>No</Button>
-        <Button onClick={this.updateReported}>Report</Button>
+        {/* <Button>No</Button>
+        <Button onClick={this.updateReported}>Report</Button> */}
       </div>
     );
   }
