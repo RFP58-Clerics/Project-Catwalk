@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CompareModal from './CompareModal.jsx';
+import StarRatingFetcher from '../RatingsAndReview/StarRatingFetcher.jsx';
 import './styles.css';
 
 
@@ -42,7 +43,9 @@ const RelatedCards = ({ relatedItem, pos, currItem }) => {
   return !item.id ? null : (
     <>
     <div className='card' data-position={pos} style={{width: '50%'}}>
-      <button className='card-button related-button' value='★' onClick={() => setIsOpen(true)}></button>
+      <button className='card-button related-button' value='★' onClick={() => setIsOpen(true)}>
+      <img className='card-button-img' src="https://img.icons8.com/ios/50/000000/star--v1.png"/>
+      </button>
       <CompareModal open={isOpen} currItem={currItem} relatedItem={item} pos={pos} onClose={() => setIsOpen(false)}>Compare!</CompareModal>
       <div className='card-grid'>
       {styles.name  &&
@@ -50,6 +53,7 @@ const RelatedCards = ({ relatedItem, pos, currItem }) => {
       }
       <div className='card-text'>
         <ul>{item.name}</ul>
+        <StarRatingFetcher productId={relatedItem} />
         <li>{item.category}</li>
         {styles.sale_price &&
         <div>
