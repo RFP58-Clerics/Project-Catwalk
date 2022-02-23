@@ -16,7 +16,9 @@ const RelatedList = ({ related, currItem }) => {
     <div className='outer-container'>
       <div id='compare-portal'></div>
       {index !== 0 &&
-        <button className='carousel-button carousel-button-left' value='<' onClick={() => {updateIndex(index - 1)}}></button>
+        <button className='carousel-button carousel-button-left' src="https://img.icons8.com/ios-glyphs/30/000000/chevron-left.png" onClick={() => {updateIndex(index - 1)}}>
+          <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-left.png"/>
+        </button>
         }
         <div className='carousel'>
           <div className='related-box' style={{transform: `translateX(-${index * 50}%)`}} >
@@ -27,6 +29,7 @@ const RelatedList = ({ related, currItem }) => {
         </div>
         {index !== related.length - 2 &&
           <button className='carousel-button carousel-button-right' value='>' onClick={() => {updateIndex(index + 1)}}>
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
           </button>
           }
     </div>

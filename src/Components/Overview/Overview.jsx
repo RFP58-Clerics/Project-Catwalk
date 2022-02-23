@@ -4,8 +4,8 @@ import _ from 'underscore';
 import ProductDetails from './ProductDetails.jsx';
 import ProductPhotos from './ProductPhotos.jsx';
 import MoreStyles from './MoreStyles.jsx';
-import AddToCart from './AddToCart.jsx';
-import QuantitySelect from './QuantitySelect.jsx';
+import SelectSize from './SelectSize.jsx';
+import SelectQuantity from './SelectQuantity.jsx';
 import './styles.css';
 
 class Overview extends React.Component {
@@ -15,7 +15,12 @@ class Overview extends React.Component {
     this.state = {
       styles: [],
       currentPhoto: null,
-      currentStyle: {},
+      currentStyle: {
+        original_price: 0,
+        sale_price: 0,
+        photos: [],
+      },
+      sizeSelection: null,
       reviews: [],
       skus: [],
     };
@@ -42,10 +47,14 @@ class Overview extends React.Component {
     axios.get('/itemStyles', {
       params: { id },
     }).then((results) => {
-      this.setState({ currentStyle: results.data.results[0] });
-      this.setState({ styles: results.data });
-      this.setState({ currentPhoto: results.data.results[0].photos[0].url });
-      this.setState({ skus: _.map(this.state.currentStyle.skus) });
+      if (results.data.results.length !== 0) {
+        this.setState({ currentStyle: results.data.results[0] });
+        this.setState({ styles: results.data });
+        this.setState({ currentPhoto: results.data.results[0].photos[0].url });
+        this.setState({ skus: _.map(this.state.currentStyle.skus) });
+      } else {
+        this.setState({ styles: results.data });
+      }
     });
   }
 
@@ -85,9 +94,9 @@ class Overview extends React.Component {
     return this.state.styles.length === 0 ? null : (
       <div className="overview">
         <img className="currentPhoto" src={this.state.currentPhoto} alt="main style" />
-        <br></br>
+        <br />
         <div className="productThumbnails">
-          {this.state.currentStyle.photos.map((photo, index) => (
+          {this.state.currentStyle ? this.state.currentStyle.photos.map((photo, index) => (
             <>
               <ProductPhotos
                 photo={photo}
@@ -97,15 +106,15 @@ class Overview extends React.Component {
               <br />
               <br />
             </>
-          ))}
+          )) : null}
         </div>
         <div className="productDetailsContainer">
-          <ProductDetails
-            product={this.props.product}
-            productPrice={this.state.currentStyle.original_price}
-            salePrice={this.state.currentStyle.sale_price}
-            reviews={this.state.reviews}
-          />
+            <ProductDetails
+              product={this.props.product}
+              productPrice={this.state.currentStyle.original_price}
+              salePrice={this.state.currentStyle.sale_price}
+              reviews={this.state.reviews}
+            />
         </div>
         <div className="stylesContainer">
           {this.state.styles.results.map((style, index) => (
@@ -116,19 +125,27 @@ class Overview extends React.Component {
             />
           ))}
         </div>
-        <br></br>
-        <select className="sizeSelector">
+        <br />
+        <select className="selectSize">
           {this.state.skus.map((sku, index) => (
-            <AddToCart
+            <SelectSize
+              sku={sku}
+              key={index}
+            />
+          ))}
+        </select>
+        <select className="selectQuantity">
+          {this.state.skus.map((sku, index) => (
+            <SelectQuantity
               sku={sku}
               key={index}
             />
           ))}
         </select>
         <button className="cartButton">Add to cart</button>
-        <img className="shareButtons" src='https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png' />
-        <img className="shareButtons" src='https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png'/>
-        <img className="shareButtons" src='https://cdn-icons-png.flaticon.com/32/174/174863.png' />
+        <img className="shareButtons" src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png" />
+        <img className="shareButtons" src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png" />
+        <img className="shareButtons" src="https://cdn-icons-png.flaticon.com/32/174/174863.png" />
       </div>
     );
   }

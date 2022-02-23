@@ -1,9 +1,9 @@
 import React from 'react';
 
-const AddToCart = (props) => (
-  <>
+function SelectSize(props) {
+  return (
     <option value={props.sku.size}>{props.sku.size}</option>
-  </>
-);
+  );
+}
 
-export default AddToCart;
+export default SelectSize;
