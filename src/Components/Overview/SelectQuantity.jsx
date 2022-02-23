@@ -1,9 +1,9 @@
 import React from 'react';
 
-const QuantitySelect = (props) => (
-  <>
+function SelectQuantity(props) {
+  return (
     <option value={props.sku.quantity}>{props.sku.quantity}</option>
-  </>
-);
+  );
+}
 
-export default QuantitySelect;
+export default SelectQuantity;
