@@ -6,6 +6,9 @@ const OutfitCards = ({ item, setStorage }) => {
   const [product, setProduct] = useState(JSON.parse(item));
   const [styles, setStyles] = useState({name: false});
   useEffect(() => {
+    setProduct(JSON.parse(item));
+  }, [item])
+  useEffect(() => {
     axios.get('/itemStyles', {
       params: {
         id: product.id
@@ -17,11 +20,12 @@ const OutfitCards = ({ item, setStorage }) => {
         style['default?'] ? setStyles(style) : null;
       })
     })
-  }, [])
+  }, [product])
 
   const removeItem = () => {
     localStorage.removeItem(product.id)
     setStorage({...localStorage})
+    // setProduct(item)
   }
   return styles.name && (
     <>

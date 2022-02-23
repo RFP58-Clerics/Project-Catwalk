@@ -4,19 +4,22 @@ import OutfitCards from './OutfitCards.jsx';
 const OutfitList = ({ product }) => {
   const [savedItems, setSavedItems] = useState(null);
   const [storage, setStorage] = useState({...localStorage})
+  // const [move, setMove] = useState(storage.length)
   const [index, setIndex] = useState(0);
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
       newIndex = 0;
-    } else if (newIndex >= storage.length) {
-      newIndex = storage.length - 1;
+    } else if (newIndex >= savedItems.length) {
+      newIndex = savedItems.length - 1;
     }
     setIndex(newIndex);
   }
 
   useEffect(() => {
-    setSavedItems(Object.values(storage));
+    if (storage) {
+      setSavedItems(Object.values(storage));
+    }
   }, [storage])
 
   const addToList = (e) => {
