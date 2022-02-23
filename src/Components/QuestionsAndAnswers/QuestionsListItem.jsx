@@ -17,18 +17,21 @@ class QuestionsListItem extends React.Component {
   }
 
   componentDidMount() {
-    this.getAnswers(this.props.questionInfo.question_id);
+    const {questionInfo} = this.props;
+    this.getAnswers(questionInfo.question_id);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.questionInfo && this.props.questionInfo.question_id !== prevProps.questionInfo.question_id) {
-      this.getAnswers(this.props.questionInfo.question_id);
+    const {questionInfo} = this.props;
+    if (questionInfo && questionInfo.question_id !== prevProps.questionInfo.question_id) {
+      this.getAnswers(questionInfo.question_id);
     }
   }
 
   getAnswers(questionId) {
     axios.get(`/qa/questions/${questionId}/answers`)
       .then((res) => {
+        res.data.sort((a, b) => b.helpfulness - a.helpfulness);
         this.setState({
           a: res.data,
         });
@@ -43,22 +46,23 @@ class QuestionsListItem extends React.Component {
   }
 
   render() {
-    console.log('productID: ', this.props.productInfo.name);
-    console.log('questionID: ', this.props.questionInfo.question_id);
-    console.log('questionBody: ', this.props.questionInfo.question_body);
-
+    // console.log('productID: ', this.props.productInfo.name);
+    // console.log('questionID: ', this.props.questionInfo.question_id);
+    // console.log('questionBody: ', this.props.questionInfo.question_body);
+    const { productInfo, questionInfo, getQuestions } = this.props;
+    const { a, openModal } = this.state;
     return (
       <div>
         <div className="qa-set">
-          <QuestionHelpful productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} getQuestions={this.props.getQuestions} />
+          <QuestionHelpful productInfo={productInfo} questionInfo={questionInfo} getQuestions={getQuestions} />
           <span className="questionBody">
-            Q: {this.props.questionInfo.question_body}
-            {Object.values(this.state.a).length === 0 ? null : (<AnswersList answers={this.state.a || null} />)}
+            Q: {questionInfo.question_body}
+            {Object.values(a).length === 0 ? null : (<AnswersList productInfo={productInfo} questionInfo={questionInfo} answers={a || null} />)}
           </span>
         </div>
         <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button>
         <br />
-        {this.state.openModal && <AnswerModal productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} closeModal={this.closeModal} getAnswers={this.getAnswers} />}
+        {openModal && <AnswerModal productInfo={productInfo} questionInfo={questionInfo} closeModal={this.closeModal} getAnswers={this.getAnswers} />}
         <br />
       </div>
     );

@@ -28,6 +28,7 @@
     "babel-polyfill": "^6.26.0",
     "dateformat": "^5.0.2",
     "express": "^4.17.2",
+    "infinite-scroll": "^4.0.1",
     "moment": "^2.29.1",
     "msw": "^0.36.8",
     "nodemon": "^2.0.15",

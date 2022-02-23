@@ -37,6 +37,8 @@ module.exports = {
 
   updateAnswerHelpfulness: (answerId) => axios.put(`qa/answers/${answerId}/helpful`),
 
+  updateAnswerReport: (answerId) => (axios.put(`qa/answers/${answerId}/report`)),
+
   getMetaData: (productId) => axios.get(`reviews/meta?product_id=${productId}`),
 
   putReviewHelpful: (reviewId) => axios.put(`reviews/${reviewId}/helpful`),

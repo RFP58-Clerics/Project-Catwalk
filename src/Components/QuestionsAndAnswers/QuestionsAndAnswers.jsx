@@ -29,22 +29,14 @@ class QuestionsAndAnswers extends React.Component {
     }
   }
 
-  handleSearch(id, input) {
-    axios.get(`/qa/questions/${id}`)
-      .then((res) => {
-        const searched = [];
-        res.data.forEach((question) => {
-          if (question.question_body.includes(input)) {
-            searched.push(question);
-          }
-        });
-        this.setState({ q: searched });
-      });
+  handleSearch(filteredQuestions) {
+    this.setState({ q: filteredQuestions });
   }
 
   getQuestions(id) {
     axios.get(`/qa/questions/${id}`)
       .then((res) => {
+        res.data.sort((a, b) => b.helpfulness - a.helpfulness);
         this.setState({
           q: res.data,
         });
@@ -62,7 +54,7 @@ class QuestionsAndAnswers extends React.Component {
     return (
       <div className="qa-box">
         <h3>Questions & Answers</h3>
-        <Search className="search" productInfo={this.props.product} handleSearch={this.handleSearch} />
+        <Search className="search" productInfo={this.props.product} questions={this.state.q} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
         <br />
         <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions} />
         <br />

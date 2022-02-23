@@ -7,6 +7,7 @@ class QuestionsList extends React.Component {
     super(props);
     this.state = {
       showCount: 4,
+      // clicked: false,
     };
     this.handleMoreButton = this.handleMoreButton.bind(this);
   }
@@ -14,11 +15,15 @@ class QuestionsList extends React.Component {
   handleMoreButton() {
     this.setState((oldState) => ({
       showCount: oldState.showCount + 2,
+      // clicked: true,
     }));
   }
 
   render() {
-    const questions = this.props.questions.slice(0, this.state.showCount);
+    let questions = this.props.questions.slice(0, this.state.showCount);
+    // if (this.state.clicked) {
+    //   questions = this.props.questions.slice();
+    // }
     return (
       <div className="scrollQuestions questionContent">
         {questions.map((question, i) => <QuestionsListItem productInfo={this.props.productInfo} questionInfo={question} key={i} getQuestions={this.props.getQuestions} />)}
