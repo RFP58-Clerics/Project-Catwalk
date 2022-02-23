@@ -36,6 +36,11 @@ class App extends React.Component {
     });
   }
 
+  handleInteraction(event, widget) {
+    // event.target
+    console.log(widget);
+  }
+
   getData() {
     return axios({
       method: 'get',
@@ -67,10 +72,6 @@ class App extends React.Component {
 
   hideSearch() {
     this.setState({ showSearch: false });
-  }
-
-  handleInteraction(event, widget) {
-    console.log(widget);
   }
 
   render() {
