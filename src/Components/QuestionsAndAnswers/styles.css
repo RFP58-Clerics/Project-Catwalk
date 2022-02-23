@@ -79,3 +79,13 @@
   border-style: ridge;
   justify-content: flex-start;
 }
+
+.scrollQuestions {
+  max-height: 500px;
+  overflow: scroll;
+}
+
+.scrollAnswers {
+  max-height: 100px;
+  overflow: scroll;
+}
