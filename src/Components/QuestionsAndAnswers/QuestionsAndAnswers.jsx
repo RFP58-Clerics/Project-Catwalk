@@ -51,10 +51,11 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
+    const copiedQuestions = [...this.state.q];
     return (
       <div className="qa-box">
         <h3>Questions & Answers</h3>
-        <Search className="search" productInfo={this.props.product} questions={this.state.q} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
+        <Search className="search" productInfo={this.props.product} questions={this.state.q} copiedQuestions={copiedQuestions} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
         <br />
         <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions} />
         <br />

@@ -48,7 +48,7 @@ class AnswerModal extends React.Component {
     return (
       <div className="modal-background">
         <div className="modal-container">
-          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> Close </button>
+          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> X </button>
           <div className='title'>
             <h1> Submit Your Answer </h1>
             <h3> {this.props.productInfo.name} : {this.props.questionInfo.question_body}</h3>
