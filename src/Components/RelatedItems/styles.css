@@ -2,6 +2,8 @@
   cursor: pointer;
   position: absolute;
   top: 50%;
+  background: rgba(255, 255, 255, 0);
+  border: 1px rgba(255, 255, 255, 0);
 }
 
 .sale {
@@ -29,6 +31,15 @@
   top: 5px;
   right: 25px;
   position: absolute;
+  background: rgba(255, 255, 255, 0);
+  border: 1px rgba(255, 255, 255, 0);
+  cursor: pointer;
+  max-width: 10px;
+  max-width: 10px;
+}
+
+.card-button-img {
+  max-width: 20px;
 }
 
 .searchResults {
@@ -182,11 +193,27 @@
   -o-object-fit: contain;
   object-fit: contain;
   border-radius: 0.25rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   list-style: none;
   padding-left: 10px;
   padding-bottom: 10px;
 }
 
+.related-header {
+  text-indent: 70px;
+}
+
+.add-icon {
+  object-fit: none;
+  cursor: pointer;
+}
+
+.compare-button {
+  background: rgba(255, 255, 255, 0);
+  border: 1px rgba(255, 255, 255, 0);
+  cursor: pointer;
+  max-width: 10px;
+  max-width: 10px;
+}
 
 
