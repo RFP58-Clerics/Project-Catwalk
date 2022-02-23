@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData().then((data) => this.setState({ product: data[11] }));
+    this.getData().then((data) => this.setState({ product: data[0] }));
   }
 
   handleSubmit(event) {
@@ -34,6 +34,11 @@ class App extends React.Component {
     this.setState({
       searchTerm: '',
     });
+  }
+
+  handleInteraction(event, widget) {
+    // event.target
+    console.log(widget);
   }
 
   getData() {
@@ -67,10 +72,6 @@ class App extends React.Component {
 
   hideSearch() {
     this.setState({ showSearch: false });
-  }
-
-  handleInteraction(event, widget) {
-    console.log(widget);
   }
 
   render() {

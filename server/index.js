@@ -122,6 +122,19 @@ app.put('/qa/answers/:answer_id/helpful', (req, res) => {
     });
 });
 
+// Update answer report
+app.put('/qa/answers/:answer_id/report', (req, res) => {
+  let answer_id = req.params.answer_id;
+  Controller.updateAnswerReport(answer_id)
+    .then((result) => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 app.get('/reviews/meta/:productId', (req, res) => {
   const { productId } = req.params;
   Controller.getMetaData(productId)
