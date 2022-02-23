@@ -11,6 +11,7 @@ class QuestionsAndAnswers extends React.Component {
     this.state = {
       q: [],
       openModal: false,
+      copiedQuestions: [],
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -39,6 +40,7 @@ class QuestionsAndAnswers extends React.Component {
         res.data.sort((a, b) => b.helpfulness - a.helpfulness);
         this.setState({
           q: res.data,
+          copiedQuestions: res.data,
         });
       })
       .catch((err) => {
@@ -51,11 +53,10 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
-    const copiedQuestions = [...this.state.q];
     return (
       <div className="qa-box">
         <h3>Questions & Answers</h3>
-        <Search className="search" productInfo={this.props.product} questions={this.state.q} copiedQuestions={copiedQuestions} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
+        <Search className="search" productInfo={this.props.product} questions={this.state.q} copiedQuestions={this.state.copiedQuestions} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
         <br />
         <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions} />
         <br />

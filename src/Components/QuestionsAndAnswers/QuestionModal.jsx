@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ReactDom from 'react-dom';
 
 class QuestionModal extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class QuestionModal extends React.Component {
   }
 
   render() {
-    return (
+    return ReactDom.createPortal(
       <div className="modal-background">
         <div className="modal-container">
           <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> X </button>
@@ -108,7 +109,8 @@ class QuestionModal extends React.Component {
             </form>
           </div>
         </div>
-      </div>
+      </div>,
+      document.getElementById('qa-portal'),
     );
   }
 }
