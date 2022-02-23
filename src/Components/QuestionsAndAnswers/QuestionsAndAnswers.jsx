@@ -51,7 +51,6 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
-    // console.log('q&a: ', this.state.q);
     return (
       <div className="qa-box">
         <h3>Questions & Answers</h3>

@@ -57,7 +57,7 @@ class QuestionsListItem extends React.Component {
           <QuestionHelpful productInfo={productInfo} questionInfo={questionInfo} getQuestions={getQuestions} />
           <span className="questionBody">
             Q: {questionInfo.question_body}
-            {Object.values(a).length === 0 ? null : (<AnswersList answers={a || null} />)}
+            {Object.values(a).length === 0 ? null : (<AnswersList productInfo={productInfo} questionInfo={questionInfo} answers={a || null} />)}
           </span>
         </div>
         <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button>

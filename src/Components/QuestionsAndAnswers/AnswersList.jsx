@@ -25,7 +25,7 @@ class AnswersList extends React.Component {
     // }
     return (
       <div className="scrollAnswers">
-        {answers ? Object.values(answers).map((answer, i) => <AnswersListItem answer={answer} key={i}/>) : null }
+        {answers ? Object.values(answers).map((answer, i) => <AnswersListItem productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} answer={answer} key={i}/>) : null }
         {this.state.showCount < this.props.answers.length && <button onClick={this.handleMoreButton}>More Answers</button>}
       </div>
     );
