@@ -21,6 +21,7 @@ class ReviewTile extends React.Component {
 
     this.state = {
       helpfulness: this.props.review.helpfulness,
+      disableHelpButton: false,
       expanded: false,
     };
     this.updateHelpfulness = this.updateHelpfulness.bind(this);
@@ -34,7 +35,10 @@ class ReviewTile extends React.Component {
       url: `/reviews/${this.props.review.review_id}/helpful`,
     })
       .then(() => {
-        this.setState((oldState) => ({ helpfulness: oldState.helpfulness + 1 }));
+        this.setState((oldState) => ({
+          helpfulness: oldState.helpfulness + 1,
+          disableHelpButton: true,
+        }));
       })
       .catch((error) => {
         console.log(error);
@@ -106,7 +110,7 @@ class ReviewTile extends React.Component {
         <ReviewPhotos photos={photos} />
         <br />
         Was this review helpful?
-        <Button onClick={this.updateHelpfulness}>Yes</Button>
+        <Button disabled={this.state.disableHelpButton} onClick={this.updateHelpfulness}>Yes</Button>
         {this.state.helpfulness}
         {/* <Button>No</Button>
         <Button onClick={this.updateReported}>Report</Button> */}

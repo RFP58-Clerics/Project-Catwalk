@@ -87,7 +87,6 @@
 
 .starbox {
   display: inline-grid;
-  background-color: green;
 }
 
 .starbox div {
@@ -112,7 +111,7 @@
 }
 
 .ratingBreakdown .highlight {
-  background-color: yellow;
+  font-weight: bold;
 }
 
 .starPicker .star input {
@@ -180,4 +179,51 @@
 
 .newReviewModalContainer .right {
   float: right;
+}
+.breakdown {
+  margin-bottom: 1em;
+}
+
+.breakdownBar {
+  width: 400px;
+  height: 4px;
+  margin-top: 6px;
+  background-color: grey;
+}
+
+.breakdownArrow {
+  margin-left: -10px;
+  margin-top: -13px;
+  position: relative;
+}
+
+.breakdownLabel {
+  width: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.breakdownLabel span:nth-child(2) {
+  text-align: center;
+}
+
+.breakdownLabel span:last-child {
+  text-align: right;
+}
+
+.rarApp progress {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.rarApp progress[value]::-webkit-progress-value {
+    border-radius: 10px;
+    height: 12px;
+    background-color: #4D3;
+}
+
+.rarApp progress[value]::-webkit-progress-bar {
+    border-radius: 10px;
+    height: 12px;
+    background-color: grey;
 }

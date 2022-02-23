@@ -1,4 +1,5 @@
 module.exports = {
+  testUrl: 'http://localhost',
   testEnvironment: 'jest-environment-jsdom',
   // ... other options ...
   moduleNameMapper: {

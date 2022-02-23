@@ -84,6 +84,19 @@ class NewReviewForm extends React.Component {
   closeClicked(event) {
     event.preventDefault();
     this.setState({
+      rating: null,
+      recommend: false,
+      Size: null,
+      Width: null,
+      Comfort: null,
+      Quality: null,
+      Length: null,
+      Fit: null,
+      summary: '',
+      body: '',
+      photos: [],
+      nickname: '',
+      email: '',
       modalOpened: false,
     });
   }
@@ -157,6 +170,19 @@ class NewReviewForm extends React.Component {
       .then(() => {
         this.setState({
           modalOpened: false,
+          rating: null,
+          recommend: false,
+          Size: null,
+          Width: null,
+          Comfort: null,
+          Quality: null,
+          Length: null,
+          Fit: null,
+          summary: '',
+          body: '',
+          photos: [],
+          nickname: '',
+          email: '',
         });
       })
       .catch((error) => {
@@ -211,59 +237,59 @@ class NewReviewForm extends React.Component {
           </div>
           <h4>Write Your Review</h4>
           <h5>About the {product.name}</h5>
-            <form onSubmit={this.submitReview}>
-              <p>
-                Overall Rating*
-                <StarPicker onChange={(event) => this.onFieldChange(event, 'rating')} value={starRatings.rating} description={descriptions.rating[starRatings.rating - 1]} />
-              </p>
-              <p>
-                Do you recommend this product?*
-                <input type="radio" id="true" name="recommend" />
-                <label htmlFor="true">Yes, I do.</label>
+          <form onSubmit={this.submitReview}>
+            <p>
+              Overall Rating*
+              <StarPicker onChange={(event) => this.onFieldChange(event, 'rating')} value={starRatings.rating} description={descriptions.rating[starRatings.rating - 1]} />
+            </p>
+            <p>
+              Do you recommend this product?*
+              <input type="radio" id="true" name="recommend" />
+              <label htmlFor="true">Yes, I do.</label>
 
-                <input type="radio" id="false" name="recommend" />
-                <label htmlFor="false">No, I do not.</label>
-              </p>
-              <p>Characteristics*</p>
-              <div className="twoColumn">
-                {
+              <input type="radio" id="false" name="recommend" />
+              <label htmlFor="false">No, I do not.</label>
+            </p>
+            <p>Characteristics*</p>
+            <div className="twoColumn">
+              {
 
-                  // ['size', 'width', 'comfort', 'quality', 'length', 'fit'].map((name) => (
-                  Object.keys(characteristics).map((name) => (
-                    <StarPicker
-                      key={name}
-                      description={descriptions[name][starRatings[name] - 1]}
-                      name={name}
-                      onChange={(event) => this.onFieldChange(event, name)}
-                      value={starRatings[name]}
-                    />
-                  ))
-                }
-              </div>
-              <p>Review Summary</p>
-              <input type="text" maxLength="60" placeholder="Example: Best purchase ever!" onChange={(event) => this.onFormChange(event, 'summary')} />
-              <p>Review Body*</p>
-              <textarea type="text" minLength="50" maxLength="1000" placeholder="Why did you like the product or not?" onChange={(event) => this.onFormChange(event, 'body')} required style={{ resize: 'none', width: '100%', height: '5em' }} />
-              <p>
-                <span>Upload photos: </span>
-                {photos.length < 5
-                  ? <input type="file" onChange={this.uploadPhoto} placeholder="photos" /> : 'Maximum upload met'}
-                <ReviewPhotos photos={photos} />
-              </p>
-              <p className="fourCol">
-                <label className="required" htmlFor="nickname">
-                  <span>Nickname</span>
-                  <input type="text" id="nickname" maxLength="60" placeholder="Example: jackson11!" onChange={(event) => this.onFormChange(event, 'nickname')} required />
-                </label>
-                <label className="required" htmlFor="email">
-                  <span>Email</span>
-                  <input type="email" maxLength="60" placeholder="Example: jackson11@email.com" onChange={(event) => this.onFormChange(event, 'email')} required />
-                </label>
-              </p>
-              <p>
-                <input type="submit" value="submit Review" />
-              </p>
-            </form>
+                // ['size', 'width', 'comfort', 'quality', 'length', 'fit'].map((name) => (
+                Object.keys(characteristics).map((name) => (
+                  <StarPicker
+                    key={name}
+                    description={descriptions[name][starRatings[name] - 1]}
+                    name={name}
+                    onChange={(event) => this.onFieldChange(event, name)}
+                    value={starRatings[name]}
+                  />
+                ))
+              }
+            </div>
+            <p>Review Summary</p>
+            <input type="text" maxLength="60" placeholder="Example: Best purchase ever!" onChange={(event) => this.onFormChange(event, 'summary')} />
+            <p>Review Body*</p>
+            <textarea type="text" minLength="50" maxLength="1000" placeholder="Why did you like the product or not?" onChange={(event) => this.onFormChange(event, 'body')} required style={{ resize: 'none', width: '100%', height: '5em' }} />
+            <p>
+              <span>Upload photos: </span>
+              {photos.length < 5
+                ? <input type="file" onChange={this.uploadPhoto} placeholder="photos" /> : 'Maximum upload met'}
+              <ReviewPhotos photos={photos} />
+            </p>
+            <p className="fourCol">
+              <label className="required" htmlFor="nickname">
+                <span>Nickname</span>
+                <input type="text" id="nickname" maxLength="60" placeholder="Example: jackson11!" onChange={(event) => this.onFormChange(event, 'nickname')} required />
+              </label>
+              <label className="required" htmlFor="email">
+                <span>Email</span>
+                <input type="email" maxLength="60" placeholder="Example: jackson11@email.com" onChange={(event) => this.onFormChange(event, 'email')} required />
+              </label>
+            </p>
+            <p>
+              <input type="submit" value="submit Review" />
+            </p>
+          </form>
         </div>
       </div>
     );
