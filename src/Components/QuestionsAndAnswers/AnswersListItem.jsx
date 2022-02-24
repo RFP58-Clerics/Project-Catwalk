@@ -4,7 +4,7 @@ import moment from 'moment';
 import AnswerHelpful from './AnswerHelpful.jsx';
 import AnswerReport from './AnswerReport.jsx';
 
-const AnswersListItem = ({answer}) => (
+const AnswersListItem = ({answer, productInfo, questionInfo}) => (
   (
     <div className="answer">
       <span className="answerBody">
@@ -18,7 +18,7 @@ const AnswersListItem = ({answer}) => (
         ,
         {moment((answer.date).toString()).format('MMM DD, YYYY')}
         <AnswerHelpful answerInfo={answer} />
-        <AnswerReport />
+        <AnswerReport productInfo={productInfo} questionInfo={questionInfo} answerInfo={answer} />
       </span>
     </div>
   )

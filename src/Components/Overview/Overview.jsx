@@ -20,15 +20,19 @@ class Overview extends React.Component {
         sale_price: 0,
         photos: [],
       },
-      sizeSelection: null,
       reviews: [],
       skus: [],
+      qty: [],
+      currentQty: 0,
+      currentSize: '',
     };
 
     this.changePhoto = this.changePhoto.bind(this);
     this.changeStyle = this.changeStyle.bind(this);
     this.getStyles = this.getStyles.bind(this);
     this.getReviews = this.getReviews.bind(this);
+    this.changeSize = this.changeSize.bind(this);
+    this.changeQty = this.changeQty.bind(this);
   }
 
   componentDidMount() {
@@ -52,10 +56,25 @@ class Overview extends React.Component {
         this.setState({ styles: results.data });
         this.setState({ currentPhoto: results.data.results[0].photos[0].url });
         this.setState({ skus: _.map(this.state.currentStyle.skus) });
+        let newQty = [];
+        for (let i = 1; i < this.state.skus[0].quantity + 1; i++) {
+          newQty.push(i);
+        }
+        this.setState({ qty: newQty });
       } else {
         this.setState({ styles: results.data });
       }
     });
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    axios({
+      method: 'post',
+      url: '/cart',
+    }).then(
+      console.log('posted!'),
+    );
   }
 
   getReviews(id) {
@@ -90,10 +109,44 @@ class Overview extends React.Component {
     }
   }
 
+  changeSize(e) {
+    e.preventDefault();
+    this.setState({ currentSize: JSON.parse(e.target.value).size });
+    let arr = [];
+    let newQty = JSON.parse(e.target.value).quantity;
+    for (let i = 1; i <= newQty; i++) {
+      arr.push(i);
+      this.setState({ qty: arr });
+    }
+    arr = [];
+  }
+
+  changeQty(e) {
+    e.preventDefault();
+    this.setState({ currentQty: Number(e.target.value) });
+  }
+
+  enlargeImg() {
+    const img = document.getElementById("img1");
+    img.style.transform = "scale(1.5)";
+    img.style.transition = "transform 0.25s ease";
+    const button = document.getElementById("button1");
+    button.style.display = 'inline';
+  }
+
+  resetImg() {
+    const img = document.getElementById("img1");
+    img.style.transform = "scale(1)";
+    img.style.transition = "transform 0.25s ease";
+    const button = document.getElementById("button1");
+    button.style.display = 'none';
+  }
+
   render() {
     return this.state.styles.length === 0 ? null : (
       <div className="overview">
-        <img className="currentPhoto" src={this.state.currentPhoto} alt="main style" />
+        <img className="currentPhoto" id="img1" src={this.state.currentPhoto} alt="main style" onClick={this.enlargeImg} />
+        <button className="resetImgButton" id="button1" onClick={this.resetImg}>X</button>
         <br />
         <div className="productThumbnails">
           {this.state.currentStyle ? this.state.currentStyle.photos.map((photo, index) => (
@@ -126,7 +179,8 @@ class Overview extends React.Component {
           ))}
         </div>
         <br />
-        <select className="selectSize">
+        <select className="selectSize" onChange={this.changeSize}>
+          <option selected>Select size</option>
           {this.state.skus.map((sku, index) => (
             <SelectSize
               sku={sku}
@@ -134,15 +188,16 @@ class Overview extends React.Component {
             />
           ))}
         </select>
-        <select className="selectQuantity">
-          {this.state.skus.map((sku, index) => (
+        <select className="selectQuantity" onChange={this.changeQty}>
+          <option selected>Select quantity</option>
+          {this.state.qty.map((qty, index) => (
             <SelectQuantity
-              sku={sku}
+              qty={qty}
               key={index}
             />
           ))}
         </select>
-        <button className="cartButton">Add to cart</button>
+        <button className="cartButton" onClick={this.handleClick}>Add to cart</button>
         <img className="shareButtons" src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png" />
         <img className="shareButtons" src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png" />
         <img className="shareButtons" src="https://cdn-icons-png.flaticon.com/32/174/174863.png" />

@@ -132,3 +132,9 @@
   left: 1110px;
   bottom: 150px;
 }
+
+#button1 {
+  position: relative;
+  display: none;
+  right: 100px;
+}
