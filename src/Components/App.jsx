@@ -36,6 +36,11 @@ class App extends React.Component {
     });
   }
 
+  handleInteraction(event, widget) {
+    // event.target
+    console.log(widget);
+  }
+
   getData() {
     return axios({
       method: 'get',
@@ -69,10 +74,6 @@ class App extends React.Component {
     this.setState({ showSearch: false });
   }
 
-  handleInteraction(event, widget) {
-    console.log(widget);
-  }
-
   render() {
     const {
       searchTerm, productData, product, showSearch,
@@ -85,6 +86,7 @@ class App extends React.Component {
 
     return product && (
       <>
+        <div id="qa-portal"></div>
         <div className="top-bar">
           <h1>Clerical</h1>
           <img className="logoPicture" alt="logo" src="https://www.dndbeyond.com/avatars/thumbnails/6/371/420/618/636272706155064423.png" />

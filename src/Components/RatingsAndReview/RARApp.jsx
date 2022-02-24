@@ -5,6 +5,7 @@ import StarRating from './StarRating.jsx';
 import StarRatingFetcher from './StarRatingFetcher.jsx';
 import NewReviewForm from './NewReviewForm.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
+import ProductBreakdown from './ProductBreakdown.jsx';
 import './reviewstyles.css';
 
 const calcAverageRating = (ratings) => {
@@ -33,7 +34,9 @@ class RARApp extends React.Component {
       reviews: [],
       sort: 'relevant',
       filter: [],
-      meta: {},
+      meta: {
+        characteristics: {},
+      },
       starRating: null,
     };
     this.getReviews = this.getReviews.bind(this);
@@ -51,7 +54,8 @@ class RARApp extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if ((this.props.product && this.props.product.id !== prevProps.product.id) || this.state.sort !== prevState.sort) {
+    if ((this.props.product && this.props.product.id !== prevProps.product.id)
+    || this.state.sort !== prevState.sort) {
       // console.log(this.props.product);
       this.getReviews(this.props.product.id);
       this.getMeta(this.props.product.id);
@@ -87,13 +91,6 @@ class RARApp extends React.Component {
       .catch((err) => console.log(err));
   }
 
-  changeSort(event) {
-    event.preventDefault();
-    this.setState({
-      sort: event.target.value,
-    });
-  }
-
   setReviewFilter(stars) {
     const toggleIncludes = (arr, value) => {
       if (arr.includes(value)) {
@@ -103,6 +100,13 @@ class RARApp extends React.Component {
     };
 
     this.setState((state) => ({ filter: toggleIncludes(state.filter, stars) }));
+  }
+
+  changeSort(event) {
+    event.preventDefault();
+    this.setState({
+      sort: event.target.value,
+    });
   }
 
   render() {
@@ -116,16 +120,29 @@ class RARApp extends React.Component {
       reviews = reviews.filter((review) => filter.includes(review.rating));
     }
 
+    const descriptions = {
+      rating: ['Poor', 'Fair', 'Average', 'Good', 'Great'],
+      Size: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'],
+      Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'],
+      Comfort: ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'],
+      Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'],
+      Length: ['Runs Short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
+      Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'],
+    };
+
     const characteristics = meta.characteristics && Object.keys(meta.characteristics).map((key) => (
       <React.Fragment key={key}>
         {key}
         :
-        <StarRating rating={parseFloat(meta.characteristics[key].value)} />
+        <ProductBreakdown
+          rating={parseFloat(meta.characteristics[key].value)}
+          descriptions={descriptions[key]}
+        />
       </React.Fragment>
     ));
 
     return (
-      <div className="rarAppTopLevel" onClick={onClick} id="scroll">
+      <div className="rarApp" onClick={onClick} id="scroll">
         <div>
           <h3>Ratings and Reviews</h3>
           <StarRating rating={starRating} />

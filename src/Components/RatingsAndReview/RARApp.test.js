@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 // import dependencies
 import React from 'react';
+import axios from 'axios';
 
 import {
   describe, expect, test, beforeAll, afterAll, afterEach,
@@ -12,6 +13,8 @@ import {
 import '@testing-library/jest-dom';
 
 import RARApp from './RARApp.jsx';
+
+axios.defaults.baseURL = 'http://localhost:3000/';
 
 test('displays widget title on page load', async () => {
   // Fake Product
@@ -55,7 +58,7 @@ test('displays 2 reviews on page load', async () => {
   render(<RARApp product={product} />);
   // Act
   fireEvent.click(screen.getByText('Leave a Review'));
-  await waitFor(() => screen.getByRole('heading'));
+  await waitFor(() => { throw Error(); });
 
   // await waitFor(() => screen.getByRole('button', { name: /more reviews/i }));
   // Assert

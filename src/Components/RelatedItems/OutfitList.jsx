@@ -4,19 +4,22 @@ import OutfitCards from './OutfitCards.jsx';
 const OutfitList = ({ product }) => {
   const [savedItems, setSavedItems] = useState(null);
   const [storage, setStorage] = useState({...localStorage})
+  // const [move, setMove] = useState(storage.length)
   const [index, setIndex] = useState(0);
 
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
       newIndex = 0;
-    } else if (newIndex >= storage.length) {
-      newIndex = storage.length - 1;
+    } else if (newIndex >= savedItems.length) {
+      newIndex = savedItems.length - 1;
     }
     setIndex(newIndex);
   }
 
   useEffect(() => {
-    setSavedItems(Object.values(storage));
+    if (storage) {
+      setSavedItems(Object.values(storage));
+    }
   }, [storage])
 
   const addToList = (e) => {
@@ -27,24 +30,31 @@ const OutfitList = ({ product }) => {
 
   return (
    <div className='outer-container'>
-     <button className='carousel-button carousel-button-left' value='<' onClick={() => {updateIndex(index - 1)}}></button>
+     {index !== 0 &&
+     <button className='carousel-button carousel-button-left' value='<' onClick={() => {updateIndex(index - 1)}}>
+       <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-left.png"/>
+     </button>
+     }
         <div className='carousel'>
           <div className='related-box' style={{transform: `translateX(-${index * 50}%)`}} >
-     <div className='card' style={{width: '50%'}}>
+     <div className='card' >
        <div className='card-grid' onClick={addToList}>
-         <img className='img' src=''></img>
-         <div className='card-text'>Add Item to Your Outfit List</div>
+         <img className='img add-icon' src="https://img.icons8.com/fluency-systems-regular/96/000000/add--v1.png"></img>
+         <div className='card-text'>
+           <div>Add Item to Your Outfit List</div>
+         </div>
        </div>
        </div>
      {savedItems &&
      savedItems.map((item, i) => {
-     return <OutfitCards item={item} key={i} />
+     return <OutfitCards item={item} key={i} setStorage={setStorage} />
      })
      }
         </div>
      </div>
-     {index !== storage.length - 2 &&
+     {savedItems && index < savedItems.length -1 &&
           <button className='carousel-button carousel-button-right' value='>' onClick={() => {updateIndex(index + 1)}}>
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
           </button>
           }
      </div>

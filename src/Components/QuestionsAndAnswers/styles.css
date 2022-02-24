@@ -7,18 +7,17 @@
   flex-direction: column;
   backdrop-filter: blur(6px);
   position: fixed;
-  display: flex;
   justify-content: center;
-  align-items: center;
   left: 0;
   top: 0;
+  z-index: 1000
 }
 
 
 .modalCloseBtn {
   display: flex;
   justify-content: flex-start;
-  width: 25px
+  width: 50px
 }
 
 .modalCloseBtn button {
@@ -43,15 +42,17 @@
  .body {
   flex: 50%;
   display: flex;
-  justify-content: center;
+  /* justify-c/ontent: center; */
   align-items: center;
   font-size: 12px;
-  text-align: center;
+  /* text-align: center; */
 }
+
 
 .qa-set {
   columns: 2;
   display: flex;
+  align-items: baseline;
   position: relative;
   border-style: dotted;
   justify-content: flex-start;
@@ -70,7 +71,7 @@
   border-style: ridge;
   width: 140px;
   justify-content: flex-start;
-  margin: 0 20px 20px 0
+
 }
 
 .answerMisc {

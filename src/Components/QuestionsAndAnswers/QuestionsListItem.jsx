@@ -11,9 +11,11 @@ class QuestionsListItem extends React.Component {
     this.state = {
       a: {},
       openModal: false,
+      photos: [],
     };
     this.getAnswers = this.getAnswers.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +28,10 @@ class QuestionsListItem extends React.Component {
     if (questionInfo && questionInfo.question_id !== prevProps.questionInfo.question_id) {
       this.getAnswers(questionInfo.question_id);
     }
+  }
+
+  handleSubmit(photos) {
+    this.setState({photos});
   }
 
   getAnswers(questionId) {
@@ -46,9 +52,6 @@ class QuestionsListItem extends React.Component {
   }
 
   render() {
-    // console.log('productID: ', this.props.productInfo.name);
-    // console.log('questionID: ', this.props.questionInfo.question_id);
-    // console.log('questionBody: ', this.props.questionInfo.question_body);
     const { productInfo, questionInfo, getQuestions } = this.props;
     const { a, openModal } = this.state;
     return (
@@ -56,13 +59,15 @@ class QuestionsListItem extends React.Component {
         <div className="qa-set">
           <QuestionHelpful productInfo={productInfo} questionInfo={questionInfo} getQuestions={getQuestions} />
           <span className="questionBody">
-            Q: {questionInfo.question_body}
+            Q:
+            {' '}
+            {questionInfo.question_body}
             {Object.values(a).length === 0 ? null : (<AnswersList productInfo={productInfo} questionInfo={questionInfo} answers={a || null} />)}
           </span>
         </div>
         <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button>
         <br />
-        {openModal && <AnswerModal productInfo={productInfo} questionInfo={questionInfo} closeModal={this.closeModal} getAnswers={this.getAnswers} />}
+        {openModal && <AnswerModal productInfo={productInfo} questionInfo={questionInfo} closeModal={this.closeModal} getAnswers={this.getAnswers} handleSubmit={this.handleSubmit} />}
         <br />
       </div>
     );
