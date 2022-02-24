@@ -86,6 +86,7 @@ class App extends React.Component {
 
     return product && (
       <>
+        <div id="qa-portal"></div>
         <div className="top-bar">
           <h1>Clerical</h1>
           <img className="logoPicture" alt="logo" src="https://www.dndbeyond.com/avatars/thumbnails/6/371/420/618/636272706155064423.png" />
