@@ -107,11 +107,15 @@ class ReviewTile extends React.Component {
         {response ? `Response from seller: ${response}` : null}
         {recommend ? 'recommended ✔' : null}
         <br />
-        <ReviewPhotos photos={photos} />
+        {photos
+          ? <ReviewPhotos photos={photos} />
+          : <div />}
         <br />
         Was this review helpful?
-        <Button disabled={this.state.disableHelpButton} onClick={this.updateHelpfulness}>Yes</Button>
-        {this.state.helpfulness}
+        <div>
+          <Button disabled={this.state.disableHelpButton} onClick={this.updateHelpfulness}>Yes</Button>
+          {this.state.helpfulness}
+        </div>
         {/* <Button>No</Button>
         <Button onClick={this.updateReported}>Report</Button> */}
       </div>

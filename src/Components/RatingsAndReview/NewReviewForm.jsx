@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import ReviewPhotos from './ReviewPhotos.jsx';
+import ReactDom from 'react-dom';
 
 function StarPicker({description, name, onChange, value}) {
   return (
@@ -229,7 +230,7 @@ class NewReviewForm extends React.Component {
         </button>
       );
     }
-    return (
+    return ReactDom.createPortal(
       <div className="newReviewModalBackground">
         <div className="newReviewModalContainer">
           <div className="right">
@@ -291,7 +292,8 @@ class NewReviewForm extends React.Component {
             </p>
           </form>
         </div>
-      </div>
+      </div>,
+      document.getElementById('new-review'),
     );
   }
 }
