@@ -174,7 +174,14 @@ app.post('/reviews', (req, res) => {
     });
 });
 
-// app.post('/products', Controller.controller.post);
+app.post('/interactions', (req, res) => {
+  Controller.postInteractions(req.body)
+    .then(() => res.sendStatus(202))
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(422);
+    });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

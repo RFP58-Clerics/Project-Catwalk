@@ -47,4 +47,6 @@ module.exports = {
 
   postReview: (body) => axios.post('/reviews', body),
 
+  postInteractions: (body) => axios.post('/interactions', body),
+
 };
