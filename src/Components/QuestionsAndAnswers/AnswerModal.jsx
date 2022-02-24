@@ -9,9 +9,11 @@ class AnswerModal extends React.Component {
       body: '',
       name: '',
       email: '',
+      photos: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.uploadPhoto = this.uploadPhoto.bind(this);
   }
 
   handleChange(event) {
@@ -27,6 +29,7 @@ class AnswerModal extends React.Component {
       body: this.state.body,
       name: this.state.name,
       email: this.state.email,
+      photos: this.state.photos,
     };
     axios.post(`/qa/questions/${this.props.questionInfo.question_id}/answers`, obj)
       .then(() => {
@@ -38,6 +41,7 @@ class AnswerModal extends React.Component {
           body: '',
           name: '',
           email: '',
+          photos: '',
         });
       })
       .catch((err) => {
@@ -45,14 +49,35 @@ class AnswerModal extends React.Component {
       });
   }
 
+  uploadPhoto(event) {
+    const data = new FormData();
+    data.append('file', event.target.files[0]);
+    data.append('upload_preset', 'catwalk');
+    data.append('cloud_name', 'dgdqzfkbf');
+    axios.post('https://api.cloudinary.com/v1_1/dgdqzfkbf/image/upload', data)
+      .then((res) => {
+        const { data: imageData } = res;
+        this.setState((oldState) => ({
+          photos: [...oldState.photos, imageData.url],
+        }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  submittedPhotos() {
+    this.props.handleSubmit(this.state.photos);
+  }
+
   render() {
     return ReactDom.createPortal(
       <div className="modal-background">
         <div className="modal-container">
-          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> X </button>
+          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> Close </button>
           <div className='title'>
-            <h1> Submit Your Answer </h1>
-            <h3> {this.props.productInfo.name} : {this.props.questionInfo.question_body}</h3>
+            <h4> Submit Your Answer </h4>
+            <h5> {this.props.productInfo.name} : {this.props.questionInfo.question_body}</h5>
           </div>
           <div className="body">
             <form onSubmit={this.handleSubmit}>
@@ -100,6 +125,10 @@ class AnswerModal extends React.Component {
               />
               <br />
               For authentication reasons, you will not be emailed” will appear
+              <br />
+              <br />
+              <span>Upload photos: </span>
+              {this.state.photos.length < 5 ? <input type="file" onChange={this.uploadPhoto} placeholder="photos" /> : 'Maximum upload met'}
               <br />
               <br />
               <input

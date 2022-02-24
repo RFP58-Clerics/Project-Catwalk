@@ -49,10 +49,10 @@ class QuestionModal extends React.Component {
     return ReactDom.createPortal(
       <div className="modal-background">
         <div className="modal-container">
-          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> X </button>
+          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> Close </button>
           <div className='title'>
-            <h1> Ask Your Question </h1>
-            <h4> About the {this.props.productInfo.name}</h4>
+            <h4> Ask Your Question </h4>
+            <h5> About the {this.props.productInfo.name}</h5>
           </div>
           <div className="body">
             <form onSubmit={this.handleSubmit}>
