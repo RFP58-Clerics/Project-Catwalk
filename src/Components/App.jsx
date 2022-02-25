@@ -99,7 +99,7 @@ class App extends React.Component {
         <div className="top-bar">
           <div id="new-review" />
           <h1>Clerical</h1>
-          <img className="logoPicture" alt="logo" src="https://www.dndbeyond.com/avatars/thumbnails/6/371/420/618/636272706155064423.png" />
+          {/* <img className="logoPicture" alt="logo" src="https://www.dndbeyond.com/avatars/thumbnails/6/371/420/618/636272706155064423.png" /> */}
           <form onSubmit={this.handleSubmit}>
             <input type="text" placeholder="Search for a product..." value={searchTerm} onChange={this.searchProducts} onFocus={this.showSearch} onBlur={() => setTimeout(this.hideSearch, 400)} />
             <input type="submit" value="Search" />
