@@ -4,6 +4,18 @@ import axios from 'axios';
 import QuestionHelpful from './QuestionHelpful.jsx';
 import AnswerModal from './AnswerModal.jsx';
 import AnswersList from './AnswersList.jsx';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: #2b2b2b;
+  color: white;
+  font-size: 12px;
+  padding: 12px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.25rem;
+`;
 
 class QuestionsListItem extends React.Component {
   constructor(props) {
@@ -19,19 +31,19 @@ class QuestionsListItem extends React.Component {
   }
 
   componentDidMount() {
-    const {questionInfo} = this.props;
+    const { questionInfo } = this.props;
     this.getAnswers(questionInfo.question_id);
   }
 
   componentDidUpdate(prevProps) {
-    const {questionInfo} = this.props;
+    const { questionInfo } = this.props;
     if (questionInfo && questionInfo.question_id !== prevProps.questionInfo.question_id) {
       this.getAnswers(questionInfo.question_id);
     }
   }
 
   handleSubmit(photos) {
-    this.setState({photos});
+    this.setState({ photos });
   }
 
   getAnswers(questionId) {
@@ -58,7 +70,7 @@ class QuestionsListItem extends React.Component {
       <div className="qa-set-container">
         <div className="qa-set">
           <QuestionHelpful productInfo={productInfo} questionInfo={questionInfo} getQuestions={getQuestions} />
-          <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button>
+          <Button className="openModalButton" onClick={() => { this.setState({ openModal: true }); }}>Submit Answer</Button>
           <span className="questionBody">
             <b>
               Q:
@@ -67,7 +79,7 @@ class QuestionsListItem extends React.Component {
             </b>
             <div className="answerContainer">
               {Object.values(a).length === 0 ? null : (<AnswersList productInfo={productInfo} questionInfo={questionInfo} answers={a || null} />)}
-            {/* <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button> */}
+              {/* <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button> */}
             </div>
           </span>
         </div>

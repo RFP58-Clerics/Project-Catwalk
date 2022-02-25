@@ -1,6 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 import ReactDom from 'react-dom';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: #2b2b2b;
+  color: white;
+  font-size: 12px;
+  padding: 12px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.25rem;
+`;
 
 class QuestionModal extends React.Component {
   constructor(props) {
@@ -49,7 +61,7 @@ class QuestionModal extends React.Component {
     return ReactDom.createPortal(
       <div className="modal-background">
         <div className="modal-container">
-          <button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> Close </button>
+          <Button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> Close </Button>
           <div className='title'>
             <h4> Ask Your Question </h4>
             <h5> About the {this.props.productInfo.name}</h5>
