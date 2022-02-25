@@ -2,6 +2,7 @@
 .qa-container {
   display: flex;
   justify-content: center;
+  font: Garamond;
 }
 
 .qa-box {
@@ -126,5 +127,5 @@
 
 .scrollAnswers {
   max-height: 100px;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
