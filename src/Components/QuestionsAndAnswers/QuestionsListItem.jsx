@@ -55,7 +55,7 @@ class QuestionsListItem extends React.Component {
     const { productInfo, questionInfo, getQuestions } = this.props;
     const { a, openModal } = this.state;
     return (
-      <div>
+      <div className="qa-set-container">
         <div className="qa-set">
           <QuestionHelpful productInfo={productInfo} questionInfo={questionInfo} getQuestions={getQuestions} />
           <span className="questionBody">
@@ -64,10 +64,12 @@ class QuestionsListItem extends React.Component {
               &nbsp;
               {questionInfo.question_body}
             </b>
-            {Object.values(a).length === 0 ? null : (<AnswersList productInfo={productInfo} questionInfo={questionInfo} answers={a || null} />)}
+            <div className="answerContainer">
+              {Object.values(a).length === 0 ? null : (<AnswersList productInfo={productInfo} questionInfo={questionInfo} answers={a || null} />)}
+            <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button>
+            </div>
           </span>
         </div>
-        <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button>
         <br />
         {openModal && <AnswerModal productInfo={productInfo} questionInfo={questionInfo} closeModal={this.closeModal} getAnswers={this.getAnswers} handleSubmit={this.handleSubmit} />}
         <br />

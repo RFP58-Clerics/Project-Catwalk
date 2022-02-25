@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
+const compression = require('compression');
 const port = 3000;
 const Controller = require('./Controller');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('dist'));
+app.use(compression());
 
 app.get('/products', (req, res) => {
   Controller.getProducts(req.query)
