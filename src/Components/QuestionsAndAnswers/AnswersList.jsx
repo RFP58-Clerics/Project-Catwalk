@@ -1,5 +1,17 @@
 import React from 'react';
 import AnswersListItem from './AnswersListItem.jsx';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: #2b2b2b;
+  color: white;
+  font-size: 12px;
+  padding: 12px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.25rem;
+`;
 
 class AnswersList extends React.Component {
   constructor(props) {
@@ -26,7 +38,7 @@ class AnswersList extends React.Component {
     return (
       <div className="scrollAnswers">
         {answers ? Object.values(answers).map((answer, i) => <AnswersListItem productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} answer={answer} key={i}/>) : null }
-        {this.state.showCount < this.props.answers.length && <button onClick={this.handleMoreButton}>More Answers</button>}
+        {this.state.showCount < this.props.answers.length && <Button onClick={this.handleMoreButton}>More Answers</Button>}
       </div>
     );
   }
