@@ -45,11 +45,16 @@
 .searchResults {
   position: absolute;
   background-color: white;
-  padding: 2em;
-  margin: 1em;
+  padding: 5px;
+  margin: 0;
   max-height: 300px;
   overflow: scroll;
   cursor: pointer;
+  top: 28px;
+  border: 1px solid black;
+  border-radius: 0.15rem;
+  z-index: 1;
+  right: 24px;
 }
 
 .compare-container {

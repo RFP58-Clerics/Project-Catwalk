@@ -8,8 +8,8 @@
 
 h1 {
   color: black;
-  font: bold 24px/45px Garamond;
-  letter-spacing: -1px;
+  font: bold 35px/45px Garamond;
+  letter-spacing: 7px;
   padding: 10px;
 }
 
@@ -20,8 +20,21 @@ h1 {
 
 .top-bar {
   font: Garamond;
+  display: flex;
+  justify-content: space-between;
 }
 
 #app {
   font: Garamond;
+}
+
+.searchButton {
+  background: #2b2b2b;
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.25rem;
 }
