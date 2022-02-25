@@ -33,8 +33,10 @@ class QuestionHelpful extends React.Component {
     return (
       <div className="helpful-button">
         Helpful?
+        <div>
         <button disabled={this.state.buttonDisable} onClick={() => { this.handleClick(this.props.questionInfo.question_id) }}> Yes </button>
         {this.state.helpfulness}
+        </div>
       </div>
     );
   }
