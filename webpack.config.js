@@ -44,37 +44,12 @@ const config = {
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],
-<<<<<<< HEAD
-=======
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/i,
-                loader: 'babel-loader',
-            },
-            {
-                test: /\.css$/i,
-                use: [stylesHandler, 'css-loader', 'postcss-loader'],
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: 'asset',
-      },
-
-    // Add your rules for custom modules here
-    // Learn more about loaders from https://webpack.js.org/loaders/
-    ],
->>>>>>> 3c43e0bec398065da79d04cd8082ef8de19bf3c0
   },
 };
 
 module.exports = () => {
   if (isProduction) {
     config.mode = 'production';
-<<<<<<< HEAD
-
-=======
->>>>>>> 3c43e0bec398065da79d04cd8082ef8de19bf3c0
     config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
   } else {
     config.mode = 'development';
