@@ -10,7 +10,7 @@ const Button = styled.button`
   background: #2b2b2b;
   color: white;
   font-size: 12px;
-  padding: 12px;
+  padding: 5px;
   cursor: pointer;
   width: fit-content;
   height: fit-content;
@@ -69,12 +69,14 @@ class QuestionsAndAnswers extends React.Component {
       <div className="qa-container">
         <div className="qa-box">
           <h3>Questions & Answers</h3>
-          <Search className="search" productInfo={this.props.product} questions={this.state.q} copiedQuestions={this.state.copiedQuestions} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
-          <br />
-          <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions} />
-          <br />
-          <Button className='openModalButton' onClick={() => this.setState({ openModal: true })}>Submit Question</Button>
-          {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal} getQuestions={this.getQuestions} />}
+          <div className="searchAndQuestions">
+            <Search className="search" productInfo={this.props.product} questions={this.state.q} copiedQuestions={this.state.copiedQuestions} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
+            <br />
+            <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions} />
+            <br />
+            <Button className='openModalButton' onClick={() => this.setState({ openModal: true })}>Submit Question</Button>
+            {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal} getQuestions={this.getQuestions} />}
+          </div>
         </div>
       </div>
     );

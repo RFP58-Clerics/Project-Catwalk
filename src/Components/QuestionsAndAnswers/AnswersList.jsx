@@ -6,7 +6,7 @@ const Button = styled.button`
   background: #2b2b2b;
   color: white;
   font-size: 12px;
-  padding: 12px;
+  padding: 10px;
   cursor: pointer;
   width: fit-content;
   height: fit-content;
@@ -38,7 +38,7 @@ class AnswersList extends React.Component {
     return (
       <div className="scrollAnswers">
         {answers ? Object.values(answers).map((answer, i) => <AnswersListItem productInfo={this.props.productInfo} questionInfo={this.props.questionInfo} answer={answer} key={i}/>) : null }
-        {this.state.showCount < this.props.answers.length && <Button onClick={this.handleMoreButton}>More Answers</Button>}
+        {this.state.showCount < this.props.answers.length && <Button className="moreAnswersBtn" onClick={this.handleMoreButton}>More Answers</Button>}
       </div>
     );
   }

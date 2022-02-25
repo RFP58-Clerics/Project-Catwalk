@@ -1,5 +1,4 @@
 .overview {
-  border: 2px solid gray;
   position: relative;
   display: flex;
   justify-content: center;
@@ -7,7 +6,17 @@
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 1%;
-  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+  box-shadow: 0 2px 45px rgb(0 0 0 / 20%);
+}
+
+.innerview {
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  padding-left: 300px;
+  padding-right: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .imgAndButton {
@@ -54,7 +63,6 @@
   grid-template-columns: 1fr;
   gap: 0.5rem;
   justify-items: center;
-  margin-right: 12%;
   overflow: hidden;
 }
 
@@ -151,6 +159,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  left: 60px;
 }
 
 #moreStyles {
@@ -165,9 +174,21 @@
 .selectSize {
   position: relative;
   margin-right: 5px;
+  padding: 2px;
+	cursor: pointer;
+	border-radius: 0.25rem;
+	background-color: #2b2b2b;
+	list-style: none;
+  color: white
 }
 
 .selectQuantity {
   position: relative;
   margin-right: 5px;
+  padding: 2px;
+	cursor: pointer;
+	border-radius: 0.25rem;
+	background-color: #2b2b2b;
+	list-style: none;
+  color: white
 }

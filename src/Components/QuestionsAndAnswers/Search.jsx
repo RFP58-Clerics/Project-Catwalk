@@ -30,10 +30,9 @@ class Search extends React.Component {
   render() {
     return (
       <form className="searchQuestion">
-        <input type="text" placeholder="Have a question? Search for answers." value={this.state.input} onChange={this.handleChange} />
-        <input className="searchButton" type="submit" value="Search" />
+        <input className="searchQuestionInput" type="text" placeholder="Have a question? Search for answers." value={this.state.input} onChange={this.handleChange} />
+        <input type="submit" value="Search" />
       </form>
-
     );
   }
 }
