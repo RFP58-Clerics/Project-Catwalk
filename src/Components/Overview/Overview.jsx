@@ -157,6 +157,7 @@ class Overview extends React.Component {
   render() {
     return this.state.styles.length === 0 ? null : (
       <div className="overview">
+        <div className="innerview">
         <div className="imgAndButton">
           <button className="resetImgButton" id="button1" onClick={this.resetImg}>X</button>
           <img className="currentPhoto" id="img1" src={this.state.currentPhoto} alt="main style" onClick={this.enlargeImg} />
@@ -219,6 +220,7 @@ class Overview extends React.Component {
               <img className="socialImg" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/pinterest-256.png" onClick={() => window.open("https://www.pinterest.com/", "_blank")}/>
             </div>
           </div>
+        </div>
         </div>
       </div>
     );
