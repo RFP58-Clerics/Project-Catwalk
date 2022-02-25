@@ -76,7 +76,7 @@ const RelatedApp = ({ product }) => {
 
   return curr && (
     <>
-    <div>
+    <div className="related-app">
       <h3 className='related-header'>Related Items</h3>
       <RelatedList related={related} currItem={curr}/>
       <h3 className='related-header'>Outfit List</h3>

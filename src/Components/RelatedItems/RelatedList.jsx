@@ -27,13 +27,13 @@ const RelatedList = ({ related, currItem }) => {
             })}
           </div>
         </div>
-        {index !== related.length - 2 &&
+        {index < related.length - 5 &&
           <button className='carousel-button carousel-button-right' value='>' onClick={() => {updateIndex(index + 1)}}>
             <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
           </button>
           }
     </div>
   )
-}
+};
 
 export default RelatedList;
