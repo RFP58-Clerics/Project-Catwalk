@@ -41,6 +41,11 @@
   cursor: pointer;
 }
 
+.openModalButton {
+  margin-left: 10px;
+  width: 115px;
+}
+
 .modal-container {
   width: 700px;
   height: 450px;
@@ -81,7 +86,8 @@
 
 .questionBody {
   grid-column: 2 / span 7;
-  margin-top: 20px;
+  grid-row: 1;
+  margin-top: 10px;
 }
 
 .answer {
@@ -104,8 +110,9 @@
 .helpful-button {
   display: flex;
   justify-content: flex-start;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 20px;
+  height: 50%;
 
 }
 
@@ -126,6 +133,11 @@
 }
 
 .scrollAnswers {
-  max-height: 100px;
-  /* overflow: scroll; */
+  max-height: 169px;
+  overflow: scroll;
+}
+
+.moreQuestionsBtn {
+  margin-left: 45%;
+  width: 132px;
 }

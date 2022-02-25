@@ -4,6 +4,18 @@ import axios from 'axios';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionsList.jsx';
 import QuestionModal from './QuestionModal.jsx';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: #2b2b2b;
+  color: white;
+  font-size: 12px;
+  padding: 12px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.25rem;
+`;
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
@@ -61,7 +73,7 @@ class QuestionsAndAnswers extends React.Component {
           <br />
           <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions} />
           <br />
-          <button className='openModalButton' onClick={() => this.setState({ openModal: true })}>Submit Question</button>
+          <Button className='openModalButton' onClick={() => this.setState({ openModal: true })}>Submit Question</Button>
           {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal} getQuestions={this.getQuestions} />}
         </div>
       </div>
