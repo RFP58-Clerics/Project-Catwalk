@@ -12,6 +12,17 @@ app.use(compression());
 app.get('/products', (req, res) => {
   Controller.getProducts(req.query)
     .then((result) => {
+       // send a ping approx every 2 seconds
+  var timer = setInterval(function () {
+    res.write('data: ping\n\n')
+
+    // !!! this is the important part
+    res.flush()
+  }, 2000)
+
+  res.on('close', function () {
+    clearInterval(timer)
+  })
       res.send(result.data);
     })
     .catch((err) => {
@@ -32,12 +43,36 @@ app.get('/products/:productId/reviews', (req, res) => {
 
 app.get('/related', (req, res) => {
   Controller.getRelated(req.query.id)
-    .then((result) => res.send(result.data));
+    .then((result) => {
+       // send a ping approx every 2 seconds
+  var timer = setInterval(function () {
+    res.write('data: ping\n\n')
+
+    // !!! this is the important part
+    res.flush()
+  }, 2000)
+
+  res.on('close', function () {
+    clearInterval(timer)
+  })
+      res.send(result.data);
+    });
 });
 
 app.get('/getOne', (req, res) => {
   Controller.getOne(req.query.id)
     .then((result) => {
+       // send a ping approx every 2 seconds
+  var timer = setInterval(function () {
+    res.write('data: ping\n\n')
+
+    // !!! this is the important part
+    res.flush()
+  }, 2000)
+
+  res.on('close', function () {
+    clearInterval(timer)
+  })
       res.send(result.data);
     });
 });
