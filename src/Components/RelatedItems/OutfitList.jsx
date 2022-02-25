@@ -52,7 +52,7 @@ const OutfitList = ({ product }) => {
      }
         </div>
      </div>
-     {savedItems && index < savedItems.length -1 &&
+     {savedItems && index < savedItems.length -4 &&
           <button className='carousel-button carousel-button-right' value='>' onClick={() => {updateIndex(index + 1)}}>
             <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
           </button>

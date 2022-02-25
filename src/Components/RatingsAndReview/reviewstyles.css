@@ -241,10 +241,19 @@
     background-color: grey;
 }
 
+.rarApp {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 .rarBlock {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
+  justify-items: flex-start;
+}
+
+.rarBlockLeft {
+  margin-left: 70px;
 }
 
 .characteristics {
