@@ -67,8 +67,10 @@ class RatingBreakdown extends React.Component {
             </div>
           ))
         }
-        {parseFloat(recommended * 100).toFixed(1)}% Recommended&nbsp;
-        <progress max={100} value={recommended * 100} />
+        <div>
+          {parseFloat(recommended * 100).toFixed(1)}% Recommended&nbsp;
+          <progress className="recommendedBar" max={100} value={recommended * 100} />
+        </div>
       </div>
     );
   }

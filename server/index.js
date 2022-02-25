@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
+const compression = require('compression');
 const port = 3000;
 const Controller = require('./Controller');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('dist'));
+app.use(compression());
 
 app.get('/products', (req, res) => {
   Controller.getProducts(req.query)
@@ -174,7 +176,14 @@ app.post('/reviews', (req, res) => {
     });
 });
 
-// app.post('/products', Controller.controller.post);
+app.post('/interactions', (req, res) => {
+  Controller.postInteractions(req.body)
+    .then(() => res.sendStatus(202))
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(422);
+    });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
