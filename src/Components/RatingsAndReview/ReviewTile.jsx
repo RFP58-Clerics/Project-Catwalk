@@ -113,7 +113,9 @@ class ReviewTile extends React.Component {
         <br />
         Was this review helpful?
         <div>
-          <Button disabled={this.state.disableHelpButton} onClick={this.updateHelpfulness}>Yes</Button>
+          <Button disabled={this.state.disableHelpButton} onClick={this.updateHelpfulness}>
+            Yes
+          </Button>
           {this.state.helpfulness}
         </div>
         {/* <Button>No</Button>
