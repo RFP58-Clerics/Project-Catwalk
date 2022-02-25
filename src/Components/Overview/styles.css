@@ -6,6 +6,8 @@
   border-radius: 1.25rem;
   margin-left: 10%;
   margin-right: 10%;
+  margin-top: 1%;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
 }
 
 .imgAndButton {
@@ -116,26 +118,31 @@
 
 .productName {
   position: relative;
-  font: italic small-caps bold 20px Garamond;
+  font: italic small-caps bold 37px Garamond;
 }
 
 .productSlogan {
   position: relative;
-  font: italic small-caps bold 10px Garamond;
+  font: italic small-caps bold 16px Garamond;
 }
 
 .productPriceNoSale {
   position: relative;
+  margin-top: 30px;
+  font-size: 20px;
 }
 
 .productPriceSale {
   position: relative;
   text-decoration: line-through;
+  margin-top: 30px;
+  font-size: 20px;
 }
 
 
 .salePrice {
   position: relative;
+  font-size: 20px;
   color: red;
 }
 
@@ -157,8 +164,10 @@
 
 .selectSize {
   position: relative;
+  margin-right: 5px;
 }
 
 .selectQuantity {
   position: relative;
+  margin-right: 5px;
 }
