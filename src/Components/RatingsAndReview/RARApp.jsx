@@ -55,7 +55,7 @@ class RARApp extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if ((this.props.product && this.props.product.id !== prevProps.product.id)
-    || this.state.sort !== prevState.sort) {
+      || this.state.sort !== prevState.sort) {
       // console.log(this.props.product);
       this.getReviews(this.props.product.id);
       this.getMeta(this.props.product.id);
@@ -145,7 +145,7 @@ class RARApp extends React.Component {
       <div className="rarApp" onClick={onClick} id="scroll">
         <div className="rarBlock">
           <div>
-            <h3>Ratings and Reviews</h3>
+            <h3 style={{ borderBottom: '1px solid grey' }}>Ratings and Reviews</h3>
             <div>
               <div className="reviewInfo">
                 {reviews.length}
@@ -166,16 +166,17 @@ class RARApp extends React.Component {
               productId={product.id}
             />
             <div className="characteristics">
-              { characteristics }
+              {characteristics}
             </div>
           </div>
           <div className="reviewlist">
             <label>Sort on:</label>
-              <select value={sort} onChange={this.changeSort} name="sort" id="sort">
-                <option value="relevant">Relevant</option>
-                <option value="helpful">Helpful</option>
-                <option value="newest">Newest</option>
-              </select>
+            &nbsp;
+            <select className="sortSelector" value={sort} onChange={this.changeSort} name="sort" id="sort">
+              <option value="relevant">Relevant</option>
+              <option value="helpful">Helpful</option>
+              <option value="newest">Newest</option>
+            </select>
             <Reviews reviews={reviews} />
           </div>
         </div>

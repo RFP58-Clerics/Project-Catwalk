@@ -269,3 +269,14 @@
 .recommendedBar {
   margin-top: 10px;
 }
+
+.sortSelector {
+  position: relative;
+  margin-right: 5px;
+  padding: 2px;
+	cursor: pointer;
+	border-radius: 0.25rem;
+	background-color: #2b2b2b;
+	list-style: none;
+  color: white;
+}
