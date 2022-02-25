@@ -11,6 +11,7 @@ const Button = styled.button`
   cursor: pointer;
   width: fit-content;
   height: fit-content;
+  border-radius: 0.25rem;
 `;
 
 class Reviews extends React.Component {

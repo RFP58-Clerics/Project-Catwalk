@@ -1,12 +1,24 @@
 import React from 'react';
 import axios from 'axios';
 import _ from 'underscore';
+import styled from 'styled-components';
 import ProductDetails from './ProductDetails.jsx';
 import ProductPhotos from './ProductPhotos.jsx';
 import MoreStyles from './MoreStyles.jsx';
 import SelectSize from './SelectSize.jsx';
 import SelectQuantity from './SelectQuantity.jsx';
 import './styles.css';
+
+const Button = styled.button`
+  background: #2b2b2b;
+  border-radius: .25rem;
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+`;
 
 class Overview extends React.Component {
   constructor(props) {
@@ -197,14 +209,14 @@ class Overview extends React.Component {
                 />
               ))}
             </select>
-            <button className="cartButton" onClick={this.handleClick}>Add to cart</button>
+            <Button className="cartButton" onClick={this.handleClick}>Add to cart</Button>
           </div>
           <div className="shareButtonsContainer">
             <div className="shareButtons">
-              <img className="socialImg" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-facebook_-256.png" />
-              <img className="socialImg" src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_instagram-256.png" />
-              <img className="socialImg" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter2_colored_svg-256.png" />
-              <img className="socialImg" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/pinterest-256.png" />
+              <img className="socialImg" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-facebook_-256.png" onClick={() => window.open("https://www.facebook.com/", "_blank")}/>
+              <img className="socialImg" src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_instagram-256.png" onClick={() => window.open("https://www.instagram.com/", "_blank")}/>
+              <img className="socialImg" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter2_colored_svg-256.png" onClick={() => window.open("https://www.twitter.com/", "_blank")}/>
+              <img className="socialImg" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/pinterest-256.png" onClick={() => window.open("https://www.pinterest.com/", "_blank")}/>
             </div>
           </div>
         </div>

@@ -9,10 +9,11 @@ const Button = styled.button`
   background: #2b2b2b;
   color: white;
   font-size: 12px;
-  padding: 12px;
+  padding: 5px;
   cursor: pointer;
   width: fit-content;
   height: fit-content;
+  border-radius: 0.25rem;
 `;
 
 class ReviewTile extends React.Component {
@@ -116,10 +117,9 @@ class ReviewTile extends React.Component {
           <Button disabled={this.state.disableHelpButton} onClick={this.updateHelpfulness}>
             Yes
           </Button>
+          &nbsp;
           {this.state.helpfulness}
         </div>
-        {/* <Button>No</Button>
-        <Button onClick={this.updateReported}>Report</Button> */}
       </div>
     );
   }
