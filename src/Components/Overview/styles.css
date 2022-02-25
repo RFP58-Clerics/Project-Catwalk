@@ -1,134 +1,164 @@
 .overview {
-  border: 5px solid gray;
-  background: gray;
+  border: 2px solid gray;
   position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius: 1.25rem;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.imgAndButton {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
+  justify-items: center;
 }
 
 .currentPhoto {
   position: relative;
-  top: 100px;
-  left: 600px;
-  height: 750px;
-  width: 500px;
+  max-width: 500px;
+  max-height: 500px;
+  margin-top: 20px;
 }
 
+.thumbnailWrapper {
+  position: relative;
+  width: 240px;
+  bottom: 55px;
+}
+
+
 .productThumbnails {
-  position: absolute;
   display: flex;
-  flex-direction: column;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 #productPhotos {
   position: relative;
-  left: 20px;
-  bottom: 700px;
-  padding: 5px;
-  width: 80px;
+  width: 11%;
 }
 
-.shareButtons {
+#button1 {
   position: relative;
+  left: 318px;
+  bottom: 100px;
+  display: none;
+}
+
+.rightSide {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  justify-items: center;
+  margin-right: 12%;
+  overflow: hidden;
+}
+
+.catRev {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.shareButtonsContainer {
+  display: flex;
+  max-height: 40px;
+  max-width: 120px;
   cursor: pointer;
-  background: gray;
+}
+
+.socialImg {
+  height: 50%;
 }
 
 .cartButton{
   position: relative;
   cursor: pointer;
-  bottom: 150px;
-  left: 1115px;
 }
 
 .productDetailsContainer{
   display: flex;
   position: relative;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#productDescription {
+.nameGang {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productDescription {
   position: relative;
-  top: 50px;
-  left: 300px;
-  font: italic small-caps bold 20px sans-serif;
 }
 
-#productStarRating {
+.productStarRating {
   position: relative;
-  bottom: 652px;
-  left: 1110px;
 }
 
-#productReviews {
+.productReviews {
   position: relative;
-  bottom: 645px;
-  left: 1110px;
-  font: italic small-caps bold 15px sans-serif;
 }
 
-#productReviews:hover {
+.productReviews:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-#productCategory {
+.productCategory {
   position: relative;
-  font: italic small-caps bold 20px sans-serif;
-  left: 1110px;
-  bottom: 50px;
+  margin-top: 10px;
 }
 
-#productName {
+.productName {
   position: relative;
-  font: italic small-caps bold 30px/30px sans-serif;
-  left: 1110px;
-  bottom: 50px;
+  font: italic small-caps bold 20px Garamond;
 }
 
-#productPriceNoSale {
+.productSlogan {
   position: relative;
-  font: italic small-caps bold 20px/30px sans-serif;
-  left: 1110px;
-  bottom: 50px;
+  font: italic small-caps bold 10px Garamond;
 }
 
-#productPriceSale {
+.productPriceNoSale {
   position: relative;
-  font: italic small-caps bold 20px/30px sans-serif;
-  left: 1110px;
-  bottom: 50px;
+}
+
+.productPriceSale {
+  position: relative;
   text-decoration: line-through;
 }
 
 
-#salePrice {
+.salePrice {
   position: relative;
-  font: italic small-caps bold 20px/30px sans-serif;
-  left: 1110px;
-  bottom: 50px;
   color: red;
 }
 
 .stylesContainer {
   position: relative;
-  bottom: 50px;
-  left: 700px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #moreStyles {
   padding: 5px;
-  height: 50px;
+  height: 75px;
+  width: 20%;
+  aspect-ratio: 16/9;
+  object-position: center;
+  object-fit: cover;
 }
 
 .selectSize {
   position: relative;
-  left: 1110px;
-  bottom: 150px;
 }
 
 .selectQuantity {
   position: relative;
-  left: 1110px;
-  bottom: 150px;
 }
