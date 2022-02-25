@@ -1,6 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 import ReactDom from 'react-dom';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: #2b2b2b;
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.25rem;
+`;
 
 class AnswerModal extends React.Component {
   constructor(props) {

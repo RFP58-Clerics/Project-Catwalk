@@ -9,7 +9,7 @@ const Button = styled.button`
   background: #2b2b2b;
   color: white;
   font-size: 12px;
-  padding: 12px;
+  padding: 5px;
   cursor: pointer;
   width: fit-content;
   height: fit-content;
@@ -46,7 +46,9 @@ class AnswerHelpful extends React.Component {
     return (
       <div className="helpful">
         Helpful?
+        &nbsp;
         <Button disabled={this.state.buttonDisable} onClick={() => { this.handleClick(this.props.answerInfo.answer_id) }}> Yes </Button>
+        &nbsp;
         {this.state.helpfulness}
       </div>
     );
