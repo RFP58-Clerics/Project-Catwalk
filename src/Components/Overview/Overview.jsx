@@ -180,7 +180,7 @@ class Overview extends React.Component {
           </div>
           <div className="cartGang">
             <select className="selectSize" onChange={this.changeSize}>
-              <option selected>Select size</option>
+              <option defaultValue>Select size</option>
               {this.state.skus.map((sku, index) => (
                 <SelectSize
                   sku={sku}
@@ -189,7 +189,7 @@ class Overview extends React.Component {
               ))}
             </select>
             <select className="selectQuantity" onChange={this.changeQty}>
-              <option selected>Select quantity</option>
+              <option defaultValue>Select quantity</option>
               {this.state.qty.map((qty, index) => (
                 <SelectQuantity
                   qty={qty}
