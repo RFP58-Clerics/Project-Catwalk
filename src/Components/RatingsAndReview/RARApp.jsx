@@ -143,31 +143,42 @@ class RARApp extends React.Component {
 
     return (
       <div className="rarApp" onClick={onClick} id="scroll">
-        <div>
-          <h3>Ratings and Reviews</h3>
-          <StarRating rating={starRating} />
-          {reviews.length}
-          Reviews
-          <br />
-          <RatingBreakdown
-            filterReviews={this.setReviewFilter}
-            filter={filter}
-            productId={product.id}
-          />
-          <NewReviewForm
-            getReviews={this.getReviews}
-            product={product}
-            characteristics={meta.characteristics}
-          />
-          <label>Sort on:</label>
-          <select value={sort} onChange={this.changeSort} name="sort" id="sort">
-            <option value="relevant">Relevant</option>
-            <option value="helpful">Helpful</option>
-            <option value="newest">Newest</option>
-          </select>
+        <div className="rarBlock">
+          <div>
+            <h3>Ratings and Reviews</h3>
+            <div>
+              <div className="reviewInfo">
+                {reviews.length}
+                &nbsp;
+                Reviews
+                <br />
+                <NewReviewForm
+                  getReviews={this.getReviews}
+                  product={product}
+                  characteristics={meta.characteristics}
+                />
+              </div>
+              <StarRating rating={starRating} />
+            </div>
+            <RatingBreakdown
+              filterReviews={this.setReviewFilter}
+              filter={filter}
+              productId={product.id}
+            />
+            <div className="characteristics">
+              { characteristics }
+            </div>
+          </div>
+          <div className="reviewlist">
+            <label>Sort on:</label>
+              <select value={sort} onChange={this.changeSort} name="sort" id="sort">
+                <option value="relevant">Relevant</option>
+                <option value="helpful">Helpful</option>
+                <option value="newest">Newest</option>
+              </select>
+            <Reviews reviews={reviews} />
+          </div>
         </div>
-        <Reviews reviews={reviews} />
-        { characteristics }
       </div>
     );
   }

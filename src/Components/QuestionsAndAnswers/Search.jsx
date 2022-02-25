@@ -10,20 +10,20 @@ class Search extends React.Component {
   }
 
   handleChange(event) {
-    // console.log('etv: ', event.target.value);
-    // console.log('etv: ', event.target.value.length);
-    this.setState({ input: event.target.value });
+    event.preventDefault();
     const searchedWord = event.target.value;
+    this.setState({
+      input: searchedWord,
+    });
+
     let newFilter = [];
     if (searchedWord.length >= 3) {
-      console.log('im in IF block');
-      newFilter = this.props.questions.filter((question) => (
+      newFilter = this.props.copiedQuestions.filter((question) => (
         question.question_body.toLowerCase().includes(searchedWord.toLowerCase())
       ));
-      // console.log('newFilter: ', newFilter);
       this.props.handleSearch(newFilter);
     } else {
-      this.props.getQuestions(this.props.productInfo.id);
+      this.props.handleSearch(this.props.copiedQuestions);
     }
   }
 

@@ -36,11 +36,18 @@ class App extends React.Component {
     });
   }
 
-  handleInteraction(event, widget) {
-    // event.target
-    console.log(widget);
-    console.log(event.target);
-    console.log(new date);
+  handleInteraction(event, widge) {
+    const elem = event.target;
+    const html = elem.outerHTML;
+
+    axios.post('/interactions', {
+      element: html,
+      widget: widge,
+      time: new Date(),
+    })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   getData() {
@@ -88,7 +95,9 @@ class App extends React.Component {
 
     return product && (
       <>
+        <div id="qa-portal"></div>
         <div className="top-bar">
+          <div id="new-review" />
           <h1>Clerical</h1>
           <img className="logoPicture" alt="logo" src="https://www.dndbeyond.com/avatars/thumbnails/6/371/420/618/636272706155064423.png" />
           <form onSubmit={this.handleSubmit}>

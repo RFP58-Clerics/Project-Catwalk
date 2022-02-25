@@ -17,8 +17,8 @@ function ReviewPhotos({ photos }) {
           <div style={{display: 'inline-block'}} key={photoUrl}>
             <img
               className="reviewThumbnail"
-              alt=""
               src={photoUrl}
+              alt="no image available"
               onClick={() => { setOpenPhotoModal({ url: photoUrl }); }}
             />
           </div>
