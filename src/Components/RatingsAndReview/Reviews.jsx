@@ -1,6 +1,17 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import './reviewstyles.css';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: #2b2b2b;
+  color: white;
+  font-size: 12px;
+  padding: 12px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+`;
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -26,7 +37,7 @@ class Reviews extends React.Component {
           {reviews.map((review, key) => <ReviewTile review={review} key={key} />)}
         </div>
         { this.state.showCount < this.props.reviews.length
-          && <button onClick={this.handleMoreButton}>More Reviews</button>}
+          && <Button onClick={this.handleMoreButton}>More Reviews</Button>}
       </div>
     );
   }
