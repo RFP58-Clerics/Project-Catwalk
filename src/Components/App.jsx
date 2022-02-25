@@ -39,6 +39,8 @@ class App extends React.Component {
   handleInteraction(event, widget) {
     // event.target
     console.log(widget);
+    console.log(event.target);
+    console.log(new date);
   }
 
   getData() {
