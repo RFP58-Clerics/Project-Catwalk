@@ -48,6 +48,7 @@ function ProductDetails(props) {
           </div>
           <div className="productReviews" onClick={handleClick}>
             Read all
+            {' '}
             {props.reviews.length}
             {' '}
             reviews
