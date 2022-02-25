@@ -58,6 +58,7 @@ class QuestionsListItem extends React.Component {
       <div className="qa-set-container">
         <div className="qa-set">
           <QuestionHelpful productInfo={productInfo} questionInfo={questionInfo} getQuestions={getQuestions} />
+          <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button>
           <span className="questionBody">
             <b>
               Q:
@@ -66,7 +67,7 @@ class QuestionsListItem extends React.Component {
             </b>
             <div className="answerContainer">
               {Object.values(a).length === 0 ? null : (<AnswersList productInfo={productInfo} questionInfo={questionInfo} answers={a || null} />)}
-            <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button>
+            {/* <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button> */}
             </div>
           </span>
         </div>
