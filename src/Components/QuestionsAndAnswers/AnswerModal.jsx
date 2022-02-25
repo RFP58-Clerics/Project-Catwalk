@@ -86,7 +86,7 @@ class AnswerModal extends React.Component {
     return ReactDom.createPortal(
       <div className="modal-background">
         <div className="modal-container">
-          <Button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> Close </Button>
+          <Button className="modalCloseBtn" onClick={() => { this.props.closeModal(); }}> Close </Button>
           <div className='title'>
             <h4> Submit Your Answer </h4>
             <h5> {this.props.productInfo.name} : {this.props.questionInfo.question_body}</h5>
