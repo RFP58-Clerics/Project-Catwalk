@@ -10,11 +10,12 @@ const Button = styled.button`
   background: #2b2b2b;
   color: white;
   font-size: 12px;
-  padding: 12px;
+  padding: 5px;
   cursor: pointer;
   width: fit-content;
   height: fit-content;
   border-radius: 0.25rem;
+  margin-left: 20px;
 `;
 
 class QuestionsListItem extends React.Component {
