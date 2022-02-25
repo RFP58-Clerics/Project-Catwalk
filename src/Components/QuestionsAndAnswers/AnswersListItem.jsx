@@ -15,7 +15,8 @@ const AnswersListItem = ({ answer, productInfo, questionInfo }) => (
         by
         &nbsp;
         {answer.answerer_name.toLowerCase() === 'seller' ? <b> {answer.answerer_name} </b> : answer.answerer_name}
-        ,
+        &nbsp;
+        on
         &nbsp;
         {moment((answer.date).toString()).format('MMM DD, YYYY')}
       </span>
