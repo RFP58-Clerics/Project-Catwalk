@@ -12,6 +12,7 @@ const Button = styled.button`
   cursor: pointer;
   width: fit-content;
   height: fit-content;
+  border-radius: 0.25rem;
 `;
 
 function StarPicker({description, name, onChange, value}) {
@@ -245,7 +246,7 @@ class NewReviewForm extends React.Component {
       <div className="newReviewModalBackground">
         <div className="newReviewModalContainer">
           <div className="right">
-            <button type="button" onClick={this.closeClicked}>Close</button>
+            <Button type="button" onClick={this.closeClicked}>Close</Button>
           </div>
           <h4>Write Your Review</h4>
           <h5>About the {product.name}</h5>
@@ -299,7 +300,7 @@ class NewReviewForm extends React.Component {
               </label>
             </p>
             <p>
-              <input type="submit" value="submit Review" />
+              <Button type="button">Submit Review</Button>
             </p>
           </form>
         </div>
