@@ -2,28 +2,35 @@
   border: 5px solid gray;
   background: gray;
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  width: 1387px;
 }
+
 
 .currentPhoto {
   position: relative;
-  top: 100px;
-  left: 600px;
-  height: 750px;
   width: 500px;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .productThumbnails {
-  position: absolute;
   display: flex;
-  flex-direction: column;
+  position: relative;
+  flex-direction: row;
+  grid-column: 1;
+  grid-row: 1;
+  top: 753px;
 }
 
 #productPhotos {
   position: relative;
-  left: 20px;
-  bottom: 700px;
-  padding: 5px;
-  width: 80px;
+  width: 30px;
+  padding-left: 23px;
 }
 
 .shareButtons {
@@ -35,85 +42,73 @@
 .cartButton{
   position: relative;
   cursor: pointer;
-  bottom: 150px;
-  left: 1115px;
 }
 
 .productDetailsContainer{
   display: flex;
   position: relative;
   flex-direction: column;
+  align-items: center;
+  width: 283px;
 }
 
-#productDescription {
+.productDescription {
   position: relative;
-  top: 50px;
-  left: 300px;
   font: italic small-caps bold 20px sans-serif;
 }
 
-#productStarRating {
+.productStarRating {
   position: relative;
-  bottom: 652px;
-  left: 1110px;
 }
 
-#productReviews {
+.productReviews {
   position: relative;
-  bottom: 645px;
-  left: 1110px;
   font: italic small-caps bold 15px sans-serif;
 }
 
-#productReviews:hover {
+.productReviews:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-#productCategory {
+.productCategory {
   position: relative;
   font: italic small-caps bold 20px sans-serif;
-  left: 1110px;
-  bottom: 50px;
 }
 
-#productName {
+.productName {
   position: relative;
   font: italic small-caps bold 30px/30px sans-serif;
-  left: 1110px;
-  bottom: 50px;
 }
 
-#productPriceNoSale {
+.productSlogan {
   position: relative;
   font: italic small-caps bold 20px/30px sans-serif;
-  left: 1110px;
-  bottom: 50px;
 }
 
-#productPriceSale {
+.productPriceNoSale {
   position: relative;
   font: italic small-caps bold 20px/30px sans-serif;
-  left: 1110px;
-  bottom: 50px;
+}
+
+.productPriceSale {
+  position: relative;
+  font: italic small-caps bold 20px/30px sans-serif;
   text-decoration: line-through;
 }
 
 
-#salePrice {
+.salePrice {
   position: relative;
   font: italic small-caps bold 20px/30px sans-serif;
-  left: 1110px;
-  bottom: 50px;
   color: red;
 }
 
 .stylesContainer {
   position: relative;
-  bottom: 50px;
-  left: 700px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #moreStyles {
@@ -123,18 +118,13 @@
 
 .selectSize {
   position: relative;
-  left: 1110px;
-  bottom: 150px;
 }
 
 .selectQuantity {
   position: relative;
-  left: 1110px;
-  bottom: 150px;
 }
 
 #button1 {
   position: relative;
   display: none;
-  right: 100px;
 }

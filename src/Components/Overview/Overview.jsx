@@ -147,7 +147,6 @@ class Overview extends React.Component {
       <div className="overview">
         <img className="currentPhoto" id="img1" src={this.state.currentPhoto} alt="main style" onClick={this.enlargeImg} />
         <button className="resetImgButton" id="button1" onClick={this.resetImg}>X</button>
-        <br />
         <div className="productThumbnails">
           {this.state.currentStyle ? this.state.currentStyle.photos.map((photo, index) => (
             <>
@@ -169,6 +168,9 @@ class Overview extends React.Component {
               reviews={this.state.reviews}
             />
         </div>
+        <img className="shareButtons" src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png" />
+        <img className="shareButtons" src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png" />
+        <img className="shareButtons" src="https://cdn-icons-png.flaticon.com/32/174/174863.png" />
         <div className="stylesContainer">
           {this.state.styles.results.map((style, index) => (
             <MoreStyles
@@ -178,7 +180,6 @@ class Overview extends React.Component {
             />
           ))}
         </div>
-        <br />
         <select className="selectSize" onChange={this.changeSize}>
           <option selected>Select size</option>
           {this.state.skus.map((sku, index) => (
@@ -198,9 +199,6 @@ class Overview extends React.Component {
           ))}
         </select>
         <button className="cartButton" onClick={this.handleClick}>Add to cart</button>
-        <img className="shareButtons" src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/facebook-32.png" />
-        <img className="shareButtons" src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-32.png" />
-        <img className="shareButtons" src="https://cdn-icons-png.flaticon.com/32/174/174863.png" />
       </div>
     );
   }
