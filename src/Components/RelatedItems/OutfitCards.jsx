@@ -29,7 +29,7 @@ const OutfitCards = ({ item, setStorage }) => {
   }
   return styles.name && (
     <>
-       <div className='card' style={{width: '50%'}}>
+       <div className='card' >
        <button className='card-button related-button' onClick={removeItem}>
        <img className='card-button-img' src="https://img.icons8.com/windows/32/000000/xbox-x.png"/>
        </button>
