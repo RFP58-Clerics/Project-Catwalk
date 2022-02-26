@@ -49,7 +49,7 @@ const RelatedCards = ({ relatedItem, pos, currItem }) => {
       <CompareModal open={isOpen} currItem={currItem} relatedItem={item} pos={pos} onClose={() => setIsOpen(false)}>Compare!</CompareModal>
       <div className='card-grid'>
       {styles.name  &&
-      <img className='img' src={styles.photos[0].thumbnail_url} ></img>
+      <img className='img' src={styles.photos[0].thumbnail_url} alt="No Image Available" ></img>
       }
       <div className='card-text'>
         <ul>{item.name}</ul>

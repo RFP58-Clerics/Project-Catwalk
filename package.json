@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "watch": "webpack --watch",
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
+    "build": "webpack --mode=production --node-env=production --watch",
+    "build:dev": "webpack --mode=development --node-env=development --watch",
     "build:prod": "webpack --mode=production --node-env=production",
     "serve": "webpack serve",
     "start": "nodemon server/index.js"
@@ -29,6 +29,7 @@
     "compression": "^1.7.4",
     "dateformat": "^5.0.2",
     "express": "^4.17.2",
+    "html-webpack-plugin": "^5.5.0",
     "infinite-scroll": "^4.0.1",
     "moment": "^2.29.1",
     "msw": "^0.36.8",
@@ -54,7 +55,6 @@
     "css-loader": "^6.6.0",
     "eslint": "^8.9.0",
     "eslint-config-airbnb": "^19.0.4",
-    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "postcss": "^8.4.6",
     "postcss-loader": "^6.2.1",

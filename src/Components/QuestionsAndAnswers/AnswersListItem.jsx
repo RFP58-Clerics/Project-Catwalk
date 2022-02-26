@@ -3,6 +3,7 @@ import React from 'react';
 import moment from 'moment';
 import AnswerHelpful from './AnswerHelpful.jsx';
 import AnswerReport from './AnswerReport.jsx';
+import ReviewPhotos from '../RatingsAndReview/ReviewPhotos.jsx';
 
 const AnswersListItem = ({ answer, productInfo, questionInfo }) => (
   (
@@ -11,6 +12,8 @@ const AnswersListItem = ({ answer, productInfo, questionInfo }) => (
         A:
         &nbsp;
         {answer.body}
+        <br />
+        {answer.photos ? <ReviewPhotos photos={answer.photos} /> : <div />}
         <br />
         by
         &nbsp;
