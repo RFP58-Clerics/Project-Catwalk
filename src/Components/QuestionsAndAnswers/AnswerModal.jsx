@@ -146,7 +146,7 @@ class AnswerModal extends React.Component {
               <ReviewPhotos photos={this.state.photos} />
               <br />
               <br />
-              <input
+              <input className="searchButton"
                 type="submit"
                 value="Submit"
               />
