@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import ReactDom from 'react-dom';
+import ReviewPhotos from '../RatingsAndReview/ReviewPhotos.jsx';
+
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -21,11 +23,11 @@ class AnswerModal extends React.Component {
       body: '',
       name: '',
       email: '',
-      // photos: '',
+      photos: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.uploadPhoto = this.uploadPhoto.bind(this);
+    this.uploadPhoto = this.uploadPhoto.bind(this);
   }
 
   handleChange(event) {
@@ -41,19 +43,19 @@ class AnswerModal extends React.Component {
       body: this.state.body,
       name: this.state.name,
       email: this.state.email,
-      // photos: this.state.photos,
+      photos: this.state.photos,
     };
     axios.post(`/qa/questions/${this.props.questionInfo.question_id}/answers`, obj)
       .then(() => {
         this.props.getAnswers(this.props.questionInfo.question_id);
       })
       .then((res) => {
-        console.log(res);
+        console.log('res: ', res);
         this.setState({
           body: '',
           name: '',
           email: '',
-          // photos: [],
+          photos: [],
         });
       })
       .catch((err) => {
@@ -61,26 +63,26 @@ class AnswerModal extends React.Component {
       });
   }
 
-  // uploadPhoto(event) {
-  //   const data = new FormData();
-  //   data.append('file', event.target.files[0]);
-  //   data.append('upload_preset', 'catwalk');
-  //   data.append('cloud_name', 'dgdqzfkbf');
-  //   axios.post('https://api.cloudinary.com/v1_1/dgdqzfkbf/image/upload', data)
-  //     .then((res) => {
-  //       const { data: imageData } = res;
-  //       this.setState((oldState) => ({
-  //         photos: [...oldState.photos, imageData.url],
-  //       }));
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
+  uploadPhoto(event) {
+    const data = new FormData();
+    data.append('file', event.target.files[0]);
+    data.append('upload_preset', 'catwalk');
+    data.append('cloud_name', 'dgdqzfkbf');
+    axios.post('https://api.cloudinary.com/v1_1/dgdqzfkbf/image/upload', data)
+      .then((res) => {
+        const { data: imageData } = res;
+        this.setState((oldState) => ({
+          photos: [...oldState.photos, imageData.url],
+        }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-  // submittedPhotos() {
-  //   this.props.handleSubmit(this.state.photos);
-  // }
+  submittedPhotos() {
+    this.props.handleSubmit(this.state.photos);
+  }
 
   render() {
     return ReactDom.createPortal(
@@ -139,10 +141,11 @@ class AnswerModal extends React.Component {
               For authentication reasons, you will not be emailed” will appear
               <br />
               <br />
-              {/* <span>Upload photos: </span>
+              <span>Upload photos: </span>
               {this.state.photos.length < 5 ? <input type="file" onChange={this.uploadPhoto} placeholder="photos" /> : 'Maximum upload met'}
+              <ReviewPhotos photos={this.state.photos} />
               <br />
-              <br /> */}
+              <br />
               <input
                 type="submit"
                 value="Submit"
