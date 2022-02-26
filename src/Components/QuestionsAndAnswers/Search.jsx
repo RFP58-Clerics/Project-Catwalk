@@ -11,6 +11,7 @@ class Search extends React.Component {
 
   handleChange(event) {
     event.preventDefault();
+    const { copiedQuestions, handleSearch } = this.props;
     const searchedWord = event.target.value;
     this.setState({
       input: searchedWord,
@@ -18,19 +19,20 @@ class Search extends React.Component {
 
     let newFilter = [];
     if (searchedWord.length >= 3) {
-      newFilter = this.props.copiedQuestions.filter((question) => (
+      newFilter = copiedQuestions.filter((question) => (
         question.question_body.toLowerCase().includes(searchedWord.toLowerCase())
       ));
-      this.props.handleSearch(newFilter);
+      handleSearch(newFilter);
     } else {
-      this.props.handleSearch(this.props.copiedQuestions);
+      handleSearch(copiedQuestions);
     }
   }
 
   render() {
+    const { input } = this.state;
     return (
       <form className="searchQuestion">
-        <input className="searchQuestionInput" type="text" placeholder="Have a question? Search for answers." value={this.state.input} onChange={this.handleChange} />
+        <input className="searchQuestionInput" type="text" placeholder="Have a question? Search for answers." value={input} onChange={this.handleChange} />
         <input className="searchButton" type="submit" value="Search" />
       </form>
     );

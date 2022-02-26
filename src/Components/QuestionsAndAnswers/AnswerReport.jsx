@@ -24,7 +24,6 @@ class AnswerReport extends React.Component {
   }
 
   handleClick(answerId) {
-    console.log('answerID: ', this.props.answerInfo.answer_id, 'productID: ', this.props.productInfo, 'questionID: ', this.props.questionInfo);
     axios.put(`/qa/answers/${answerId}/report`)
       .then((res) => {
         console.log(res.data);
@@ -36,7 +35,9 @@ class AnswerReport extends React.Component {
   }
 
   render() {
-    return <Button disabled={this.state.buttonDisable} onClick={() => this.handleClick(this.props.answerInfo.answer_id)}> {this.state.text} </Button>
+    const { buttonDisable, text } = this.state;
+    const { answerInfo } = this.props;
+    return <Button disabled={buttonDisable} onClick={() => this.handleClick(answerInfo.answer_id)}> {text} </Button>
   }
 }
 

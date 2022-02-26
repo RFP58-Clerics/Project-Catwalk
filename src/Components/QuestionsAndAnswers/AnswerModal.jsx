@@ -38,16 +38,17 @@ class AnswerModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('questionID passed in: ', this.props.questionInfo.question_id);
-    const obj = {
-      body: this.state.body,
-      name: this.state.name,
-      email: this.state.email,
-      photos: this.state.photos,
-    };
-    axios.post(`/qa/questions/${this.props.questionInfo.question_id}/answers`, obj)
+    const { body, name, email, photos } = this.state;
+    // const obj = {
+    //   body: body,
+    //   name: name,
+    //   email: email,
+    //   photos: photos,
+    // };
+    const { questionInfo } = this.props;
+    axios.post(`/qa/questions/${questionInfo.question_id}/answers`, { body, name, email, photos })
       .then(() => {
-        this.props.getAnswers(this.props.questionInfo.question_id);
+        this.props.getAnswers(questionInfo.question_id);
       })
       .then((res) => {
         console.log('res: ', res);
@@ -81,17 +82,20 @@ class AnswerModal extends React.Component {
   }
 
   submittedPhotos() {
-    this.props.handleSubmit(this.state.photos);
+    const { photos } = this.state;
+    this.props.handleSubmit(photos);
   }
 
   render() {
+    const { closeModal, productInfo, questionInfo } = this.props;
+    const { body, name, email, photos } = this.state;
     return ReactDom.createPortal(
       <div className="modal-background">
         <div className="modal-container">
-          <Button className="modalCloseBtn" onClick={() => { this.props.closeModal(); }}> Close </Button>
+          <Button className="modalCloseBtn" onClick={() => { closeModal(); }}> Close </Button>
           <div className='title'>
             <h4> Submit Your Answer </h4>
-            <h5> {this.props.productInfo.name} : {this.props.questionInfo.question_body}</h5>
+            <h5> {productInfo.name} : {questionInfo.question_body}</h5>
           </div>
           <div className="body">
             <form onSubmit={this.handleSubmit}>
@@ -104,7 +108,7 @@ class AnswerModal extends React.Component {
                 required
                 autoComplete="off"
                 placeholder="Answer..."
-                value={this.state.body}
+                value={body}
                 onChange={this.handleChange}
               />
               <br />
@@ -118,7 +122,7 @@ class AnswerModal extends React.Component {
                 required
                 autoComplete="off"
                 placeholder="Example: jack543!"
-                value={this.state.name}
+                value={name}
                 onChange={this.handleChange}
               />
               <br />
@@ -134,7 +138,7 @@ class AnswerModal extends React.Component {
                 required
                 autoComplete="off"
                 placeholder="Example: jack@email.com"
-                value={this.state.email}
+                value={email}
                 onChange={this.handleChange}
               />
               <br />
@@ -142,7 +146,7 @@ class AnswerModal extends React.Component {
               <br />
               <br />
               <span>Upload photos: </span>
-              {this.state.photos.length < 5 ? <input type="file" onChange={this.uploadPhoto} placeholder="photos" /> : 'Maximum upload met'}
+              {photos.length < 5 ? <input type="file" onChange={this.uploadPhoto} placeholder="photos" /> : 'Maximum upload met'}
               <ReviewPhotos photos={this.state.photos} />
               <br />
               <br />

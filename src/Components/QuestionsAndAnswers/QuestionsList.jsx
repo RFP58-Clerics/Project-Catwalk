@@ -25,24 +25,25 @@ class QuestionsList extends React.Component {
   }
 
   handleMoreButton() {
+    const { clicked } = this.state;
     this.setState(() => ({
-    // this.setState((oldState) => ({
-      // showCount: oldState.showCount + 2,
-      clicked: !this.state.clicked,
+      clicked: !clicked,
     }));
   }
 
   render() {
-    let questions = this.props.questions.slice(0, this.state.showCount);
-    if (this.state.clicked) {
-      questions = this.props.questions.slice();
+    const { questions, productInfo, getQuestions } = this.props;
+    const { showCount, clicked } = this. state;
+    let questionsList = questions.slice(0, showCount);
+    if (clicked) {
+      questionsList = questions.slice();
     } else {
-      questions = this.props.questions.slice(0, this.state.showCount);
+      questionsList = questions.slice(0, showCount);
     }
     return (
       <div className="scrollQuestions questionContent">
-        {questions.map((question, i) => <QuestionsListItem productInfo={this.props.productInfo} questionInfo={question} key={i} getQuestions={this.props.getQuestions} />)}
-        {this.state.showCount < this.props.questions.length && <Button className="moreQuestionsBtn" onClick={this.handleMoreButton}>{this.state.clicked ? 'Collapse Questions' : 'More Questions'}</Button>}
+        {questionsList.map((question, i) => <QuestionsListItem productInfo={productInfo} questionInfo={question} key={i} getQuestions={getQuestions} />)}
+        {showCount < questions.length && <Button className="moreQuestionsBtn" onClick={this.handleMoreButton}>{clicked ? 'Collapse Questions' : 'More Questions'}</Button>}
       </div>
     );
   }

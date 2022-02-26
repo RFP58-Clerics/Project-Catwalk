@@ -31,14 +31,16 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.product) {
-      this.getQuestions(this.props.product.id);
+    const { product } = this.props;
+    if (product) {
+      this.getQuestions(product.id);
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.product && this.props.product.id !== prevProps.product.id) {
-      this.getQuestions(this.props.product.id);
+    const { product } = this.props;
+    if (product && product.id !== prevProps.product.id) {
+      this.getQuestions(product.id);
     }
   }
 
@@ -65,17 +67,19 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
+    const { product } = this.props;
+    const { q, copiedQuestions, openModal } = this.state;
     return (
       <div className="qa-container">
         <div className="qa-box">
           <h3 className="qaHeader">Questions & Answers</h3>
           <div className="searchAndQuestions">
-            <Search className="search" productInfo={this.props.product} questions={this.state.q} copiedQuestions={this.state.copiedQuestions} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
+            <Search className="search" productInfo={product} questions={q} copiedQuestions={copiedQuestions} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
             <br />
-            <QuestionsList productInfo={this.props.product} questions={this.state.q} getQuestions={this.getQuestions} />
+            <QuestionsList productInfo={product} questions={q} getQuestions={this.getQuestions} />
             <br />
             <Button className='openModalButton' onClick={() => this.setState({ openModal: true })}>Submit Question</Button>
-            {this.state.openModal && <QuestionModal productInfo={this.props.product} closeModal={this.closeModal} getQuestions={this.getQuestions} />}
+            {openModal && <QuestionModal productInfo={product} closeModal={this.closeModal} getQuestions={this.getQuestions} />}
           </div>
         </div>
       </div>

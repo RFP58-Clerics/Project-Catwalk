@@ -10,6 +10,7 @@
   min-width: 1500px;
   margin-right: 10%;
   margin-left: 10%;
+  margin-bottom: 100px;
 }
 
 .qaHeader {
@@ -136,7 +137,7 @@
 }
 
 .scrollAnswers {
-  max-height: 169px;
+  max-height: 210px;
   overflow: scroll;
 }
 
@@ -166,4 +167,10 @@
 
 .searchQuestionInput {
   width: 33%;
+}
+
+.userInfo {
+  font-size: small;
+  font-style: italic;
+  color:rgb(89, 100, 181)
 }

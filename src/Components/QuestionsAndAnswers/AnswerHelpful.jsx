@@ -19,16 +19,18 @@ const Button = styled.button`
 class AnswerHelpful extends React.Component {
   constructor(props) {
     super(props);
+    const { answerInfo } = this.props;
     this.state = {
-      helpfulness: this.props.answerInfo.helpfulness,
+      helpfulness: answerInfo.helpfulness,
       buttonDisable: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.answerInfo && this.props.answerInfo.answer_id !== prevProps.answerInfo.answer_id) {
-      this.setState({ helpfulness: this.props.answerInfo.helpfulness });
+    const { answerInfo } = this.props;
+    if (answerInfo && answerInfo.answer_id !== prevProps.answerInfo.answer_id) {
+      this.setState({ helpfulness: answerInfo.helpfulness });
     }
   }
 
@@ -43,13 +45,15 @@ class AnswerHelpful extends React.Component {
   }
 
   render() {
+    const { buttonDisable, helpfulness } = this.state;
+    const { answerInfo } = this.props;
     return (
       <div className="helpful">
         Helpful?
         &nbsp;
-        <Button disabled={this.state.buttonDisable} onClick={() => { this.handleClick(this.props.answerInfo.answer_id) }}> Yes </Button>
+        <Button disabled={buttonDisable} onClick={() => { this.handleClick(answerInfo.answer_id); }}> Yes </Button>
         &nbsp;
-        {this.state.helpfulness}
+        {helpfulness}
       </div>
     );
   }
