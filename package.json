@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "watch": "webpack --watch",
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
+    "build": "webpack --mode=production --node-env=production --watch",
+    "build:dev": "webpack --mode=development --node-env=development --watch",
     "build:prod": "webpack --mode=production --node-env=production",
     "serve": "webpack serve",
     "start": "nodemon server/index.js"
