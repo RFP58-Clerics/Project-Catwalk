@@ -6,7 +6,7 @@ function ReviewPhotoModal({photo, closePhotoModal}) {
     <div className="reviewPhotoModalBackground">
       <div className="reviewPhotoModalContainer">
         <div className="reviewPhotoModalCloseBtn">
-          <button onClick={() => closePhotoModal(false)}>Close</button>
+          <button className="searchButton" onClick={() => closePhotoModal(false)}>Close</button>
         </div>
         <div className="body">
             <img className="expandedReviewImg" src={photo.url} alt="" />
