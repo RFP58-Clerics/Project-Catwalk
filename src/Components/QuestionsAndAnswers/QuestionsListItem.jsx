@@ -68,6 +68,7 @@ class QuestionsListItem extends React.Component {
   render() {
     const { productInfo, questionInfo, getQuestions } = this.props;
     const { a, openModal } = this.state;
+    console.log('a state: ', this.state.a)
     return (
       <div className="qa-set-container">
         <div className="qa-set">
