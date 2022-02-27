@@ -50,6 +50,7 @@ class QuestionsListItem extends React.Component {
   getAnswers(questionId) {
     axios.get(`/qa/questions/${questionId}/answers`)
       .then((res) => {
+        console.log("answers: ", res.data);
         res.data.sort((a, b) => b.helpfulness - a.helpfulness);
         this.setState({
           a: res.data,

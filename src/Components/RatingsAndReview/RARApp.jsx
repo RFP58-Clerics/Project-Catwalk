@@ -144,7 +144,7 @@ class RARApp extends React.Component {
     return (
       <div className="rarApp" onClick={onClick} id="scroll">
         <div className="rarBlock">
-          <div>
+          <div className="rarBlockLeft">
             <h3 style={{ borderBottom: '1px solid grey' }}>Ratings and Reviews</h3>
             <div>
               <div className="reviewInfo">

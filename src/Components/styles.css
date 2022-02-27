@@ -1,3 +1,5 @@
+
+
 .logoPicture {
   display: inline-flex;
   justify-content: right;
@@ -5,12 +7,12 @@
   position: relative;
 }
 
-
 h1 {
   color: black;
   font: bold 35px/45px Garamond;
   letter-spacing: 7px;
   padding: 10px;
+  margin-left: 222px;
 }
 
 .compare-container {
@@ -37,4 +39,5 @@ h1 {
   width: fit-content;
   height: fit-content;
   border-radius: 0.25rem;
+  margin-right: 10px;
 }

@@ -12,6 +12,9 @@
   margin-left: 10%;
 }
 
+.qaHeader {
+  text-indent: 70px;
+}
 
 .modal-background {
   width: 100vw;
@@ -48,7 +51,6 @@
 
 .modal-container {
   width: 700px;
-  height: 450px;
   border-radius: 12px;
   background-color: rgb(232, 232, 232);
   box-shadow: black 0px 5px 15px;
@@ -139,7 +141,7 @@
 }
 
 .moreQuestionsBtn {
-  margin-left: 45%;
+  margin-left: 44.65%;
   width: 132px;
 }
 
@@ -154,10 +156,12 @@
 
 .searchAndQuestions {
   min-width: 700px;
-    margin-right: 5%;
-    margin-left: 5%;
-    box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
-    padding: 0.75rem;
+  margin-right: 2.5%;
+  margin-left: 3.5%;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+  padding: 0.75rem;
+  background: white;
+  border-radius: 0.25rem;
 }
 
 .searchQuestionInput {

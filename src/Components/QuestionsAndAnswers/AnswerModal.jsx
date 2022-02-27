@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import ReactDom from 'react-dom';
+import ReviewPhotos from '../RatingsAndReview/ReviewPhotos.jsx';
+
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -21,7 +23,7 @@ class AnswerModal extends React.Component {
       body: '',
       name: '',
       email: '',
-      photos: '',
+      photos: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,12 +50,12 @@ class AnswerModal extends React.Component {
         this.props.getAnswers(this.props.questionInfo.question_id);
       })
       .then((res) => {
-        console.log(res);
+        console.log('res: ', res);
         this.setState({
           body: '',
           name: '',
           email: '',
-          photos: '',
+          photos: [],
         });
       })
       .catch((err) => {
@@ -86,7 +88,7 @@ class AnswerModal extends React.Component {
     return ReactDom.createPortal(
       <div className="modal-background">
         <div className="modal-container">
-          <Button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> Close </Button>
+          <Button className="modalCloseBtn" onClick={() => { this.props.closeModal(); }}> Close </Button>
           <div className='title'>
             <h4> Submit Your Answer </h4>
             <h5> {this.props.productInfo.name} : {this.props.questionInfo.question_body}</h5>
@@ -141,9 +143,10 @@ class AnswerModal extends React.Component {
               <br />
               <span>Upload photos: </span>
               {this.state.photos.length < 5 ? <input type="file" onChange={this.uploadPhoto} placeholder="photos" /> : 'Maximum upload met'}
+              <ReviewPhotos photos={this.state.photos} />
               <br />
               <br />
-              <input
+              <input className="searchButton"
                 type="submit"
                 value="Submit"
               />

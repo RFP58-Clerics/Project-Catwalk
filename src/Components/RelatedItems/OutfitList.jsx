@@ -49,11 +49,18 @@ function OutfitList({ product }) {
           {savedItems
      && savedItems.map((item, i) => <OutfitCards item={item} key={i} setStorage={setStorage} />)}
         </div>
+<<<<<<< HEAD
       </div>
       {savedItems && index < savedItems.length - 4
           && (
           <button type="button" className="carousel-button carousel-button-right" value=">" onClick={() => { updateIndex(index + 1); }}>
             <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png" alt="Unavailable" />
+=======
+     </div>
+     {savedItems && index < savedItems.length -4 &&
+          <button className='carousel-button carousel-button-right' value='>' onClick={() => {updateIndex(index + 1)}}>
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
+>>>>>>> 58af1efcc02b25e9f12e38058c8d8cc091087622
           </button>
           )}
     </div>

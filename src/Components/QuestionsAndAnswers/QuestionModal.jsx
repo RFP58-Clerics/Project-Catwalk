@@ -114,7 +114,7 @@ class QuestionModal extends React.Component {
               For authentication reasons, you will not be emailed
               <br />
               <br />
-              <input
+              <input className="searchButton"
                 type="submit"
                 value="Submit"
               />

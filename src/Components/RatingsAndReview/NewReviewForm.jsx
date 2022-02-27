@@ -83,10 +83,6 @@ class NewReviewForm extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //   this.
-  // }
-
   modalClicked(event) {
     event.preventDefault();
     this.setState({
@@ -300,7 +296,7 @@ class NewReviewForm extends React.Component {
               </label>
             </p>
             <p>
-              <Button type="button">Submit Review</Button>
+              <input className="searchButton" type="submit" value="Submit Review" />
             </p>
           </form>
         </div>

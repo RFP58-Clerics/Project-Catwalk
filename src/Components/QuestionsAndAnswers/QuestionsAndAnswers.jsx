@@ -68,7 +68,7 @@ class QuestionsAndAnswers extends React.Component {
     return (
       <div className="qa-container">
         <div className="qa-box">
-          <h3>Questions & Answers</h3>
+          <h3 className="qaHeader">Questions & Answers</h3>
           <div className="searchAndQuestions">
             <Search className="search" productInfo={this.props.product} questions={this.state.q} copiedQuestions={this.state.copiedQuestions} handleSearch={this.handleSearch} getQuestions={this.getQuestions}/>
             <br />
