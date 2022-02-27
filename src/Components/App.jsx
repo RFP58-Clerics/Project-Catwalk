@@ -26,11 +26,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-    this.getData().then((data) => this.setState({ product: data[6] }));
-=======
     this.getData().then((data) => this.setState({ product: data[7] }));
->>>>>>> 58af1efcc02b25e9f12e38058c8d8cc091087622
   }
 
   handleSubmit(event) {
