@@ -10,7 +10,7 @@ const stylesHandler = 'style-loader';
 
 const config = {
   entry: './src/index.js',
-  mode: 'production',
+  // mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
