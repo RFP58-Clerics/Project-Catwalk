@@ -68,6 +68,7 @@ class QuestionsListItem extends React.Component {
   render() {
     const { productInfo, questionInfo, getQuestions } = this.props;
     const { a, openModal } = this.state;
+    console.log('a state: ', this.state.a)
     return (
       <div className="qa-set-container">
         <div className="qa-set">
@@ -81,7 +82,6 @@ class QuestionsListItem extends React.Component {
             </b>
             <div className="answerContainer">
               {Object.values(a).length === 0 ? null : (<AnswersList productInfo={productInfo} questionInfo={questionInfo} answers={a || null} />)}
-              {/* <button className="openModalButton" onClick={() => { this.setState({ openModal: true }) }}>Submit Answer</button> */}
             </div>
           </span>
         </div>

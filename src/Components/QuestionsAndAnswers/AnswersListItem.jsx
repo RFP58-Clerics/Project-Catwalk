@@ -13,18 +13,19 @@ const AnswersListItem = ({ answer, productInfo, questionInfo }) => (
         &nbsp;
         {answer.body}
         <br />
-        {answer.photos ? <ReviewPhotos photos={answer.photos} /> : <div />}
         <br />
-        by
-        &nbsp;
-        {answer.answerer_name.toLowerCase() === 'seller' ? <b> {answer.answerer_name} </b> : answer.answerer_name}
-        &nbsp;
-        on
-        &nbsp;
-        {moment((answer.date).toString()).format('MMM DD, YYYY')}
+        {answer.photos ? <ReviewPhotos photos={answer.photos} /> : null}
+        <br />
+        <span className="userInfo">
+          by
+          &nbsp;
+          {answer.answerer_name.toLowerCase() === 'seller' ? <b> {answer.answerer_name} </b> : answer.answerer_name}
+          &nbsp;
+          on
+          &nbsp;
+          {moment((answer.date).toString()).format('MMM DD, YYYY')}
+        </span>
       </span>
-      {/* <span className="answerMisc">
-      </span> */}
       <AnswerHelpful answerInfo={answer} />
       <div>
         <AnswerReport productInfo={productInfo} questionInfo={questionInfo} answerInfo={answer} />

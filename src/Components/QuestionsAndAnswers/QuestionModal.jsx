@@ -34,15 +34,17 @@ class QuestionModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const obj = {
-      body: this.state.body,
-      name: this.state.name,
-      email: this.state.email,
-      product_id: this.props.productInfo.id,
-    };
-    axios.post('/qa/questions', obj)
+    const { body, name, email, product_id } = this.state;
+    // const obj = {
+    //   body: this.state.body,
+    //   name: this.state.name,
+    //   email: this.state.email,
+    //   product_id: this.props.productInfo.id,
+    // };
+    const { getQuestions, productInfo } = this.props;
+    axios.post('/qa/questions', { body, name, email, product_id })
       .then(() => {
-        this.props.getQuestions(this.props.productInfo.id);
+        getQuestions(productInfo.id);
       })
       .then((res) => {
         console.log(res);
@@ -58,13 +60,15 @@ class QuestionModal extends React.Component {
   }
 
   render() {
+    const { closeModal, productInfo } = this.props;
+    const { body, name, email } = this.state;
     return ReactDom.createPortal(
       <div className="modal-background">
         <div className="modal-container">
-          <Button className="modalCloseBtn" onClick={() => { this.props.closeModal() }}> Close </Button>
+          <Button className="modalCloseBtn" onClick={() => { closeModal(); }}> Close </Button>
           <div className='title'>
             <h4> Ask Your Question </h4>
-            <h5> About the {this.props.productInfo.name}</h5>
+            <h5> About the {productInfo.name}</h5>
           </div>
           <div className="body">
             <form onSubmit={this.handleSubmit}>
@@ -77,7 +81,7 @@ class QuestionModal extends React.Component {
                 required
                 autoComplete="off"
                 placeholder="Question..."
-                value={this.state.body}
+                value={body}
                 onChange={this.handleChange}
               />
               <br />
@@ -91,7 +95,7 @@ class QuestionModal extends React.Component {
                 required
                 autoComplete="off"
                 placeholder="Example: jackson11!"
-                value={this.state.name}
+                value={name}
                 onChange={this.handleChange}
               />
               <br />
@@ -107,7 +111,7 @@ class QuestionModal extends React.Component {
                 required
                 autoComplete="off"
                 placeholder="Email: example@gmail.com"
-                value={this.state.email}
+                value={email}
                 onChange={this.handleChange}
               />
               <br />
