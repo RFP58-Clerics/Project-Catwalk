@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-console */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import StarRating from './StarRating.jsx';

@@ -1,8 +1,11 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
 import Reviews from './Reviews.jsx';
 import StarRating from './StarRating.jsx';
-import StarRatingFetcher from './StarRatingFetcher.jsx';
 import NewReviewForm from './NewReviewForm.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
@@ -43,29 +46,38 @@ class RARApp extends React.Component {
     this.getMeta = this.getMeta.bind(this);
     this.changeSort = this.changeSort.bind(this);
     this.setReviewFilter = this.setReviewFilter.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
-    if (this.props.product) {
-      // console.log(this.props.product);
-      this.getReviews(this.props.product.id);
-      this.getMeta(this.props.product.id);
+    const { product } = this.props;
+    if (product) {
+      this.getReviews(product.id);
+      this.getMeta(product.id);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if ((this.props.product && this.props.product.id !== prevProps.product.id)
-      || this.state.sort !== prevState.sort) {
-      // console.log(this.props.product);
-      this.getReviews(this.props.product.id);
-      this.getMeta(this.props.product.id);
+    const { product } = this.props;
+    const { sort } = this.state;
+    if ((product && product.id !== prevProps.product.id)
+      || sort !== prevState.sort) {
+      this.getReviews(product.id);
+      this.getMeta(product.id);
+    }
+  }
+
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      console.log('enter press here! ');
     }
   }
 
   getReviews(id) {
+    const { sort } = this.state;
     axios({
       method: 'get',
-      url: `/products/${id}/reviews?sort=${this.state.sort}`,
+      url: `/products/${id}/reviews?sort=${sort}`,
     })
       .then((res) => {
         this.setState({
@@ -142,7 +154,7 @@ class RARApp extends React.Component {
     ));
 
     return (
-      <div className="rarApp" onClick={onClick} id="scroll">
+      <div className="rarApp" onClick={onClick} role="menuitem" tabIndex={0} onKeyPress={this.handleKeyPress} id="scroll">
         <div className="rarBlock">
           <div className="rarBlockLeft">
             <h3 style={{ borderBottom: '1px solid grey' }}>Ratings and Reviews</h3>

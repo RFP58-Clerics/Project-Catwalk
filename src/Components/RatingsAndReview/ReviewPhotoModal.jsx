@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import './reviewstyles.css';
 import styled from 'styled-components';
@@ -13,13 +14,13 @@ const Button = styled.button`
   border-radius: 0.25rem;
 `;
 
-function ReviewPhotoModal({photo, closePhotoModal}) {
+function ReviewPhotoModal({ photo, closePhotoModal }) {
   return (
     <div className="modal-background">
       <div className="modal-container">
         <Button onClick={() => closePhotoModal(false)}>Close</Button>
         <div className="body">
-            <img className="expandedReviewImg" src={photo.url} alt="" />
+          <img className="expandedReviewImg" src={photo.url} alt="" />
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-// import dateFormat from 'dateformat';
 import ReviewPhotos from './ReviewPhotos.jsx';
 import './reviewstyles.css';
 
@@ -19,9 +20,9 @@ const Button = styled.button`
 class ReviewTile extends React.Component {
   constructor(props) {
     super(props);
-
+    const { review } = this.props;
     this.state = {
-      helpfulness: this.props.review.helpfulness,
+      helpfulness: review.helpfulness,
       disableHelpButton: false,
       expanded: false,
     };
@@ -31,9 +32,10 @@ class ReviewTile extends React.Component {
   }
 
   updateHelpfulness() {
+    const { review } = this.props;
     axios({
       method: 'put',
-      url: `/reviews/${this.props.review.review_id}/helpful`,
+      url: `/reviews/${review.review_id}/helpful`,
     })
       .then(() => {
         this.setState((oldState) => ({
@@ -47,9 +49,10 @@ class ReviewTile extends React.Component {
   }
 
   updateReported() {
+    const { review } = this.props;
     axios({
       method: 'put',
-      url: `/reviews/${this.props.review.review_id}/reported`,
+      url: `/reviews/${review.review_id}/reported`,
     })
       .then((res) => {
         console.log(res);
@@ -66,59 +69,54 @@ class ReviewTile extends React.Component {
   }
 
   render() {
-    const {
-      summary, rating, date, body, photos,
-      helpfulness, reviewer_name, recommend, response
-    } = this.props.review;
-    let reviewRating = [];
-    for (let i = 0; i < rating; i += 1) {
+    const { review } = this.props;
+    const { expanded, disableHelpButton, helpfulness } = this.state;
+    const reviewRating = [];
+    for (let i = 0; i < review.rating; i += 1) {
       reviewRating.push('★');
     }
 
-    // let outputDate = dateFormat(new Date(date), 'mmmm d, yyyy');
-
     let shortBody;
 
-    if (body.length > 250) {
-      shortBody = body.substring(0, 250);
+    if (review.body.length > 250) {
+      shortBody = review.body.substring(0, 250);
     }
 
     return (
       <div className="reviewCard">
-        <h4>{summary}</h4>
+        <h4>{review.summary}</h4>
         <div>
           {reviewRating}
-          {rating}
+          {review.rating}
         </div>
         stars
         <br />
-        {/* {outputDate} */}
-        {new Date(date).toDateString()}
+        {new Date(review.date).toDateString()}
         <br />
-        {reviewer_name ? `✔(verifieduser)${reviewer_name}` : null}
+        {review.reviewer_name ? `✔(verifieduser)${review.reviewer_name}` : null}
         <br />
-        {!this.state.expanded && shortBody && (
+        {!expanded && shortBody && (
           <p>
             {shortBody}
             <button className="moreBtn" type="button" onClick={this.updateExpanded}>(more)</button>
           </p>
         )}
-        {(this.state.expanded || !shortBody) && body}
+        {(expanded || !shortBody) && review.body}
         <br />
-        {response ? `Response from seller: ${response}` : null}
-        {recommend ? 'recommended ✔' : null}
+        {review.response ? `Response from seller: ${review.response}` : null}
+        {review.recommend ? 'recommended ✔' : null}
         <br />
-        {photos
-          ? <ReviewPhotos photos={photos} />
+        {review.photos
+          ? <ReviewPhotos photos={review.photos} />
           : <div />}
         <br />
         Was this review helpful?
         <div>
-          <Button disabled={this.state.disableHelpButton} onClick={this.updateHelpfulness}>
+          <Button disabled={disableHelpButton} onClick={this.updateHelpfulness}>
             Yes
           </Button>
           &nbsp;
-          {this.state.helpfulness}
+          {helpfulness}
         </div>
       </div>
     );

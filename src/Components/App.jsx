@@ -96,7 +96,7 @@ class App extends React.Component {
     return product && (
       <>
         <style>{'body {background-color: gainsboro;}'}</style>
-        <div id="qa-portal"></div>
+        <div id="qa-portal" />
         <div className="top-bar">
           <div id="new-review" />
           <h1>CLERICAL hahahahahah</h1>
