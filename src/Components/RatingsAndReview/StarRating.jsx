@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 import './reviewstyles.css';
 
 const StarRating = function StarRating({ rating }) {
@@ -16,10 +16,6 @@ const StarRating = function StarRating({ rating }) {
       {rating !== null ? rating.toFixed(1) : '-.-'}
     </div>
   );
-};
-
-StarRating.propTypes = {
-  rating: PropTypes.number,
 };
 
 export default StarRating;

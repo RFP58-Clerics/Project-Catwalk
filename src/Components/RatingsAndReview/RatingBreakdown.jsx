@@ -1,3 +1,6 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import axios from 'axios';
 import React from 'react';
 
@@ -9,6 +12,7 @@ class RatingBreakdown extends React.Component {
       recommended: null,
     };
     this.getRatings = this.getRatings.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
@@ -16,15 +20,23 @@ class RatingBreakdown extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.productId !== prevProps.productId) {
+    const { productId } = this.props;
+    if (productId !== prevProps.productId) {
       this.getRatings();
     }
   }
 
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      console.log('enter press here! ');
+    }
+  }
+
   getRatings() {
+    const { productId } = this.props;
     axios({
       method: 'get',
-      url: `reviews/meta/${this.props.productId}`,
+      url: `reviews/meta/${productId}`,
     })
       .then((res) => {
         this.setState({
@@ -55,10 +67,16 @@ class RatingBreakdown extends React.Component {
           [1, 2, 3, 4, 5].map((i) => (
             <div
               key={i}
-              className={filter.includes(i) ? "highlight" : ""}
+              className={filter.includes(i) ? 'highlight' : ''}
               onClick={() => filterReviews(i)}
+              onKeyPress={this.handleKeyPress}
+              role="button"
+              tabIndex="0"
             >
-              {i} Star{i > 1 && 's'}&nbsp;
+              {i}
+              Star
+              {i > 1 && 's'}
+              &nbsp;
               <progress
                 key={i}
                 max={100}
@@ -68,7 +86,8 @@ class RatingBreakdown extends React.Component {
           ))
         }
         <div>
-          {parseFloat(recommended * 100).toFixed(1)}% Recommended&nbsp;
+          {parseFloat(recommended * 100).toFixed(1)}
+          % Recommended&nbsp;
           <progress className="recommendedBar" max={100} value={recommended * 100} />
         </div>
       </div>
