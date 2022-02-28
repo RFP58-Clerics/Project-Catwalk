@@ -1,8 +1,12 @@
+/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-undef */
 import React from 'react';
 import axios from 'axios';
-import ReviewPhotos from './ReviewPhotos.jsx';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
+import ReviewPhotos from './ReviewPhotos.jsx';
 
 const Button = styled.button`
   background: #2b2b2b;
@@ -15,7 +19,9 @@ const Button = styled.button`
   border-radius: 0.25rem;
 `;
 
-function StarPicker({description, name, onChange, value}) {
+function StarPicker({
+  description, name, onChange, value,
+}) {
   return (
     <>
       {name && <div className="rightAlign">{name}</div> }
@@ -163,7 +169,9 @@ class NewReviewForm extends React.Component {
     };
 
     Object.keys(characteristics).forEach((key) => {
+      // eslint-disable-next-line react/destructuring-assignment
       if (this.state[key] !== null) {
+        // eslint-disable-next-line react/destructuring-assignment
         reviewData.characteristics[characteristics[key].id] = this.state[key];
       }
     });
@@ -245,7 +253,10 @@ class NewReviewForm extends React.Component {
             <Button type="button" onClick={this.closeClicked}>Close</Button>
           </div>
           <h4>Write Your Review</h4>
-          <h5>About the {product.name}</h5>
+          <h5>
+            About the
+            {product.name}
+          </h5>
           <form onSubmit={this.submitReview}>
             <p>
               Overall Rating*

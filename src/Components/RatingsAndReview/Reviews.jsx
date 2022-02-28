@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import ReviewTile from './ReviewTile.jsx';
 import './reviewstyles.css';
 import styled from 'styled-components';
+import ReviewTile from './ReviewTile.jsx';
 
 const Button = styled.button`
   background: #2b2b2b;
@@ -31,13 +32,15 @@ class Reviews extends React.Component {
   }
 
   render() {
-    const reviews = this.props.reviews.slice(0, this.state.showCount);
+    const { reviews } = this.props;
+    const { showCount } = this.state;
+    const slicedReviews = reviews.slice(0, showCount);
     return (
       <div>
         <div className="scrollReviews">
-          {reviews.map((review, key) => <ReviewTile review={review} key={key} />)}
+          {slicedReviews.map((review, key) => <ReviewTile review={review} key={key} />)}
         </div>
-        { this.state.showCount < this.props.reviews.length
+        { showCount < reviews.length
           && <Button onClick={this.handleMoreButton}>More Reviews</Button>}
       </div>
     );
