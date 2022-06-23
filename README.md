@@ -2,13 +2,13 @@
 
 Project Catwalk is a front end development project designed to showcase a e-commerce website with modern features.
 
-##Developers:
+## Developers:
 Christian Gorlewski - Product Overview
 Anthony Blelloch - Related Products
 Karli Thomas - Reviews and Ratings
 Lorene Chew - Questions and Answers
 
-##Installation Guide:
+## Installation Guide:
 Fork and clone this repo on to your local machine.
 Run the following scripts in order:
 npm install
